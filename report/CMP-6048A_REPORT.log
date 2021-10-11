@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  11 OCT 2021 15:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  11 OCT 2021 15:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -195,62 +195,62 @@ Chapter 1.
 Chapter 2.
 [3
 
-]
+] [4]
 Chapter 3.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 134.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 134.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [4
+) [5
 
 ]
 Chapter 4.
-<pelvis_octree.png, id=33, 700.41675pt x 512.51476pt>
+<pelvis_octree.png, id=37, 700.41675pt x 512.51476pt>
 File: pelvis_octree.png Graphic file (type png)
 <use pelvis_octree.png>
-Package pdftex.def Info: pelvis_octree.png  used on input line 166.
+Package pdftex.def Info: pelvis_octree.png  used on input line 174.
 (pdftex.def)             Requested size: 425.0pt x 310.98344pt.
-<class.png, id=35, 423.83344pt x 252.19218pt>
+<class.png, id=39, 423.83344pt x 252.19218pt>
 File: class.png Graphic file (type png)
 <use class.png>
-Package pdftex.def Info: class.png  used on input line 176.
+Package pdftex.def Info: class.png  used on input line 184.
 (pdftex.def)             Requested size: 425.0pt x 252.89577pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5
+[6
 
-] [6 <./pelvis_octree.PNG>] [7 <./Class.png>]
+] [7 <./pelvis_octree.PNG>] [8 <./Class.png>]
 Chapter 5.
-[8
+[9
 
 ]
 Chapter 6.
-(./CMP-6048A_REPORT.bbl [9
+(./CMP-6048A_REPORT.bbl [10
 
-]) [10
-
-] [11
+]) [11
 
 ] [12
 
+] [13
+
 ] (./CMP-6048A_REPORT.aux) ) 
 Here is how much of TeX's memory you used:
- 2897 strings out of 478599
- 38672 string characters out of 5858101
- 342635 words of memory out of 5000000
- 20734 multiletter control sequences out of 15000+600000
+ 2901 strings out of 478599
+ 38717 string characters out of 5858101
+ 342644 words of memory out of 5000000
+ 20738 multiletter control sequences out of 15000+600000
  414273 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,80p,895b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on CMP-6048A_REPORT.pdf (14 pages, 898487 bytes).
+Output written on CMP-6048A_REPORT.pdf (15 pages, 902771 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 134 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
