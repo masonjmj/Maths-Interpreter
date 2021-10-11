@@ -1,5 +1,22 @@
 \begin{thebibliography}{1}
 
+\bibitem{MATLAB}
+MathWorks, Natick, Massachusetts, United States.
+\newblock {\em MATLAB}, 2017.
+
+\bibitem{Math_Inspector}
+{\em Math Inspector}, 2021.
+
+\bibitem{Mathematica}
+Wolfram, The Wolfram Centre, Lower Road, Long Hanborough, Oxfordshire OX29 8FD,
+  United Kingdom.
+\newblock {\em Wolfram Mathematica}, 2021.
+
+\bibitem{Maple}
+Maplesoft, The Wolfram Centre, Lower Road, Long Hanborough, Oxfordshire OX29
+  8FD, United Kingdom.
+\newblock {\em Maple}, 2021.
+
 \bibitem{Taylor:2007}
 Zeike~A. Taylor, Mario Cheng, and S{\'{e}}bastien Ourselin.
 \newblock {Real-Time Nonlinear Finite Element Analysis for Surgical Simulation
