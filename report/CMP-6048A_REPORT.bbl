@@ -13,28 +13,8 @@ Wolfram, The Wolfram Centre, Lower Road, Long Hanborough, Oxfordshire OX29 8FD,
 \newblock {\em Wolfram Mathematica}, 2021.
 
 \bibitem{Maple}
-Maplesoft, The Wolfram Centre, Lower Road, Long Hanborough, Oxfordshire OX29
-  8FD, United Kingdom.
+Maplesoft, 615 Kumpf Drive, Waterloo, ON, Canada, N2V 1K8.
 \newblock {\em Maple}, 2021.
-
-\bibitem{Taylor:2007}
-Zeike~A. Taylor, Mario Cheng, and S{\'{e}}bastien Ourselin.
-\newblock {Real-Time Nonlinear Finite Element Analysis for Surgical Simulation
-  Using Graphics Processing Units}.
-\newblock In {\em Medical Image Computing and Computer-Assisted Intervention
-  – MICCAI 2007}, pages 701--708. Springer Berlin Heidelberg, Berlin,
-  Heidelberg, 2007.
-
-\bibitem{Morton:1966}
-G.M. Morton.
-\newblock {A computer oriented geodetic data base and a new technique in file
-  sequencing}.
-\newblock Technical Report Ottawa, Ontario, Canada, 1966.
-
-\bibitem{Soos:2012}
-Mate Soos.
-\newblock {AMD's} {OpenCL} heaven and hell.
-\newblock https://www.msoos.org/2012/01/amds-opencl-heaven-and-hell/, 2012.
 
 \bibitem{Sorbe:1983}
 B.~Sorbe and S.~Dahlgren.
