@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  11 OCT 2021 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  11 OCT 2021 15:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -197,11 +197,11 @@ Chapter 2.
 
 ]
 Chapter 3.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 130.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 129.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 130.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 129.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [4
@@ -211,12 +211,12 @@ Chapter 4.
 <pelvis_octree.png, id=33, 700.41675pt x 512.51476pt>
 File: pelvis_octree.png Graphic file (type png)
 <use pelvis_octree.png>
-Package pdftex.def Info: pelvis_octree.png  used on input line 170.
+Package pdftex.def Info: pelvis_octree.png  used on input line 169.
 (pdftex.def)             Requested size: 425.0pt x 310.98344pt.
 <class.png, id=35, 423.83344pt x 252.19218pt>
 File: class.png Graphic file (type png)
 <use class.png>
-Package pdftex.def Info: class.png  used on input line 180.
+Package pdftex.def Info: class.png  used on input line 179.
 (pdftex.def)             Requested size: 425.0pt x 252.89577pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
