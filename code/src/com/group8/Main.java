@@ -27,7 +27,7 @@ public class Main {
 		// Replace with proper unit testing
 
 		// Basic operations
-		System.out.println("TEST: 5. Expected output: 10");
+		System.out.println("TEST: 5. Expected output: 5");
 		Lexer.analyse("5");
 
 		System.out.println("TEST: 5+5. Expected output: 10");
