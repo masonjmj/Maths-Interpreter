@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  11 OCT 2021 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  18 OCT 2021 15:40
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**"d:/Documents/University/Advanced Programming/Coursework/report/CMP-6048A_REPORT.tex"
-(d:/Documents/University/Advanced Programming/Coursework/report/CMP-6048A_REPORT.tex
+**CMP-6048A_REPORT.tex
+(./CMP-6048A_REPORT.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-08-27> (c:/texlive/2021/texmf-dist/tex/latex/base/report.cls
+L3 programming layer <2021-08-27>
+(c:/texlive/2021/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2021/02/12 v1.4n Standard LaTeX document class
 (c:/texlive/2021/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
@@ -23,22 +23,29 @@ File: size11.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (c:/texlive/2021/texmf-dist/tex/latex/graphics/epsfig.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
- (c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
- (c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
-) (c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
- (c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+
+(c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (c:/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
+
+(c:/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen139
@@ -46,43 +53,54 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 )
 \epsfxsize=\dimen141
 \epsfysize=\dimen142
-) (c:/texlive/2021/texmf-dist/tex/latex/psnfss/pifont.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/pifont.sty
 Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
 LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
- (c:/texlive/2021/texmf-dist/tex/latex/psnfss/upzd.fd
+
+
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
- (c:/texlive/2021/texmf-dist/tex/latex/psnfss/upsy.fd
+
+
+(c:/texlive/2021/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
-)) (c:/texlive/2021/texmf-dist/tex/latex/float/float.sty
+))
+(c:/texlive/2021/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count191
 \float@exts=\toks17
 \float@box=\box50
 \@float@everytoks=\toks18
 \@floatcapt=\box51
-) (c:/texlive/2021/texmf-dist/tex/latex/multirow/multirow.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip49
 \multirow@cntb=\count192
 \multirow@dima=\skip50
 \bigstrutjot=\dimen143
-) (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2021/04/20 v2.17j AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
- (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
+
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
 \ex@=\dimen144
-)) (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen145
-) (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count193
@@ -122,23 +140,29 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
-) (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (c:/texlive/2021/texmf-dist/tex/latex/algorithms/algorithm.sty
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
- (c:/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
+))
+(c:/texlive/2021/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(c:/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks24
 \c@algorithm=\count271
-) (c:/texlive/2021/texmf-dist/tex/latex/algorithms/algorithmic.sty
+)
+(c:/texlive/2021/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count272
 \c@ALC@line=\count273
@@ -146,11 +170,13 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@depth=\count275
 \ALC@tlm=\skip54
 \algorithmicindent=\skip55
-) (c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)
+(c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count276
 \l__pdf_internal_box=\box54
-) (./CMP-6048A_REPORT.aux)
+)
+(./CMP-6048A_REPORT.aux)
 \openout1 = `CMP-6048A_REPORT.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -167,7 +193,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
- (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count277
 \scratchdimen=\dimen153
@@ -182,9 +209,12 @@ LaTeX Font Info:    ... okay on input line 19.
 \everyMPtoPDFconversion=\toks26
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 )) [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1]
@@ -195,62 +225,80 @@ Chapter 1.
 Chapter 2.
 [3
 
-]
+] [4]
 Chapter 3.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 129.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 135
+.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 129.
- (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 135
+.
+
+(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [4
+) [5
 
 ]
 Chapter 4.
-<pelvis_octree.png, id=33, 700.41675pt x 512.51476pt>
-File: pelvis_octree.png Graphic file (type png)
-<use pelvis_octree.png>
-Package pdftex.def Info: pelvis_octree.png  used on input line 169.
-(pdftex.def)             Requested size: 425.0pt x 310.98344pt.
-<class.png, id=35, 423.83344pt x 252.19218pt>
-File: class.png Graphic file (type png)
-<use class.png>
-Package pdftex.def Info: class.png  used on input line 179.
-(pdftex.def)             Requested size: 425.0pt x 252.89577pt.
+
+LaTeX Warning: Reference `Figures' on page 6 undefined on input line 159.
+
+[6
+
+]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5
-
-] [6 <./pelvis_octree.PNG>] [7 <./Class.png>]
+[7] [8]
 Chapter 5.
-[8
+
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
+[]\OT1/cmr/m/n/10.95 Test
+ []
+
+[9
 
 ]
 Chapter 6.
-(./CMP-6048A_REPORT.bbl [9
+(./CMP-6048A_REPORT.bbl [10
 
-]) [10
-
-] [11
+]) [11
 
 ] [12
 
-] (./CMP-6048A_REPORT.aux) ) 
+] [13
+
+] (./CMP-6048A_REPORT.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2897 strings out of 478599
- 38672 string characters out of 5858101
- 342635 words of memory out of 5000000
- 20734 multiletter control sequences out of 15000+600000
- 414273 words of font info for 65 fonts, out of 8000000 for 9000
+ 2839 strings out of 478599
+ 37859 string characters out of 5858100
+ 343595 words of memory out of 5000000
+ 20682 multiletter control sequences out of 15000+600000
+ 413806 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,11n,80p,895b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on CMP-6048A_REPORT.pdf (14 pages, 899309 bytes).
+ 72i,11n,80p,830b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1095.pfb>
+Output written on CMP-6048A_REPORT.pdf (15 pages, 179828 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

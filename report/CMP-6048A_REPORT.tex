@@ -161,64 +161,98 @@ In this chapter you cover the actual implementation of your project. Implementat
 \section{Early sprints}
 \subsection{Sprint 1}
 
+For our first sprint, we defined the following set of requirements: 
+
+\begin{enumerate}
+\item Create the program skeleton we can build upon 
+\item Build the Lexer and parser for our language 
+\item Allow the program to identify integers 
+\item Allow the program to recognize basic operators, including addition, multiplication, subtraction, division and brackets 
+\item The program should be able to execute the basic operation is can identify 
+\end{enumerate}
+
+\subsubsection{Requirement 1: }
+
+The program now contains the different classes it will need to run. These include the Lexer Class which is the class used to identify the different tokens, The parser class that checks the syntax of the languages and the execution class that runs through the stack and performs the operations held there in the correct order. There is also the main class that is responsible for the input display and parsing that input to the Lexer. 
+
+\subsubsection{Requirement 2: }
+
+Once all the classes were created, we were able to build the Lexer and parser for our language. The Lexer can correctly identify integers, plus signs, minus signs, multiplication and division signs and brackets as well as ignoring blank space. The only limitation of our current Lexer is that it is unable to handle integer outside of the integer limit imposed by Java. 
+
+The parser can check the syntax of the language by making sure the tokens are written the correct order and lets the user know if there is an issue. 
+
+\subsubsection{Requirement 3: }
+
+When the Lexer encounters a digit character, a loop begins and checks each concurrent characters’ digit status. If the next character is a digit also, the loop continues. When the Lexer encounters a non-digit character, the loop ends and a number token is added to the token array and the string of digits is converted into a numerical representation which is put into the symbol table. The symbol table is implemented as a map. The index key for the numeric value is the index in the array of the corresponding number token. 
+
+\subsubsection{Requirement 4: }
+
+The recognition of basic operators works in the same manner as the integer recognition except without the need for a looping function. Each operator is assigned a given token which is added to the token array upon recognition. 
+
+\subsubsection{Requirement 5: }
+
+Each token from the token array is copied onto the operator stack and the integers corresponding to the number tokens are copied onto the number stack from the symbol table. When a complete expression has been transferred onto the stack, it will be evaluated and the result of that expression with replace the operands used on the number stack. Any operators used are removed from the stack. Token will then continue to be copied onto the two stacks until the end of the token array is reached.  
+
+When the program encounters a right bracket, we know a left bracket must exist on the stack as the parser has validated the code. This means that when a right bracket is encountered, the program continually runs calculate until the left bracket reaches the top of the stack. This ensures the number at the top of the number stack is the evaluation of the expression within brackets, ensuring the order of operations is preserved. 
+
 \subsection{Sprint n}
 
 \section{Final implementation}
 
 \section{Figures, tables, etc.}
-\label{Figures}
+%\label{Figures}
 
-The purpose of this section is to just show you how to integrate figures, tables, etc.\ and should disappear in the final report. Figures and tables should be distributed across the document wherever they are needed but you should use an appendix if they are many figures/tables of the same kind. Fig.\ \ref{Pelvis_BVH} shows a bony pelvis.
-
-\begin{figure}[htb]
-%\begin{center}
-\includegraphics[width=1.0 \columnwidth]{pelvis_octree.png}
-\caption{The bony pelvis model with octree based AABBs (Axis Aligned Bounding Boxes).}
-\label{Pelvis_BVH}
-%\end{center}
-\end{figure}
-
-Fig.\ \ref{class} shows a UML class diagram (class, sequence and state diagrams are the most frequently used UML diagrams):
+The purpose of this section is to just show you how to integrate figures, tables, etc.\ and should disappear in the final report. Figures and tables should be distributed across the document wherever they are needed but you should use an appendix if they are many figures/tables of the same kind. Fig.\ %\ref{Pelvis_BVH} shows a bony pelvis.
 
 \begin{figure}[htb]
 %\begin{center}
-\includegraphics[width=1.0 \columnwidth]{class.png}
-\caption{A UML class diagram.}
-\label{class}
+%\includegraphics[width=1.0 \columnwidth]{pelvis_octree.png}
+%\caption{The bony pelvis model with octree based AABBs (Axis Aligned Bounding Boxes).}
+%\label{Pelvis_BVH}
 %\end{center}
 \end{figure}
 
-Algorithms can be either used in this chapter or alternatively in Chapter \ref{MethLab} if it is a more generic algorithm:
+%Fig.\ \ref{class} shows a UML class diagram (class, sequence and state diagrams are the most frequently used UML diagrams):
+
+\begin{figure}[htb]
+%\begin{center}
+%\includegraphics[width=1.0 \columnwidth]{class.png}
+%\caption{A UML class diagram.}
+%\label{class}
+%\end{center}
+\end{figure}
+
+%Algorithms can be either used in this chapter or alternatively in Chapter \ref{MethLab} if it is a more generic algorithm:
 
 \begin{algorithm}[th]
-\caption{ The projection based contact method algorithm }
-\begin{algorithmic}[1]
-\STATE Retrieve current node displacement $u$
-\\ \texttt{float3 u = m\_U\_new[nodeIndex].xyz;}
-\STATE Retrieve constraint plane equation
-\\ \texttt{float4 plane = m\_constraintMagnitude[nodeIndex];}
-\STATE Calculate dot product with plane normal
-\\ \texttt{float d = dot(u, plane.xyz);}
-\STATE Find node penetration into the plane's negative half-space
-\\ \texttt{float penetration = plane.w - d;}
-\IF {penetration is greater than zero}
-	\STATE Find projection onto the plane surface
-	
-	\texttt{float3 proj = u + plane.xyz * penetration;}
-	\STATE Prescribe new nodal position to be on the surface
-	
-	\texttt{m\_U\_new[nodeIndex] = (float4)(proj, 0.0f);}
-\ENDIF
-\end{algorithmic}
+%\caption{ The projection based contact method algorithm }
+%\begin{algorithmic}[1]
+%\STATE Retrieve current node displacement $u$
+%\\ \texttt{float3 u = m\_U\_new[nodeIndex].xyz;}
+%\STATE Retrieve constraint plane equation
+%\\ \texttt{float4 plane = m\_constraintMagnitude[nodeIndex];}
+%\STATE Calculate dot product with plane normal
+%\\ \texttt{float d = dot(u, plane.xyz);}
+%\STATE Find node penetration into the plane's negative half-space
+%\\ \texttt{float penetration = plane.w - d;}
+%\IF {penetration is greater than zero}
+%	\STATE Find projection onto the plane surface
+%	
+%	\texttt{float3 proj = u + plane.xyz * penetration;}
+%	\STATE Prescribe new nodal position to be on the surface
+%	
+%	\texttt{m\_U\_new[nodeIndex] = (float4)(proj, 0.0f);}
+%\ENDIF
+%\end{algorithmic}
 \end{algorithm}
 
-Tables such as Table \ref{Res01} can also be useful here or in Chapter \ref{MethLab}.
+%Tables such as Table \ref{Res01} can also be useful here or in Chapter \ref{MethLab}.
 
 \begin{table}[h]
-\caption[]{Original diameters and diametral strains as reported by
-  Sorbe and Dahlgren \cite{Sorbe:1983} (columns 1-2), from a previous 
-  experiment by Lapeer and Prager and reported in \cite{Lapeer:2001}
-  (columns 3-4), and from the current experiment (columns 5-6).}
+%\caption[]{Original diameters and diametral strains as reported by
+%  Sorbe and Dahlgren \cite{Sorbe:1983} (columns 1-2), from a previous 
+%  experiment by Lapeer and Prager and reported in \cite{Lapeer:2001}
+%  (columns 3-4), and from the current experiment (columns 5-6).}
 \begin{center}
 \begin{tabular}{|l|c|c||c|c||c|c|}\hline
 & \multicolumn{2}{c||}{S-D} & \multicolumn{2}{c||}{L-P old} & \multicolumn{2}{c|}{L-P new} \\ \hline
@@ -231,7 +265,7 @@ $\mi{SOFD}$ &  -    &   -   &  -    &   -   & 113.2 & -0.85 \\
 $\mi{SOBD}$ & 117.1 & -1.70 &  88.7 & -1.07 &  88.7 & -2.52 \\
 $\mi{BPD}$  & 105.0 &  0.00 &  89.7 & -0.21 &  89.7 & -0.83 \\ \hline
 \end{tabular}
-\label{Res01}
+%\label{Res01}
 \end{center}
 \end{table}
 
@@ -240,7 +274,23 @@ Note that code snippets or lists of crucial programming code or large UML diagra
 
 \chapter{Testing}
 
-Describe various experiments you designed to test your software product. This could be subdivided to be in line with the Sprints in Chapter \ref{Impl}. In case you have protocols which cover various pages, please put them in an appendix (e.g. Appendix A) instead.
+This section details the testing we performed at the end of each sprint to make sure we meet each of the requirements set ou at the beginning of the sprint.
+
+\subsection{Sprint 1}
+
+\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
+1 & The program is able to identify a number & 5 \newline 83 \newline 324876312487124  &  PASSED \newline PASSED \newline FAILED \\
+2 & The program can idenify and evaluate an addition expression & 5+5 \newline 54+6 \newline 2+7  &  PASSED \newline PASSED \newline PASSED \\
+3 & The program can idenify and evaluate a subtraction expression & 5-5 \newline 18-9 \newline 4-0  &  PASSED \newline PASSED \newline PASSED \\
+4 & The program can idenify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  &  PASSED \newline PASSED \newline PASSED \\
+5 & The program can idenify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  &  PASSED \newline PASSED \newline PASSED \\
+6 & The program can evalute expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  &  PASSED \newline PASSED \newline PASSED \\
+7 & The program can idenify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 &  PASSED \newline PASSED \newline PASSED \\
+8 & The program can idenify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  &  PASSED \newline PASSED \newline PASSED \\
+9 & The program can idenify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
+\end{tabular}
+
+
 
 \chapter{Discussion, conclusion and future work}
 
