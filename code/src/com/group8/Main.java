@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		testing();
+//		testing();
 		String input;
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
