@@ -46,7 +46,6 @@ public class Parser {
 		expression(0);
 
 		return success;
-
 	}
 
 	static void expression(int level) {
@@ -97,5 +96,4 @@ public class Parser {
 			success = false;
 		}
 	}
-
 }
