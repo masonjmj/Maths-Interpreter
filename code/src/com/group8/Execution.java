@@ -8,21 +8,44 @@ public class Execution {
 
 	static private Stack<Token> operatorStack;
 	static private Stack<Integer> numberStack;
+	static private boolean identifierToAssign;
 
 
-	static void execute(List<Token> tokens, Map<Integer, Integer> symbolTable) {
+	static void execute(List<Token> tokens, Map<Integer, Object> symbolTable) {
 		operatorStack = new Stack<>();
 		numberStack = new Stack<>();
+		identifierToAssign = false;
 
-		System.out.println(shuntingYard(tokens, symbolTable));
+		if (tokens.size() > 1) {
+			if (tokens.get(1) == Token.ASSIGNMENT) { // Kind of hacky; replace later
+				identifierToAssign = true;
+				Main.identifiers.put((String) symbolTable.get(0), shuntingYard(tokens, symbolTable));
+			} else {
+				System.out.println(shuntingYard(tokens, symbolTable));
+			}
+		} else {
+			System.out.println(shuntingYard(tokens, symbolTable));
+		}
+
 	}
 
-	private static int shuntingYard(List<Token> tokens, Map<Integer, Integer> symbolTable) {
+	private static int shuntingYard(List<Token> tokens, Map<Integer, Object> symbolTable) {
 		int i = 0;
 
 		while (i < tokens.size()) {
 			if (tokens.get(i) == Token.NUMBER) {
-				numberStack.push(symbolTable.get(i)); // Push number from symbol table onto number stack
+				numberStack.push((Integer) symbolTable.get(i)); // Push number from symbol table onto number stack
+			} else if(tokens.get(i) == Token.IDENTIFIER){
+				if (identifierToAssign) {
+					identifierToAssign = false;
+				} else {
+					Integer value = (Integer) Main.identifiers.get((String) symbolTable.get(i));
+					if (value == null) {
+						throw new RuntimeException("Variable \"" + (String) symbolTable.get(i) + "\" has not been defined");
+					} else {
+						numberStack.push(value);
+					}
+				}
 			} else if (tokens.get(i) == Token.PLUS || tokens.get(i) == Token.MINUS) {
 				while (!operatorStack.isEmpty() && (operatorStack.peek() != Token.LEFT_BRACKET)) {
 					calculate();

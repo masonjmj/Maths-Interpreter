@@ -43,9 +43,33 @@ public class Parser {
 		lookAhead = tokens.get(currentToken);
 		success = true;
 
-		expression(0);
+		statement(0);
 
 		return success;
+	}
+
+	static void statement(int level) {
+		if (match(Token.IDENTIFIER)) { // Replace later
+			System.out.println("Assignment");
+			assignment(level + 1);
+		} else {
+			System.out.println("Expression");
+			expression(level + 1);
+		}
+	}
+
+	static void assignment(int level) {
+		if (match(Token.IDENTIFIER)) {
+			advance(level + 1);
+			assignment_p(level + 1);
+		}
+	}
+
+	static void assignment_p(int level) {
+		if (match(Token.ASSIGNMENT)) {
+			advance(level + 1);
+			expression(level + 1);
+		}
 	}
 
 	static void expression(int level) {
@@ -56,7 +80,14 @@ public class Parser {
 
 	static void expression_p(int level) {
 //		System.out.println("expression_p() called at level " + level);
-		if (match(Token.PLUS) || match(Token.MINUS)) {
+		if (match(Token.ASSIGNMENT)) {
+			System.out.println("Assignment operator not valid in an expression");
+			success = false;
+			advance(level + 1);
+			term(level + 1);
+			expression_p(level + 1);
+
+		} else if (match(Token.PLUS) || match(Token.MINUS)) {
 			advance(level + 1);
 			term(level + 1);
 			expression_p(level + 1);
@@ -82,6 +113,8 @@ public class Parser {
 //		System.out.println("factor() called at level " + level);
 		if (match(Token.NUMBER)) {
 			advance(level + 1);
+		} else if (match(Token.IDENTIFIER)){
+			advance(level + 1);
 		} else if (match(Token.LEFT_BRACKET)) {
 			advance(level + 1);
 			expression(level + 1);
@@ -92,7 +125,7 @@ public class Parser {
 				success = false;
 			}
 		} else {
-			System.out.println("SYNTAX ERROR: Number expected at token " + currentToken);
+			System.out.println("SYNTAX ERROR: Number or variable expected at token " + currentToken);
 			success = false;
 		}
 	}

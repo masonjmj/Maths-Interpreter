@@ -1,10 +1,14 @@
 package com.group8;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-
+	public static Map<String, Object> identifiers = new HashMap<>();
 	public static void main(String[] args) {
+
+
 //		testing();
 		String input;
 		Scanner scanner = new Scanner(System.in);
