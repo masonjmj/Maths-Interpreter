@@ -195,6 +195,32 @@ Each token from the token array is copied onto the operator stack and the intege
 
 When the program encounters a right bracket, we know a left bracket must exist on the stack as the parser has validated the code. This means that when a right bracket is encountered, the program continually runs calculate until the left bracket reaches the top of the stack. This ensures the number at the top of the number stack is the evaluation of the expression within brackets, ensuring the order of operations is preserved. 
 
+\subsection{Sprint 2}
+
+For our second sprint, we defined the following set of requirements: 
+
+\begin{enumerate}
+\item Allow the program to recognise variable identifiers
+\item Be able to assign value to a variable
+\item The program should be able to evalute expression that contain pre-defined variables
+\end{enumerate}
+
+\subsubsection{Requirement 1: }
+
+The lexer class cycles through the chracters typed by the user. If the character is not a number or a reserved symbol, the program identifies it as a variable. the concecutive characters are then checked and added to the variable name if they are alphanumeric. This process ends when a non-alphanumeric charcter is reached.
+The symbol table has also been updated so it can hold variable names as well as numbers.
+This requirement has been succefully met.
+
+\subsubsection{Requirement 2: }
+
+To begin developing the assignmnet functionality, we have used the equals sign to represent assignment for simplicity. This sign has be added as a reserved character to identify assignment operations. When an equals gin is preceded by a varible and proceeded by an integer, the interger value is mapped to the varible. If the assignment value is an expression, the expression is evaluated and the soltuion mapped to the variable.
+This requirement has been successfully met.
+
+\subsubsection{Requirement 3: }
+
+When the program evaluates an expression that contains a varible, the execution class identifes the value mapped to the variable and replaces it in the expression. The xpression is then evalutated as normal and the solution displayed.
+This requirement has been succefully met.
+
 \subsection{Sprint n}
 
 \section{Final implementation}
@@ -274,7 +300,7 @@ Note that code snippets or lists of crucial programming code or large UML diagra
 
 \chapter{Testing}
 
-This section details the testing we performed at the end of each sprint to make sure we meet each of the requirements set ou at the beginning of the sprint.
+This section details the testing we performed at the end of each sprint to make sure we meet each of the requirements set out at the beginning of the sprint.
 
 \subsection{Sprint 1}
 
@@ -290,7 +316,14 @@ This section details the testing we performed at the end of each sprint to make 
 9 & The program can idenify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
 \end{tabular}
 
+\subsection{Sprint 2}
 
+\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
+1 & The program can assign a value to a variable & x=5 \newline foo=56 \newline y=9  &  PASSED \newline PASSED \newline FAILED \\
+2 & The program can assign an expression to a variable & a = 19+7 \newline y = 7-5 \newline bar = 3*6  &  PASSED \newline PASSED \newline PASSED \\
+3 & The program can evaluate an expression that inclues a variable & x-10 \newline y = 7+x \newline foo*x  &  PASSED \newline PASSED \newline PASSED \\
+4 & The program can idenifyincorrect assignment expression & 5x \newline x465 \newline foo x+6  &  FAILED \newline FAILED \newline FAILED \\
+\end{tabular}
 
 \chapter{Discussion, conclusion and future work}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  18 OCT 2021 15:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  28 OCT 2021 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -246,28 +246,33 @@ LaTeX Warning: Reference `Figures' on page 6 undefined on input line 159.
 
 [6
 
-]
+] [7]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8]
+[8] [9]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--281
+Underfull \hbox (badness 10000) in paragraph at lines 307--307
 []\OT1/cmr/m/n/10.95 Test
  []
 
-[9
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 321--321
+[]\OT1/cmr/m/n/10.95 Test
+ []
+
+[10
+
+] [11]
 Chapter 6.
-(./CMP-6048A_REPORT.bbl [10
+(./CMP-6048A_REPORT.bbl [12
 
-]) [11
+]) [13
 
-] [12
+] [14
 
-] [13
+] [15
 
 ] (./CMP-6048A_REPORT.aux)
 
@@ -277,7 +282,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  2839 strings out of 478599
  37859 string characters out of 5858100
- 343595 words of memory out of 5000000
+ 346595 words of memory out of 5000000
  20682 multiletter control sequences out of 15000+600000
  413806 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -295,10 +300,10 @@ texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/202
 t/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1095.pfb>
-Output written on CMP-6048A_REPORT.pdf (15 pages, 179828 bytes).
+Output written on CMP-6048A_REPORT.pdf (17 pages, 182118 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 125 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
