@@ -8,8 +8,9 @@ import java.util.Map;
 public class Lexer {
 	static void analyse(String input) {
 		List<Token> tokens = new ArrayList<>(100);
-		Map<Integer, Integer> symbolTable = new HashMap<>();
+		Map<Integer, Object> symbolTable = new HashMap<>();
 		String numberCompositionBuffer = "";
+		String stringCompositionBuffer = "";
 
 		int tokenIndex = 0;
 
@@ -36,11 +37,11 @@ public class Lexer {
 				case ')':
 					tokens.add(tokenIndex++, Token.RIGHT_BRACKET);
 					break;
+				case '=':
+					tokens.add(tokenIndex++, Token.ASSIGNMENT);
+					break;
 				default:
-					if (!Character.isDigit(input.charAt(stringIndex))) {
-						System.out.printf("Unexpected character '%c'%n", input.charAt(stringIndex));
-						return;
-					} else{
+					if (Character.isDigit(input.charAt(stringIndex))) {
 						while (stringIndex < input.length() && Character.isDigit(input.charAt(stringIndex))) {
 							numberCompositionBuffer = numberCompositionBuffer + input.charAt(stringIndex);
 							++stringIndex;
@@ -51,6 +52,29 @@ public class Lexer {
 						tokens.add(tokenIndex++, Token.NUMBER);
 
 						--stringIndex;
+					} else if (Character.isAlphabetic(input.charAt(stringIndex))){
+						while (stringIndex < input.length() && Character.isLetterOrDigit(input.charAt(stringIndex))) {
+							stringCompositionBuffer = stringCompositionBuffer + input.charAt(stringIndex);
+							++stringIndex;
+						}
+
+						symbolTable.put(tokenIndex, stringCompositionBuffer);
+						stringCompositionBuffer = "";
+						tokens.add(tokenIndex++, Token.IDENTIFIER);
+
+
+
+//						switch (stringCompositionBuffer) {
+//							case "<-":
+//								tokens.add(tokenIndex++, Token.ASSIGNMENT);
+//								break;
+//							default:
+//								System.out.println("Unknown Token: \"" + stringCompositionBuffer + "\"");
+//						}
+				}
+					else{
+						System.out.printf("Unexpected character '%c'%n", input.charAt(stringIndex));
+						return;
 					}
 			}
 		}
@@ -60,6 +84,7 @@ public class Lexer {
 		}
 		System.out.print("\n");
 
+//		System.out.println(Parser.parse(tokens));
 
 		if (Parser.parse(tokens)) {
 			Execution.execute(tokens, symbolTable);
@@ -74,5 +99,7 @@ enum Token{
 	DIVIDE,
 	LEFT_BRACKET,
 	RIGHT_BRACKET,
-	NUMBER
+	ASSIGNMENT,
+	NUMBER,
+	IDENTIFIER
 }
