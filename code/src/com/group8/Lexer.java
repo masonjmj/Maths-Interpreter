@@ -52,6 +52,7 @@ public class Lexer {
 						tokens.add(tokenIndex++, Token.NUMBER);
 
 						--stringIndex;
+
 					} else if (Character.isAlphabetic(input.charAt(stringIndex))){
 						while (stringIndex < input.length() && Character.isLetterOrDigit(input.charAt(stringIndex))) {
 							stringCompositionBuffer = stringCompositionBuffer + input.charAt(stringIndex);
@@ -61,6 +62,7 @@ public class Lexer {
 						symbolTable.put(tokenIndex, stringCompositionBuffer);
 						stringCompositionBuffer = "";
 						tokens.add(tokenIndex++, Token.IDENTIFIER);
+						--stringIndex;
 
 
 
