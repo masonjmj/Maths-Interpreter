@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 
 
-//		testing();
+		testing();
 		String input;
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
@@ -59,7 +59,24 @@ public class Main {
 		System.out.println("TEST: 5 + ( 5 Expected output: Syntax error");
 		Lexer.analyse("5 + ( 5");
 
-		System.out.println("TEST: 2147483648 + 1 Expected output: Runtime Exception");
-		Lexer.analyse("2147483648 + 1");
+		try {
+			System.out.println("TEST: 2147483648 + 1 Expected output: Runtime Exception");
+			Lexer.analyse("2147483648 + 1");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		System.out.println("TEST: x = 5 Expected output: No exceptions");
+		Lexer.analyse("x = 5");
+
+		System.out.println("TEST: a = 19+7 Expected output: No exceptions");
+		Lexer.analyse("a = 19+7");
+
+		System.out.println("TEST: x - 10 Expected output: -5");
+		Lexer.analyse("x - 10");
+
+		System.out.println("TEST: 5x Expected output: Syntax error");
+		Lexer.analyse("5x");
+
 	}
 }
