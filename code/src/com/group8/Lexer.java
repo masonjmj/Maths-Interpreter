@@ -40,6 +40,12 @@ public class Lexer {
 				case '=':
 					tokens.add(tokenIndex++, Token.ASSIGNMENT);
 					break;
+				case 'p':
+					tokens.add(tokenIndex++, Token.PLOT);
+					break;
+				case ',':
+					tokens.add(tokenIndex++, Token.COMMA);
+					break;
 				default:
 					if (Character.isDigit(input.charAt(stringIndex))) {
 						while (stringIndex < input.length() && Character.isDigit(input.charAt(stringIndex))) {
@@ -103,5 +109,7 @@ enum Token{
 	RIGHT_BRACKET,
 	ASSIGNMENT,
 	NUMBER,
-	IDENTIFIER
+	IDENTIFIER,
+	PLOT,
+	COMMA
 }
