@@ -52,6 +52,9 @@ public class Parser {
 		if (match(Token.IDENTIFIER)) { // Replace later
 			System.out.println("Assignment");
 			assignment(level + 1);
+		}else if(match(Token.PLOT)){
+			System.out.println("Plotting");
+			plot(level+1);
 		} else {
 			System.out.println("Expression");
 			expression(level + 1);
@@ -107,6 +110,48 @@ public class Parser {
 			factor(level + 1);
 			term_p(level + 1);
 		}
+	}
+
+	static void plot(int level){
+		advance(level+1);
+		if(match(Token.LEFT_BRACKET)){
+			advance(level+1);
+			expression(level+1);
+		}else{
+			System.out.println("SYNTAX ERROR: Expected bracket");
+			success = false;
+		}
+		if(match(Token.COMMA)){
+			advance(level+1);
+			if(!match(Token.NUMBER)){
+				System.out.println("Expected number");
+				success = false;
+			}
+			advance(level+1);
+			if (match(Token.COMMA)) {
+				advance(level+1);
+				if(!match(Token.NUMBER)){
+					System.out.println("Expected number");
+					success = false;
+				}
+				advance(level+1);
+
+				if (match(Token.COMMA)) {
+					advance(level+1);
+					if(!match(Token.NUMBER)){
+						System.out.println("Expected number");
+						success = false;
+					}
+					advance(level+1);
+				}
+			}
+		}
+
+		if(!match(Token.RIGHT_BRACKET)){
+			System.out.println(("SYNTAX ERROR: expected bracket"));
+			success = false;
+		}
+
 	}
 
 	static void factor(int level) {
