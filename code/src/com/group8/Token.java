@@ -10,16 +10,19 @@ public class Token {
 		LEFT_BRACKET,
 		RIGHT_BRACKET,
 		ASSIGNMENT,
-		COMMA,
+
 
 		// Literals
 		NUMBER,
 		IDENTIFIER,
 		STRING,
+		NULL,
 
 		// Reserved Words
 		PLOT,
 		VAR,
+		PRINT,
+		SEMICOLON,
 
 		// End Of File
 		EOF
@@ -28,12 +31,14 @@ public class Token {
 	final Type type;
 	final String lexeme;
 	final Object literal;
+	final int line;
 
 
-	Token(Type type, String lexeme, Object literal) {
+	Token(Type type, String lexeme, Object literal, int line) {
 		this.type = type;
 		this.lexeme = lexeme;
 		this.literal = literal;
+		this.line = line;
 	}
 	@Override
 	public String toString() {

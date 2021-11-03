@@ -1,6 +1,7 @@
 package com.group8;
 
 abstract class Expression {
+
 	// Implements visitor pattern so that calls to the tree can find out what type of
 	// node they are looking at.
 	interface Visitor<T> {
@@ -8,6 +9,8 @@ abstract class Expression {
 		T visit(Group expression);
 		T visit(Literal expression);
 		T visit(Unary expression);
+		T visit(Variable expression);
+		T visit(Assignment expression);
 	}
 
 	static class Binary extends Expression {
@@ -67,6 +70,35 @@ abstract class Expression {
 			return visitor.visit(this);
 		}
 	}
+
+	static class Variable extends Expression {
+		final Token identifier;
+
+		Variable(Token identifier) {
+			this.identifier = identifier;
+		}
+
+		@Override
+		<T> T accept(Visitor<T> visitor) {
+			return visitor.visit(this);
+		}
+	}
+
+	static class Assignment extends Expression {
+		final Token identifier;
+		final Expression value;
+
+		Assignment(Token identifier, Expression value) {
+			this.identifier = identifier;
+			this.value = value;
+		}
+
+		@Override
+		<T> T accept(Visitor<T> visitor) {
+			return visitor.visit(this);
+		}
+	}
+
 
 	abstract <T> T accept(Visitor<T> visitor);
 }

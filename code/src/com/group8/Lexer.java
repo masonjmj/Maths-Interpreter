@@ -8,12 +8,15 @@ public class Lexer {
 	private static final Map<String, Token.Type> reservedWords =
 			Map.of(
 					"plot", Token.Type.PLOT,
-					"var", Token.Type.VAR);
+					"var", Token.Type.VAR,
+					"null", Token.Type.NULL,
+					"print", Token.Type.PRINT);
 
 	private final String code;
 	private final List<Token> tokens = new ArrayList<>();
 	private int startOfLexeme = 0;
 	private int currentPosition = 0;
+	private int lineNumber = 1;
 
 	Lexer(String code) {
 		this.code = code;
@@ -25,7 +28,7 @@ public class Lexer {
 			findToken();
 		}
 
-		tokens.add(new Token(Token.Type.EOF, "", null));
+		tokens.add(new Token(Token.Type.EOF, "", null, lineNumber));
 		return tokens;
 	}
 
@@ -37,6 +40,7 @@ public class Lexer {
 			case '\t':
 				break; // Ignore whitespace
 			case '\n':
+				lineNumber++;
 				break;
 			case '+':
 				addToken(Token.Type.PLUS);
@@ -62,8 +66,13 @@ public class Lexer {
 			case ')':
 				addToken(Token.Type.RIGHT_BRACKET);
 				break;
-			case '=':
-				addToken(Token.Type.ASSIGNMENT);
+			case ';':
+				addToken(Token.Type.SEMICOLON);
+				break;
+			case '<':
+				if (match('-')) {
+					addToken(Token.Type.ASSIGNMENT);
+				}
 				break;
 			case '"':
 				string();
@@ -74,7 +83,7 @@ public class Lexer {
 				} else if (Character.isLetter(character)) {
 					identifier();
 				} else {
-					System.err.println("Unexpected character.");
+					Main.error(lineNumber, "Unexpected character '" + character + "'");
 				}
 				break;
 		}
@@ -117,7 +126,7 @@ public class Lexer {
 
 	private void addToken(Token.Type type, Object literal) {
 		String lexemeText = code.substring(startOfLexeme, currentPosition);
-		tokens.add(new Token(type, lexemeText, literal));
+		tokens.add(new Token(type, lexemeText, literal, lineNumber));
 	}
 
 	// Match a number with digits and then optionally a decimal and more digits.
@@ -139,15 +148,15 @@ public class Lexer {
 
 	private void string() {
 		while (lookAhead() != '"' && !atEndOfInput()) {
-//			if (lookAhead() == '\n') {
-//
-//			}
+			if (lookAhead() == '\n') {
+				lineNumber++;
+			}
 
 			advance();
 		}
 
 		if (atEndOfInput()) {
-			System.err.println("Mismatched \"");
+			Main.error(lineNumber, "Unmatched '\"'");
 			return;
 		}
 

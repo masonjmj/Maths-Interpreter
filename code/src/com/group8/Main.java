@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+	private static final Interpreter interpreter = new Interpreter();
+	public static boolean encounteredError = false;
+
 	public static void main(String[] args) throws IOException {
 		if (args.length > 1) {
 			System.out.println("Too many arguments.");
@@ -21,6 +24,9 @@ public class Main {
 
 	private static void runFromFile(String path) throws IOException {
 		run(Files.readString(Paths.get(path)));
+		if (encounteredError) {
+			System.exit(65);
+		}
 	}
 
 	private static void runInteractively() {
@@ -34,6 +40,7 @@ public class Main {
 				break;
 			} else {
 				run(line);
+				encounteredError = false;
 			}
 		}
 	}
@@ -41,10 +48,29 @@ public class Main {
 	private static void run(String code) {
 		Lexer lexer = new Lexer(code);
 		List<Token> tokens = lexer.analyse();
-		for (Token token : tokens) {
-			System.out.println(token);
+		if (!encounteredError) {
+			Parser parser = new Parser(tokens);
+			List<Statement> statements = parser.parse();
+			if (!encounteredError) {
+				interpreter.interpret(statements);
+			}
 		}
+
+
+
+
+//		System.out.println(new AbstractSyntaxTreePrinter().print(expression));
 	}
+
+	static void error(Token token, String message) {
+		error(token.line, message);
+	}
+
+	static void error(int line, String message) {
+		System.err.println(message + " on line " + line);
+		encounteredError = true;
+	}
+
 }
 
 

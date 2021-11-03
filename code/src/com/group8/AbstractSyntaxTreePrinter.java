@@ -28,6 +28,16 @@ public class AbstractSyntaxTreePrinter implements Expression.Visitor<String> {
 		return group(expression.operator.lexeme, expression.right);
 	}
 
+	@Override
+	public String visit(Expression.Variable expression) {
+		return null;
+	}
+
+	@Override
+	public String visit(Expression.Assignment expression) {
+		return null;
+	}
+
 	// Helpers
 
 	private String group(String string, Expression... expressions) {
