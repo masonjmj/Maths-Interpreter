@@ -1,7 +1,7 @@
 package com.group8;
 
 public class Token {
-	public static enum Type{
+	public enum Type{
 		//Operators
 		PLUS,
 		MINUS,

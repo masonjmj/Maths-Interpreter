@@ -28,6 +28,7 @@ public class Parser {
 			}
 			return statement();
 		} catch (ParseError error) {
+			advance();
 			return null;
 		}
 	}
