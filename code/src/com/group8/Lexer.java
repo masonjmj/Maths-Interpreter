@@ -62,6 +62,9 @@ public class Lexer {
 			case ')':
 				addToken(Token.Type.RIGHT_BRACKET);
 				break;
+			case '=':
+				addToken(Token.Type.ASSIGNMENT);
+				break;
 			case '"':
 				string();
 				break;
