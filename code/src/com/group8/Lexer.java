@@ -139,7 +139,7 @@ public class Lexer {
 
 	private void string() {
 		while (lookAhead() != '"' && !atEndOfInput()) {
-//			if (lookAhead()) {
+//			if (lookAhead() == '\n') {
 //
 //			}
 

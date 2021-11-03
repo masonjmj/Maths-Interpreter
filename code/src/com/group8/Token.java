@@ -15,11 +15,11 @@ public class Token {
 		// Literals
 		NUMBER,
 		IDENTIFIER,
+		STRING,
 
 		// Reserved Words
 		PLOT,
 		VAR,
-		STRING,
 
 		// End Of File
 		EOF
