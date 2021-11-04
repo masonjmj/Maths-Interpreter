@@ -2,7 +2,7 @@ package com.group8;
 
 import java.util.List;
 
-public class Interpreter implements Expression.Visitor<Object>, Statement.Visitor<Void>{
+public class Interpreter implements Expression.Visitor<Object>, Statement.Visitor<Void> {
 
 	private Environment environment = new Environment();
 
@@ -27,6 +27,23 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		}
 
 		environment.define(statement.identifier.lexeme, value);
+		return null;
+	}
+
+	@Override
+	public Void visit(Statement.Plot statement) {
+		Expression.Variable var = findVariable(statement.expression);
+		if(var!=null){
+			double value = (double) environment.get(var.identifier);
+			double max = value+50;
+			for(double i = value;i<max; i++){
+				System.out.println("("+i+","+evaluate(statement.expression)+")");
+				environment.assign(var.identifier, (double)environment.get(var.identifier)+1);
+			}
+			environment.assign(var.identifier, value);
+		}else{
+			System.out.println("ERR");
+		}
 		return null;
 	}
 
@@ -118,5 +135,31 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			return;
 		}
 		throw new RuntimeError(operator, "Incompatible type(s) for '" + operator.lexeme + "'");
+	}
+
+	private Expression.Variable findVariable(Expression expression){
+		if(expression instanceof Expression.Variable) {
+			return (Expression.Variable) expression;
+		}
+		if(expression instanceof Expression.Literal) {
+			return null;
+		}
+		if(expression instanceof Expression.Group){
+			return findVariable(((Expression.Group) expression).expression);
+		}
+		if(expression instanceof Expression.Unary){
+			return findVariable(((Expression.Unary) expression).right);
+		}
+		if(expression instanceof Expression.Binary){
+			Expression l = findVariable(((Expression.Binary) expression).left);
+			if(l != null){
+				return (Expression.Variable) l;
+			}else{
+				return findVariable(((Expression.Binary) expression).right);
+			}
+		}
+
+		return null;
+
 	}
 }

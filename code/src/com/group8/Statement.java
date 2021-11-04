@@ -5,6 +5,7 @@ abstract class Statement {
 		T visit(statementExpression statement);
 		T visit(Print statement);
 		T visit(VariableDeclaration statement);
+		T visit(Plot statement);
 	}
 
 	static class statementExpression extends Statement {
@@ -13,6 +14,17 @@ abstract class Statement {
 		statementExpression(Expression expression) {
 			this.expression = expression;
 		}
+
+		@Override
+		<T> T accept(Visitor<T> visitor) {
+			return visitor.visit(this);
+		}
+	}
+
+	static class Plot extends Statement{
+		final Expression expression;
+
+		Plot(Expression expression){this.expression = expression;}
 
 		@Override
 		<T> T accept(Visitor<T> visitor) {
