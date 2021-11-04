@@ -1,5 +1,7 @@
 package com.group8;
 
+import java.util.Objects;
+
 public class Token {
 	public enum Type{
 		//Operators
@@ -40,6 +42,20 @@ public class Token {
 		this.literal = literal;
 		this.line = line;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Token token = (Token) o;
+		return line == token.line && type == token.type && lexeme.equals(token.lexeme) && Objects.equals(literal, token.literal);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(type, lexeme, literal, line);
+	}
+
 	@Override
 	public String toString() {
 		return type + " " + lexeme + " " + literal;
