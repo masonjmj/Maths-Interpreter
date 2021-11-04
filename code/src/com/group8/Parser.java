@@ -48,9 +48,17 @@ public class Parser {
 	private Statement statement() {
 		if (match(Token.Type.PRINT)) {
 			return printStatement();
+		}else if(match(Token.Type.PLOT)){
+			return plotStatement();
 		}
 
 		return expressionStatement();
+	}
+
+	private Statement plotStatement(){
+		Expression expression = expression();
+		consume(Token.Type.SEMICOLON, "';' expected");
+		return new Statement.Plot(expression);
 	}
 
 	private Statement printStatement() {
