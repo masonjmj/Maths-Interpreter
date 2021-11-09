@@ -7,6 +7,7 @@ public class Token {
 		MINUS,
 		TIMES,
 		DIVIDE,
+		POWER,
 		LEFT_BRACKET,
 		RIGHT_BRACKET,
 		ASSIGNMENT,

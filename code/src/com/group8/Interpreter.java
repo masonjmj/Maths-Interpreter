@@ -107,6 +107,9 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			case DIVIDE:
 				checkNumericOperands(expression.operator, left, right);
 				return (double)left / (double)right;
+			case POWER:
+				checkNumericOperands(expression.operator, left, right);
+				return Math.pow((double)left, (double)right);
 		}
 		return null;
 	}

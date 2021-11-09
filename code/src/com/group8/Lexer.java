@@ -51,6 +51,9 @@ public class Lexer {
 			case '*':
 				addToken(Token.Type.TIMES);
 				break;
+			case '^':
+				addToken(Token.Type.POWER);
+				break;
 			case '/':
 				if (match('/')) {
 					while (lookAhead() != '\n' && !atEndOfInput()) {
