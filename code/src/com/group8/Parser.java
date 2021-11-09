@@ -93,6 +93,8 @@ public class Parser {
 		return expression;
 	}
 
+
+
 	private Expression sum() {
 		Expression expression = term();
 		return sumPrime(expression);
@@ -109,16 +111,31 @@ public class Parser {
 	}
 
 	private Expression term() {
-		Expression expression = unary();
+		Expression expression = exponential();
 		return termPrime(expression);
 	}
 
 	private Expression termPrime(Expression expression) {
 		if (match(Token.Type.TIMES, Token.Type.DIVIDE)) {
 			Token operator = previous();
-			Expression right = unary();
+			Expression right = exponential();
 			expression = new Expression.Binary(expression, operator, right);
 			expression = termPrime(expression);
+		}
+		return expression;
+	}
+
+	private Expression exponential() {
+		Expression expression = unary();
+		return exponentialPrime(expression);
+	}
+
+	private Expression exponentialPrime(Expression expression) {
+		if (match(Token.Type.POWER)) {
+			Token operator = previous();
+			Expression right = unary();
+			expression = new Expression.Binary(expression, operator, right);
+			expression = exponentialPrime(expression);
 		}
 		return expression;
 	}
@@ -140,7 +157,7 @@ public class Parser {
 			return new Expression.Literal(previous().literal);
 		}
 		if (match(Token.Type.LEFT_BRACKET)) {
-			Expression expression = sum();
+			Expression expression = expression();
 			consume(Token.Type.RIGHT_BRACKET, "Mismatched brackets");
 			return new Expression.Group(expression);
 		}
