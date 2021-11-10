@@ -32,15 +32,19 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 	@Override
 	public Void visit(Statement.Plot statement) {
+		plotGraph graph = new plotGraph();
 		Expression.Variable var = findVariable(statement.expression);
 		if(var!=null){
 			double value = (double) environment.get(var.identifier);
 			double max = value+50;
 			for(double i = value;i<max; i++){
 				System.out.println("("+i+","+evaluate(statement.expression)+")");
+				graph.addPoint(i, (Double) evaluate(statement.expression));
 				environment.assign(var.identifier, (double)environment.get(var.identifier)+1);
 			}
 			environment.assign(var.identifier, value);
+			graph.initUI();
+			graph.setVisible(true);
 		}else{
 			System.out.println("ERR");
 		}
