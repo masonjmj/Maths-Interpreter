@@ -10,7 +10,11 @@ public class Lexer {
 					"plot", Token.Type.PLOT,
 					"var", Token.Type.VAR,
 					"null", Token.Type.NULL,
-					"print", Token.Type.PRINT);
+					"print", Token.Type.PRINT,
+					"sin", Token.Type.SIN,
+					"cos", Token.Type.COS,
+					"tan", Token.Type.TAN,
+					"PI", Token.Type.PI);
 
 	private final String code;
 	private final List<Token> tokens = new ArrayList<>();

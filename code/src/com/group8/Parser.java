@@ -156,6 +156,9 @@ public class Parser {
 		if (match(Token.Type.NUMBER, Token.Type.STRING)) {
 			return new Expression.Literal(previous().literal);
 		}
+		if (match(Token.Type.PI)) {
+			return new Expression.Literal(Math.PI);
+		}
 		if (match(Token.Type.LEFT_BRACKET)) {
 			Expression expression = expression();
 			consume(Token.Type.RIGHT_BRACKET, "Mismatched brackets");
