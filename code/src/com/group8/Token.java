@@ -23,6 +23,10 @@ public class Token {
 		PLOT,
 		VAR,
 		PRINT,
+		SIN,
+		COS,
+		TAN,
+		PI,
 		SEMICOLON,
 
 		// End Of File

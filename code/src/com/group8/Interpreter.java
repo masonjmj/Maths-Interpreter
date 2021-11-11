@@ -67,6 +67,21 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
 				}
 				return -(double)right;
+			case SIN:
+				if (!(right instanceof Double)) {
+					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
+				}
+				return Math.sin((double) right);
+			case COS:
+				if (!(right instanceof Double)) {
+					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
+				}
+				return Math.cos((double) right);
+			case TAN:
+				if (!(right instanceof Double)) {
+					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
+				}
+				return Math.tan((double) right);
 		}
 
 		return null;

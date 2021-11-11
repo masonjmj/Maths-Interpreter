@@ -141,7 +141,7 @@ public class Parser {
 	}
 
 	private Expression unary() {
-		if (match(Token.Type.MINUS)) {
+		if (match(Token.Type.MINUS, Token.Type.SIN, Token.Type.COS, Token.Type.TAN)) {
 			Token operator = previous();
 			Expression right = unary();
 			return new Expression.Unary(operator, right);
@@ -155,6 +155,9 @@ public class Parser {
 		}
 		if (match(Token.Type.NUMBER, Token.Type.STRING)) {
 			return new Expression.Literal(previous().literal);
+		}
+		if (match(Token.Type.PI)) {
+			return new Expression.Literal(Math.PI);
 		}
 		if (match(Token.Type.LEFT_BRACKET)) {
 			Expression expression = expression();
