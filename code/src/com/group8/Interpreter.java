@@ -36,7 +36,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		Expression.Variable var = findVariable(statement.expression);
 		if(var!=null){
 			double value = (double) environment.get(var.identifier);
-			double max = value+50;
+			double max = value+2;
 			for(double i = value;i<max; i++){
 				System.out.println("("+i+","+evaluate(statement.expression)+")");
 				graph.addPoint(i, (Double) evaluate(statement.expression));
