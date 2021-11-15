@@ -59,7 +59,7 @@ It will additionally provide the ability to visualise mathematical functions suc
 
 These elements largely comprise the minimum functional requirements of the program and are as such the most neceassary items.
 \begin{itemize}
-	\item Expressions
+	\item Expressions for basic arithmetic
 	\item Print Statements
 	\item Commands
 	\item Custom syntax using a custom lexer and parser
@@ -149,16 +149,16 @@ This algorithms is a type of tope down parsing that functions by recursively cal
 
 \section{Method 3: Post-Order Traversal}
 
-This algorithm is used to travers the abstract syntax tree. Used to evaluate expressions
+This algorithm is used to traverse the abstract syntax tree. Used to evaluate expressions
 within the interpreter. It makes use of the visitor patterns as it calls this pattern at each
 node to understand how to handle each node. It traverses in a depth-first manner.
 
 
+
 \chapter{Implementation}\label{Impl}
 
-In this chapter you cover the actual implementation of your project. Implementation will be done in sprints so you may wish to use different sub-sections for each sprint and then dedicate a section to your final deliverable. Section \ref{Figures} with figures  should not remain in the final report.
+We are implementing the agile development methodology for this project with a SCRUM inspired approach, using short 1-2 week sprints and adjusting the devleopment trajectory at the end of each.
 
-\section{Early sprints}
 \subsection{Sprint 1}
 
 For our first sprint, we defined the following set of requirements: 
@@ -222,12 +222,15 @@ When the program evaluates an expression that contains a varible, the execution 
 This requirement has been succefully met.
 
 \subsection{Sprint 3}
+
 For our second sprint, we defined the following set of requirements:
+
 \begin{enumerate}
 \item Developing the abstract syntax tree
 \item Adding the graphing functionality
 \item Allowing the support of floats
 \end{enumerate}
+
 
 We were able to fully implement and test these requirements quickly so we intergrated
 a number of extra features into our program on top of our base requirements. These
@@ -237,6 +240,14 @@ included:
 \item Support for simple statements in cluding print, variable declaration and graph plotting
 \item  Ability to calculate exponentials
 \end{enumerate}
+
+\subsubsection{Requirement 1: }
+
+
+
+
+\subsection{Sprint n}
+
 
 \section{Final implementation}
 
