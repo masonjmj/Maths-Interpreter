@@ -132,15 +132,26 @@ Our system should also include an intuative user interface. The different system
 Describe here various methods that will be used in your project. Use different sections for distinctly different subjects and use subsections for specific details on the same subject. Only use subsubsections or paragraphs (which are not numbered) if you believe this is really necessary. Since implementation will happen in sprints, this section may need several updates with parts being added and deleted across the project.
 
 \section{Method 1: Abstract Syntax Tree}
-Each operator and operand has its own unique that extends from Expression and each statement has its own class that extends from the Statement class. Each node withing each of those classes contains information about how that feature functions and stores it's own requisit data. 
-\subsection{Vistor Design Pattern}
-This design pattern implements an interface which allows code to be run differently based on the type of the nodew within the tree.
+
+Each operator and operand has its own unique that extends from Expression and each
+statement has its own class that extends from the Statement class. Each node withing
+each of those classes contains information about how that feature functions and stores it’s
+own requisit data.
+
+\subsection{Visitor Design Pattern}
+
+This design pattern implements an interface which allows code to be run differently based
+on the type of the nodew within the tree.
 
 \section{Method 2: Recursive Decent}
-This algorithms is a type of tope down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar.
 
-\section{Method 3: Post-Order Traversal (check)}
-This algorithm is used to travers the abstract syntax tree. Used to evaluate expressions within the interpreter. It makes use of the visitor patterns as it calls this pattern at each node to understand how to handle each node. It traverses in a depth-first manner.
+This algorithms is a type of tope down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar
+
+\section{Method 3: Post-Order Traversal}
+
+This algorithm is used to traverse the abstract syntax tree. Used to evaluate expressions
+within the interpreter. It makes use of the visitor patterns as it calls this pattern at each
+node to understand how to handle each node. It traverses in a depth-first manner.
 
 
 
@@ -212,7 +223,7 @@ This requirement has been succefully met.
 
 \subsection{Sprint 3}
 
-For our second sprint, we defined the following set of requirements: 
+For our second sprint, we defined the following set of requirements:
 
 \begin{enumerate}
 \item Developing the abstract syntax tree
@@ -220,12 +231,14 @@ For our second sprint, we defined the following set of requirements:
 \item Allowing the support of floats
 \end{enumerate}
 
- We were able to fully implement and test these requirements quickly so we intergrated a number of extra features into our program on top of our base requirements. These included:
 
+We were able to fully implement and test these requirements quickly so we intergrated
+a number of extra features into our program on top of our base requirements. These
+included:
 \begin{enumerate}
 \item Support for negative numbers and unary operators
 \item Support for simple statements in cluding print, variable declaration and graph plotting
-\item Ability to calculate exponentials
+\item  Ability to calculate exponentials
 \end{enumerate}
 
 \subsubsection{Requirement 1: }
@@ -234,6 +247,7 @@ For our second sprint, we defined the following set of requirements:
 
 
 \subsection{Sprint n}
+
 
 \section{Final implementation}
 
