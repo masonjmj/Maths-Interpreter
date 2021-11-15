@@ -59,8 +59,8 @@ It will additionally provide the ability to visualise mathematical functions suc
 
 These elements largely comprise the minimum functional requirements of the program and are as such the most neceassary items.
 \begin{itemize}
-	\item Expressions
-	\item Statements
+	\item Expressions for basic arithmetic
+	\item Print Statements
 	\item Commands
 	\item Custom syntax using a custom lexer and parser
 \end{itemize}
@@ -68,17 +68,19 @@ These elements largely comprise the minimum functional requirements of the progr
 \subsection{Shoulds}
 
 \begin{itemize}
-	\item Function visualisation
-	\item Intuitive UI
+	\item Expressions for variable assignment and exponentiation
+	\item Conditional Statements
+	\item Function Declaration
+	\item Mathmatical function visualisation
 	\item Flexible and scalable architecture
-	\item Parallel processing of intensive operations
 	\item Simple trigonometric functions
+	\item Zero-crossings finder
 \end{itemize}
 
 \subsection{Coulds}
 \begin{itemize}
+	\item Intuitive GUI
 	\item Interactive visualisations
-	\item Zero-crossings finder
 	\item Differentiation and integration of functions
 	\item Simple equation solver (for example finding a variable)
 \end{itemize}
@@ -129,36 +131,23 @@ Our system should also include an intuative user interface. The different system
 
 Describe here various methods that will be used in your project. Use different sections for distinctly different subjects and use subsections for specific details on the same subject. Only use subsubsections or paragraphs (which are not numbered) if you believe this is really necessary. Since implementation will happen in sprints, this section may need several updates with parts being added and deleted across the project.
 
-\section{Method 1}
-\subsection{Method 1 specific detail 1}
-In case you need maths, here is an example to write an equation:
-\begin{equation}\label{weak_form}
-\int_{\Omega_0} \delta u \frac{\partial \mathbf{P}}{\partial X}d\Omega_0 + \int_{\Omega_0} \delta u \mathbf{b} d\Omega_0 + \int_{\Omega_0} \delta u  \rho_0\mathbf{\ddot u} d\Omega_0 = 0
-\end{equation}
-And here we show how to write a matrix equation:
-\begin{equation}\label{Jacobian}
- \mathbf{X}  \frac{\partial N}{\partial e_c} =  \left[  \begin{array}{cccc} x_1 & x_2 & x_3 & x_4 \\  y_1 & y_2 & y_3 & y_4 \\  z_1 & z_2 & z_3 & z_4 \end{array} \right] \left[  \begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0& 1 \\  -1 & -1 &  -1  \end{array} \right] 
-\end{equation}
+\section{Method 1: Abstract Syntax Tree}
+Each operator and operand has its own unique that extends from Expression and each statement has its own class that extends from the Statement class. Each node withing each of those classes contains information about how that feature functions and stores it's own requisit data. 
+\subsection{Vistor Design Pattern}
+This design pattern implements an interface which allows code to be run differently based on the type of the nodew within the tree.
+
+\section{Method 2: Recursive Decent}
+This algorithms is a type of tope down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar.
+
+\section{Method 3: Post-Order Traversal (check)}
+This algorithm is used to travers the abstract syntax tree. Used to evaluate expressions within the interpreter. It makes use of the visitor patterns as it calls this pattern at each node to understand how to handle each node. It traverses in a depth-first manner.
 
 
-\subsection{Method 1 specific detail 2}
-blablabla
-
-\paragraph blablabla
-
-\section{Method 2}
-
-\subsection{Method 2 specific detail 1}
-
-\section{Etc.}
-
-\subsection{Etc.}
 
 \chapter{Implementation}\label{Impl}
 
-In this chapter you cover the actual implementation of your project. Implementation will be done in sprints so you may wish to use different sub-sections for each sprint and then dedicate a section to your final deliverable. Section \ref{Figures} with figures  should not remain in the final report.
+We are implementing the agile development methodology for this project with a SCRUM inspired approach, using short 1-2 week sprints and adjusting the devleopment trajectory at the end of each.
 
-\section{Early sprints}
 \subsection{Sprint 1}
 
 For our first sprint, we defined the following set of requirements: 
@@ -220,6 +209,29 @@ This requirement has been successfully met.
 
 When the program evaluates an expression that contains a varible, the execution class identifes the value mapped to the variable and replaces it in the expression. The xpression is then evalutated as normal and the solution displayed.
 This requirement has been succefully met.
+
+\subsection{Sprint 3}
+
+For our second sprint, we defined the following set of requirements: 
+
+\begin{enumerate}
+\item Developing the abstract syntax tree
+\item Adding the graphing functionality
+\item Allowing the support of floats
+\end{enumerate}
+
+ We were able to fully implement and test these requirements quickly so we intergrated a number of extra features into our program on top of our base requirements. These included:
+
+\begin{enumerate}
+\item Support for negative numbers and unary operators
+\item Support for simple statements in cluding print, variable declaration and graph plotting
+\item Ability to calculate exponentials
+\end{enumerate}
+
+\subsubsection{Requirement 1: }
+
+
+
 
 \subsection{Sprint n}
 
