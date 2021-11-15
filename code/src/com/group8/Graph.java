@@ -22,13 +22,13 @@ public class Graph extends JPanel {
 
     private double getX(double x){
         double newX;
-        newX = 50+(((HEIGHT-50)/ points.get(points.size()-1))*x);
+        newX = 50+(((WIDTH-50)/ points.get(points.size()-2))*x);
         return(newX);
     }
 
     private double getY(double y){
         double newY;
-        newY = 500-(((WIDTH-50)/ points.get(points.size()-1))*y);
+        newY = 500-(((HEIGHT-50)/ points.get(points.size()-1))*y);
         return(newY);
     }
 
@@ -40,7 +40,7 @@ public class Graph extends JPanel {
         g2d.drawLine(50, 500, 1000, 500);
 
         Double x1, y1, x2, y2;
-        for(int i=0; i< points.size()-3; i++){
+        for(int i=0; i< points.size()-3; i+=2){
             x1 = getX(points.get(i));
             y1 = getY(points.get(i+1));
             x2 = getX(points.get(i+2));
