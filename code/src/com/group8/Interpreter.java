@@ -68,9 +68,14 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		switch (expression.operator.type) {
 			case MINUS:
 				if (!(right instanceof Double)) {
-					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
+					throw new RuntimeError(expression.operator, "Incompatible type for unary minus operator");
 				}
 				return -(double)right;
+			case NOT:
+				if (!(right instanceof Boolean)) {
+					throw new RuntimeError(expression.operator, "Incompatible type for unary not operator");
+				}
+				return !(boolean) right;
 			case SIN:
 				if (!(right instanceof Double)) {
 					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
@@ -109,6 +114,23 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		Object right = evaluate(expression.right);
 
 		switch (expression.operator.type) {
+			case EQUAL:
+				if (left == null) {
+					return right == null;
+				}
+				return left.equals(right);
+			case GREATER:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left > (double)right;
+			case LESS:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left < (double)right;
+			case GREATER_EQUAL:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left >= (double)right;
+			case LESS_EQUAL:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left <= (double)right;
 			case PLUS:
 				if (left instanceof Double && right instanceof Double) {
 					return (double)left + (double)right;

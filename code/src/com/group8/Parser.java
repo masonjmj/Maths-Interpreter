@@ -78,7 +78,7 @@ public class Parser {
 	}
 
 	private Expression assignment() {
-		Expression expression = sum();
+		Expression expression = equality();
 
 		if (match(Token.Type.ASSIGNMENT)) {
 			Token equals = previous();
@@ -93,6 +93,34 @@ public class Parser {
 		return expression;
 	}
 
+	private Expression equality() {
+		Expression expression = comparison();
+
+		return equalityPrime(expression);
+	}
+
+	private Expression equalityPrime(Expression expression) {
+		if (match(Token.Type.EQUAL)) {
+			Token operator = previous();
+			Expression right = comparison();
+			expression = new Expression.Binary(expression, operator, right);
+		}
+		return expression;
+	}
+
+	private Expression comparison() {
+		Expression expression = sum();
+		return comparisonPrime(expression);
+	}
+
+	private Expression comparisonPrime(Expression expression) {
+		if (match(Token.Type.GREATER, Token.Type.LESS, Token.Type.GREATER_EQUAL, Token.Type.LESS_EQUAL)) {
+			Token operator = previous();
+			Expression right = sum();
+			expression = new Expression.Binary(expression, operator, right);
+		}
+		return expression;
+	}
 
 
 	private Expression sum() {
@@ -141,7 +169,7 @@ public class Parser {
 	}
 
 	private Expression unary() {
-		if (match(Token.Type.MINUS, Token.Type.SIN, Token.Type.COS, Token.Type.TAN)) {
+		if (match(Token.Type.MINUS, Token.Type.NOT, Token.Type.SIN, Token.Type.COS, Token.Type.TAN)) {
 			Token operator = previous();
 			Expression right = unary();
 			return new Expression.Unary(operator, right);
@@ -152,6 +180,12 @@ public class Parser {
 	private Expression factor() {
 		if (match(Token.Type.NULL)) {
 			return new Expression.Literal(null);
+		}
+		if (match(Token.Type.FALSE)){
+			return new Expression.Literal(false);
+		}
+		if (match(Token.Type.TRUE)) {
+			return new Expression.Literal(true);
 		}
 		if (match(Token.Type.NUMBER, Token.Type.STRING)) {
 			return new Expression.Literal(previous().literal);

@@ -8,6 +8,12 @@ public class Token {
 		TIMES,
 		DIVIDE,
 		POWER,
+		NOT,
+		EQUAL,
+		GREATER,
+		GREATER_EQUAL,
+		LESS,
+		LESS_EQUAL,
 		LEFT_BRACKET,
 		RIGHT_BRACKET,
 		ASSIGNMENT,
@@ -17,6 +23,8 @@ public class Token {
 		NUMBER,
 		IDENTIFIER,
 		STRING,
+		TRUE,
+		FALSE,
 		NULL,
 
 		// Reserved Words

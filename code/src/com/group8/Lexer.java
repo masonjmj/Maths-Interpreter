@@ -11,6 +11,8 @@ public class Lexer {
 					"var", Token.Type.VAR,
 					"null", Token.Type.NULL,
 					"print", Token.Type.PRINT,
+					"true", Token.Type.TRUE,
+					"false", Token.Type.FALSE,
 					"sin", Token.Type.SIN,
 					"cos", Token.Type.COS,
 					"tan", Token.Type.TAN,
@@ -55,6 +57,9 @@ public class Lexer {
 			case '*':
 				addToken(Token.Type.TIMES);
 				break;
+			case '!':
+				addToken(Token.Type.NOT);
+				break;
 			case '^':
 				addToken(Token.Type.POWER);
 				break;
@@ -76,9 +81,23 @@ public class Lexer {
 			case ';':
 				addToken(Token.Type.SEMICOLON);
 				break;
+			case '=':
+				addToken(Token.Type.EQUAL);
+				break;
+			case '>':
+				if (match('=')) {
+					addToken(Token.Type.GREATER_EQUAL);
+				} else {
+					addToken(Token.Type.GREATER);
+				}
+				break;
 			case '<':
 				if (match('-')) {
 					addToken(Token.Type.ASSIGNMENT);
+				} else if (match('=')) {
+					addToken(Token.Type.LESS_EQUAL);
+				} else {
+					addToken(Token.Type.LESS);
 				}
 				break;
 			case '"':
