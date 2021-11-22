@@ -231,18 +231,60 @@ For our second sprint, we defined the following set of requirements:
 \item Allowing the support of floats
 \end{enumerate}
 
-
 We were able to fully implement and test these requirements quickly so we intergrated
 a number of extra features into our program on top of our base requirements. These
 included:
 \begin{enumerate}
 \item Support for negative numbers and unary operators
-\item Support for simple statements in cluding print, variable declaration and graph plotting
+\item Support for simple statements including print, variable declaration and graph plotting
 \item  Ability to calculate exponentials
 \end{enumerate}
 
 \subsubsection{Requirement 1: }
 
+Each type of operator has it's own class. The depth of the tree determines the order in which the operations will be executed. The higher an operator exists within the tree, the lower their priority.
+
+\subsubsection {Requirement 2: }
+
+To add the graph, we used the Java2D library. Our programn take each point, as calculated by the interpreter, and maps them onto a simple axis in a window. Currently, this graph only supports positive axis and does not scale with the window size, this means only simple functions can be plotted.
+
+\subsubsection {Requirement 3: }
+
+To support floats, our program detecs any dots within a number. If a dot is preset, it continues to sacn through until the end of the number is reached. This value is then saved as a float rather than a double.
+
+\subsubsection {Extra Requirement 1: }
+
+We have another class within the abstyract syntax tree that supports unary operators, including negative numebrs.
+
+\subsubsection {Extra Requirement 2: }
+
+Statements also become part of the ast. The experessions they contain are the children of the statement within the tree.
+
+\subsubsection { Extra Requirement 3: }
+
+Exponentials are identified in the same way as other binary opperators. There is a new step in the parsing process required for it as it has a higher priority than most other opperators.
+
+
+
+\subsection{Sprint 4}
+Our fourth sprint involved the following set of requirements:
+\begin{enumerate}
+\item Adding support for negative numebrs on the graph
+\item Allowing the graph to change size dynamically with the window size
+\item Add support for boolean types
+\item Add support for conditional statements
+\tem Create a degrees to radians function
+\end{enumerate}
+
+\subsubsection{Requirement 1: }
+This additon was relatively simple. We change to code4 to draw to lines that crossed in the center to act as the axis, we also modified our mapping function to account for  the change in position of (0,0).
+\subsubsection{Requirement 2: }
+During our research for this requirement, we found that JPanel has built in getWidth() and getHeight() functions. This meant we could replace our hard-coded constants for these values in our calculations which meant anything drawn in the window would automatically scale as the window size was changed.
+We also found out abou the Points2D library which is compatible with Java 2D, so we changed our code to handle points with this library rather than manually.
+\subsubsection{Requirement 3: }
+This is another literal type and the comparissons for them are binary operators that exist within the ast.
+\subsubsection{Requirement 4: }
+\subsubsection{Requirement 5: }
 
 
 
