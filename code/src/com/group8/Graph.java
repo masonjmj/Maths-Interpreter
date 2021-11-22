@@ -83,13 +83,11 @@ public class Graph extends JPanel {
         g2d.setPaint(Color.red);
         Point2D.Double pointA;
         Point2D.Double pointB;
-        for(int i=0; i< points.size()-3; i++){
+        for(int i=0; i < points.size()- 1; i++){
             pointA = mapPoint(points.get(i));
             pointB = mapPoint(points.get(i+1));
             g2d.draw(new Line2D.Double(pointA,pointB));
         }
-
-
     }
 
     @Override
