@@ -22,7 +22,7 @@ public class plotGraph extends JFrame {
 
     public void initUI() {
 
-        add(new Graph(points, 1000, 500,50));
+        add(new Graph(points,50));
 
         setTitle("Graph");
         setSize(1050, 550);

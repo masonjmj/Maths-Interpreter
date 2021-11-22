@@ -1,8 +1,6 @@
 package com.group8;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -12,49 +10,53 @@ import javax.swing.JPanel;
 public class Graph extends JPanel {
 
     ArrayList<Point2D.Double> points;
-    double WIDTH;
-    double HEIGHT;
+    Point2D.Double maxPoint;
+    Point2D.Double minPoint;
     double OFFSET;
-    double MAX_X;
-    double MAX_Y;
 
-    public Graph(ArrayList p, double w, double h, double o){
+    public Graph(ArrayList p, double o){
         points = p;
-        WIDTH = w;
-        HEIGHT = h;
+        maxPoint = new Point2D.Double(100, 2);
+        minPoint = new Point2D.Double(0,0);
         OFFSET = o;
-        MAX_X = points.get(p.size()-1).getX();
-        MAX_Y = points.get(p.size()-1).getY();
     }
 
-    private double getX(double x){
-        double newX;
-        newX = OFFSET+(((WIDTH-OFFSET)/MAX_X)*x);
-        return(newX);
-    }
+//    private double getX(double x){
+//        double newX;
+//        newX = OFFSET+(((WIDTH-OFFSET)/MAX_X)*x);
+//        return(newX);
+//    }
+//
+//    private double getY(double y){
+//        double newY;
+//        newY = HEIGHT-(((HEIGHT-OFFSET)/MAX_Y)*y);
+//        return(newY);
+//    }
 
-    private double getY(double y){
-        double newY;
-        newY = HEIGHT-(((HEIGHT-OFFSET)/MAX_Y)*y);
-        return(newY);
+    private Point2D.Double mapPoint(Point2D.Double point){
+        Point2D.Double newPoint = new Point2D.Double(0,0);
+        newPoint.x = ((getWidth()/(maxPoint.getX()-minPoint.getX()))*point.getX())+getWidth()/2;
+        newPoint.y = getHeight()-((getHeight()/(maxPoint.getY()-minPoint.getY()))*point.getY())-getHeight()/2;
+        return newPoint;
     }
 
     private void doDrawing(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
+        System.out.println(getWidth()+ " " + getHeight());
 
-        g2d.drawLine(50, 50, 50, 500);
-        g2d.drawLine(50, 500, 1000, 500);
+        g2d.draw(new Line2D.Double(getWidth()/2, 0, getWidth()/2, getHeight()));
+        g2d.draw(new Line2D.Double(0, getHeight()/2, getWidth(), getHeight()/2));
 
-        Double x1, y1, x2, y2;
+
+        Point2D.Double pointA;
+        Point2D.Double pointB;
         for(int i=0; i< points.size()-3; i++){
-            x1 = getX(points.get(i).getX());
-            y1 = getY(points.get(i).getY());
-            x2 = getX(points.get(i+1).getX());
-            y2 = getY(points.get(i+1).getY());
-            g2d.draw(new Line2D.Double(x1, y1, x2, y2));
-            System.out.println("Printing point"+i+" "+x1+" "+y1);
+            pointA = mapPoint(points.get(i));
+            pointB = mapPoint(points.get(i+1));
+            g2d.draw(new Line2D.Double(pointA,pointB));
         }
+
 
     }
 
