@@ -16,8 +16,8 @@ public class Graph extends JPanel {
 
     public Graph(ArrayList p, double o){
         points = p;
-        maxPoint = new Point2D.Double(100, 2);
-        minPoint = new Point2D.Double(0,0);
+        maxPoint = new Point2D.Double(100, 100);
+        minPoint = new Point2D.Double(-100,-100);
         OFFSET = o;
     }
 
@@ -35,8 +35,8 @@ public class Graph extends JPanel {
 
     private Point2D.Double mapPoint(Point2D.Double point){
         Point2D.Double newPoint = new Point2D.Double(0,0);
-        newPoint.x = ((getWidth()/(maxPoint.getX()-minPoint.getX()))*point.getX())+getWidth()/2;
-        newPoint.y = getHeight()-((getHeight()/(maxPoint.getY()-minPoint.getY()))*point.getY())-getHeight()/2;
+        newPoint.x = ((getWidth()/(maxPoint.getX()-minPoint.getX()))*(point.getX() - minPoint.getX()));
+        newPoint.y = getHeight()-((getHeight()/(maxPoint.getY()-minPoint.getY()))*(point.getY() - minPoint.getY()));
         return newPoint;
     }
 
@@ -47,6 +47,7 @@ public class Graph extends JPanel {
 
         g2d.draw(new Line2D.Double(getWidth()/2, 0, getWidth()/2, getHeight()));
         g2d.draw(new Line2D.Double(0, getHeight()/2, getWidth(), getHeight()/2));
+
 
 
         Point2D.Double pointA;
