@@ -2,16 +2,16 @@ package com.group8;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class plotGraph extends JFrame {
 
-    ArrayList<Double> points = new ArrayList<>();
+    ArrayList<Point2D.Double> points = new ArrayList<>();
 
 
     public void addPoint(Double x, Double y){
-        points.add(x);
-        points.add(y);
+        points.add(new Point2D.Double(x,y));
     }
 
    /* public void printPoints(){
@@ -22,7 +22,7 @@ public class plotGraph extends JFrame {
 
     public void initUI() {
 
-        add(new Graph(points, 1000, 500));
+        add(new Graph(points, 1000, 500,50));
 
         setTitle("Graph");
         setSize(1050, 550);
