@@ -43,7 +43,11 @@
 
 
 \begin{abstract}
-An abstract is a brief summary (maximum 250 words) of your entire project. It should cover your objectives, your methodology used, how you implemented the methodology for your specific results and what your final results are, your final outcome or deliverable and conclusion. You do not cover literature reviews or background in an abstract nor should you use abbreviations or acronyms. In the remainder of the report the chapter titles are suggestions and can be changed (or you can add more chapters if you wish to do so). This template is designed to help you write a clear report but you are welcome to modify it (at your peril ...). Finally, a guideline in size is approximately 3,500 words (not including abstract, captions and references) but no real limit on figures, tables, etc.
+In this project, our aim was to create a maths-based interpreter, capable of a range of useful mathematical operations outlined by the project breif.
+This inludes expression evaluation and funtion graphing via abstract syntax tree based interpretation. The asbtract syntax tree allows the correct precedence when interpreting based on the depth of the node in the tree. Each node within the tree, implements a visitor pattern allowing further abstraction and generalisation within the interpreter. We used a scrum based devleopment methodology to develop our langugae in sprints, allowing us to evelove our programn over time with frequenct re-adjustment of requirements and functionality.
+
+
+and what your final results are, your final outcome or deliverable and conclusion.
 \end{abstract}
 
 \chapter{Introduction}
@@ -55,9 +59,10 @@ The purpose of this project is to create a piece of software that is an interpre
 It will additionally provide the ability to visualise mathematical functions such as on a graph.
 
 \section{MoSCoW}
+The foillowing outlines the requirements we aim to meet with this software.
+
 \subsection{Musts}
 
-These elements largely comprise the minimum functional requirements of the program and are as such the most neceassary items.
 \begin{itemize}
 	\item Expressions for basic arithmetic
 	\item Print Statements
@@ -93,7 +98,26 @@ These elements largely comprise the minimum functional requirements of the progr
 \end{itemize}
 
 \section{Report structure}
-Breifly describe what you will cover in the remainder of the report, chapter by chapter.
+
+\subsection {Background}
+
+The background section of this report will comprise of an analysis of similar systems. This will allow us a better understanding of the functionalities our system should contain as well as negative points our system should avoid.
+
+\subsection {Methodology}
+
+This section outlines the design patterns and data structures we used in our software.
+
+\subsection {Implementation}
+
+Our implementation describes the structure we used to develop our system and the requirments we met in each sprint. It also details how we adapted our requirements overtime.
+
+\subsection {Testing}
+
+The testing section is a record of how we ensured each requirement was met and the functionality performed as expected.
+
+\subsection {Conclusion}
+
+This chapter deatils the success and faliure of our system and what we have achieved during this process.
 
 \chapter{Background}
 
@@ -129,7 +153,9 @@ Our system should also include an intuative user interface. The different system
 
 \chapter{Methodology}
 
-Describe here various methods that will be used in your project. Use different sections for distinctly different subjects and use subsections for specific details on the same subject. Only use subsubsections or paragraphs (which are not numbered) if you believe this is really necessary. Since implementation will happen in sprints, this section may need several updates with parts being added and deleted across the project.
+Throughout this project, we used a number of different method to implement the variuous features of our software. Theses methods and outline below.
+
+
 
 \section{Method 1: Abstract Syntax Tree}
 
@@ -264,14 +290,14 @@ Statements also become part of the ast. The experessions they contain are the ch
 
 Exponentials are identified in the same way as other binary opperators. There is a new step in the parsing process required for it as it has a higher priority than most other opperators.
 
+
 \subsection{Sprint 4}
 Our fourth sprint involved the following set of requirements:
 \begin{enumerate}
 \item Adding support for negative numebrs on the graph
 \item Allowing the graph to change size dynamically with the window size
-\item Add support for boolean types
-\item Add support for conditional statements
-\item Create a degrees to radians function
+\item Add support for boolean types and logic
+\item Add support for control flow statements
 \end{enumerate}
 
 \subsubsection{Requirement 1: }
@@ -280,86 +306,18 @@ This additon was relatively simple. We change to code4 to draw to lines that cro
 During our research for this requirement, we found that JPanel has built in getWidth() and getHeight() functions. This meant we could replace our hard-coded constants for these values in our calculations which meant anything drawn in the window would automatically scale as the window size was changed.
 We also found out abou the Points2D library which is compatible with Java 2D, so we changed our code to handle points with this library rather than manually.
 \subsubsection{Requirement 3: }
-This is another literal type and the comparissons for them are binary operators that exist within the ast.
+This is another literal type and the comparissons for them are binary operators that exist within the abstract syntax tree. We also have support for "and" and "or" which works similarly to other binary operators but with the ability to short circuit depending on the first operand.
 \subsubsection{Requirement 4: }
-\subsubsection{Requirement 5: }
+Similary to other statements, these additions are new nodes in the syntax tree with the same precedence as other statements like print. If statments looks for an expression as the condition and a statement as the thing to do if the condition is true. While statements work similarly except for that they repeat the statement until the expression is no longer true.
 
-\subsection{Sprint n}
-
-
-\section{Final implementation}
-
-\section{Figures, tables, etc.}
-%\label{Figures}
-
-The purpose of this section is to just show you how to integrate figures, tables, etc.\ and should disappear in the final report. Figures and tables should be distributed across the document wherever they are needed but you should use an appendix if they are many figures/tables of the same kind. Fig.\ %\ref{Pelvis_BVH} shows a bony pelvis.
-
-\begin{figure}[htb]
-%\begin{center}
-%\includegraphics[width=1.0 \columnwidth]{pelvis_octree.png}
-%\caption{The bony pelvis model with octree based AABBs (Axis Aligned Bounding Boxes).}
-%\label{Pelvis_BVH}
-%\end{center}
-\end{figure}
-
-%Fig.\ \ref{class} shows a UML class diagram (class, sequence and state diagrams are the most frequently used UML diagrams):
-
-\begin{figure}[htb]
-%\begin{center}
-%\includegraphics[width=1.0 \columnwidth]{class.png}
-%\caption{A UML class diagram.}
-%\label{class}
-%\end{center}
-\end{figure}
-
-%Algorithms can be either used in this chapter or alternatively in Chapter \ref{MethLab} if it is a more generic algorithm:
-
-\begin{algorithm}[th]
-%\caption{ The projection based contact method algorithm }
-%\begin{algorithmic}[1]
-%\STATE Retrieve current node displacement $u$
-%\\ \texttt{float3 u = m\_U\_new[nodeIndex].xyz;}
-%\STATE Retrieve constraint plane equation
-%\\ \texttt{float4 plane = m\_constraintMagnitude[nodeIndex];}
-%\STATE Calculate dot product with plane normal
-%\\ \texttt{float d = dot(u, plane.xyz);}
-%\STATE Find node penetration into the plane's negative half-space
-%\\ \texttt{float penetration = plane.w - d;}
-%\IF {penetration is greater than zero}
-%	\STATE Find projection onto the plane surface
-%	
-%	\texttt{float3 proj = u + plane.xyz * penetration;}
-%	\STATE Prescribe new nodal position to be on the surface
-%	
-%	\texttt{m\_U\_new[nodeIndex] = (float4)(proj, 0.0f);}
-%\ENDIF
-%\end{algorithmic}
-\end{algorithm}
-
-%Tables such as Table \ref{Res01} can also be useful here or in Chapter \ref{MethLab}.
-
-\begin{table}[h]
-%\caption[]{Original diameters and diametral strains as reported by
-%  Sorbe and Dahlgren \cite{Sorbe:1983} (columns 1-2), from a previous 
-%  experiment by Lapeer and Prager and reported in \cite{Lapeer:2001}
-%  (columns 3-4), and from the current experiment (columns 5-6).}
-\begin{center}
-\begin{tabular}{|l|c|c||c|c||c|c|}\hline
-& \multicolumn{2}{c||}{S-D} & \multicolumn{2}{c||}{L-P old} & \multicolumn{2}{c|}{L-P new} \\ \hline
-Diameter & length & strain & length & strain & length & strain \\ \hline
-$\mi{MaVD}$ & 140.5 & +1.90 & 129.3 & +0.30 & 129.3 & +1.43 \\
-$\mi{OrOD}$ & 131.4 & +0.10 &   -   &  -    & 119.9 & +1.85 \\
-$\mi{OrVD}$ & 126.9 & +2.20 & 119.3 & +0.25 & 119.3 & +1.24 \\
-$\mi{OFD}$  & 134.0 & +0.40 &  -    &   -   & 119.7 & +1.82 \\ 
-$\mi{SOFD}$ &  -    &   -   &  -    &   -   & 113.2 & -0.85 \\
-$\mi{SOBD}$ & 117.1 & -1.70 &  88.7 & -1.07 &  88.7 & -2.52 \\
-$\mi{BPD}$  & 105.0 &  0.00 &  89.7 & -0.21 &  89.7 & -0.83 \\ \hline
-\end{tabular}
-%\label{Res01}
-\end{center}
-\end{table}
-
-Note that code snippets or lists of crucial programming code or large UML diagrams should go in the Appendix/Appendices.
+\subsection{Sprint 5}
+These were the frequirements we outlined for our final sprint:
+\begin{enumerate}
+\item Adding function syntax
+\item Creating a degrees to radians function
+\item Adding more user customisation of the graphing feature
+\item Create a root finding algorithm to solve equations
+\end{enumerate}
 
 
 \chapter{Testing}

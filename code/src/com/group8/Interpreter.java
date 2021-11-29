@@ -53,6 +53,40 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 	}
 
 	@Override
+	public Void visit(Statement.Block statement) {
+		Environment newEnvironment = new Environment(environment);
+		Environment previousEnvironment = environment;
+		try {
+			environment = newEnvironment;
+
+			for (Statement stmt: statement.statements) {
+				execute(stmt);
+			}
+		} finally {
+			environment = previousEnvironment;
+		}
+		return null;
+	}
+
+	@Override
+	public Void visit(Statement.If statement) {
+		if (isTruthy(evaluate(statement.expression))) {
+			execute(statement.thenStatement);
+		} else if (statement.elseStatement != null) {
+			execute(statement.elseStatement);
+		}
+		return null;
+	}
+
+	@Override
+	public Void visit(Statement.While statement) {
+		while (isTruthy(evaluate(statement.expression))) {
+			execute(statement.body);
+		}
+		return null;
+	}
+
+	@Override
 	public Object visit(Expression.Literal expression) {
 		return expression.value;
 	}
@@ -69,9 +103,14 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		switch (expression.operator.type) {
 			case MINUS:
 				if (!(right instanceof Double)) {
-					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
+					throw new RuntimeError(expression.operator, "Incompatible type for unary minus operator");
 				}
 				return -(double)right;
+			case NOT:
+				if (!(right instanceof Boolean)) {
+					throw new RuntimeError(expression.operator, "Incompatible type for unary not operator");
+				}
+				return !(boolean) right;
 			case SIN:
 				if (!(right instanceof Double)) {
 					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
@@ -105,11 +144,44 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 	}
 
 	@Override
+	public Object visit(Expression.Logical expression) {
+		Object left = evaluate(expression.left);
+
+		if (expression.operator.type == Token.Type.OR) {
+			if (isTruthy(left)) {
+				return left;
+			}
+		} else {
+			if (!isTruthy(left)) {
+				return left;
+			}
+		}
+		return evaluate(expression.right);
+	}
+
+	@Override
 	public Object visit(Expression.Binary expression) {
 		Object left = evaluate(expression.left);
 		Object right = evaluate(expression.right);
 
 		switch (expression.operator.type) {
+			case EQUAL:
+				if (left == null) {
+					return right == null;
+				}
+				return left.equals(right);
+			case GREATER:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left > (double)right;
+			case LESS:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left < (double)right;
+			case GREATER_EQUAL:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left >= (double)right;
+			case LESS_EQUAL:
+				checkNumericOperands(expression.operator, left, right);
+				return (double)left <= (double)right;
 			case PLUS:
 				if (left instanceof Double && right instanceof Double) {
 					return (double)left + (double)right;
@@ -158,6 +230,11 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			return;
 		}
 		throw new RuntimeError(operator, "Incompatible type(s) for '" + operator.lexeme + "'");
+	}
+
+	private boolean isTruthy(Object object) {
+		if (object instanceof Boolean) return (boolean) object;
+		return false;
 	}
 
 	private Expression.Variable findVariable(Expression expression){
