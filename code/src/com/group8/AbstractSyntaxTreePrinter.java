@@ -38,6 +38,11 @@ public class AbstractSyntaxTreePrinter implements Expression.Visitor<String> {
 		return null;
 	}
 
+	@Override
+	public String visit(Expression.Logical expression) {
+		return null;
+	}
+
 	// Helpers
 
 	private String group(String string, Expression... expressions) {

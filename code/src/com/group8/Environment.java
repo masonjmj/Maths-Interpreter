@@ -1,10 +1,20 @@
 package com.group8;
 
+import javax.xml.namespace.QName;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Environment {
+	final Environment enclosing;
 	private final Map<String, Object> values = new HashMap<>();
+
+	Environment() {
+		enclosing = null;
+	}
+
+	Environment(Environment enclosing) {
+		this.enclosing = enclosing;
+	}
 
 	public void define(String identifier, Object value) {
 		values.put(identifier, value);
@@ -15,12 +25,20 @@ public class Environment {
 			return values.get(identifier.lexeme);
 		}
 
+		if (enclosing != null) {
+			return enclosing.get(identifier);
+		}
+
 		throw new RuntimeError(identifier, "Undefined variable '" + identifier.lexeme + "'");
 	}
 
 	public void assign(Token identifier, Object value) {
 		if (values.containsKey(identifier.lexeme)) {
 			values.put(identifier.lexeme, value);
+			return;
+		}
+		if (enclosing != null) {
+			enclosing.assign(identifier, value);
 			return;
 		}
 

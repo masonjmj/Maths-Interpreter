@@ -50,6 +50,12 @@ public class Parser {
 			return printStatement();
 		}else if(match(Token.Type.PLOT)){
 			return plotStatement();
+		} else if (match(Token.Type.LEFT_CURLY_BRACKET)) {
+			return new Statement.Block(block());
+		} else if (match(Token.Type.IF)) {
+			return ifStatement();
+		} else if (match(Token.Type.WHILE)) {
+			return whileStatement();
 		}
 
 		return expressionStatement();
@@ -73,12 +79,42 @@ public class Parser {
 		return new Statement.statementExpression(expression);
 	}
 
+	private List<Statement> block() {
+		List<Statement> statements = new ArrayList<>();
+		while (!check(Token.Type.RIGHT_CURLY_BRACKET) && !atEndOfInput()) {
+			statements.add(declaration());
+		}
+		consume(Token.Type.RIGHT_CURLY_BRACKET, "Unmatched {");
+		return statements;
+	}
+
+	private Statement ifStatement() {
+		consume(Token.Type.LEFT_BRACKET, "( expected after if");
+		Expression expression = expression();
+		consume(Token.Type.RIGHT_BRACKET, ") expected after if condition");
+
+		Statement thenStatement = statement();
+		Statement elseStatement = null;
+		if (match(Token.Type.ELSE)) {
+			elseStatement = statement();
+		}
+		return new Statement.If(expression, thenStatement, elseStatement);
+	}
+
+	private Statement whileStatement() {
+		consume(Token.Type.LEFT_BRACKET, "( expected after while");
+		Expression expression = expression();
+		consume(Token.Type.RIGHT_BRACKET, ") expected after while condition");
+		Statement body = statement();
+		return new Statement.While(expression, body);
+	}
+
 	private Expression expression() {
 		return assignment();
 	}
 
 	private Expression assignment() {
-		Expression expression = sum();
+		Expression expression = or();
 
 		if (match(Token.Type.ASSIGNMENT)) {
 			Token equals = previous();
@@ -93,6 +129,67 @@ public class Parser {
 		return expression;
 	}
 
+	private Expression or() {
+		Expression expression = and();
+
+		return orPrime(expression);
+	}
+
+	private Expression orPrime(Expression expression) {
+		if (match(Token.Type.OR)) {
+			Token operator = previous();
+			Expression right = and();
+			expression = new Expression.Logical(expression, operator, right);
+			expression = orPrime(expression);
+		}
+		return expression;
+	}
+	private Expression and() {
+		Expression expression = equality();
+
+		return andPrime(expression);
+	}
+
+	private Expression andPrime(Expression expression) {
+		if (match(Token.Type.AND)) {
+			Token operator = previous();
+			Expression right = equality();
+			expression = new Expression.Logical(expression, operator, right);
+			expression = orPrime(expression);
+		}
+		return expression;
+	}
+
+	private Expression equality() {
+		Expression expression = comparison();
+
+		return equalityPrime(expression);
+	}
+
+	private Expression equalityPrime(Expression expression) {
+		if (match(Token.Type.EQUAL)) {
+			Token operator = previous();
+			Expression right = comparison();
+			expression = new Expression.Binary(expression, operator, right);
+			expression = equalityPrime(expression);
+		}
+		return expression;
+	}
+
+	private Expression comparison() {
+		Expression expression = sum();
+		return comparisonPrime(expression);
+	}
+
+	private Expression comparisonPrime(Expression expression) {
+		if (match(Token.Type.GREATER, Token.Type.LESS, Token.Type.GREATER_EQUAL, Token.Type.LESS_EQUAL)) {
+			Token operator = previous();
+			Expression right = sum();
+			expression = new Expression.Binary(expression, operator, right);
+			expression = comparisonPrime(expression);
+		}
+		return expression;
+	}
 
 
 	private Expression sum() {
@@ -141,7 +238,7 @@ public class Parser {
 	}
 
 	private Expression unary() {
-		if (match(Token.Type.MINUS, Token.Type.SIN, Token.Type.COS, Token.Type.TAN)) {
+		if (match(Token.Type.MINUS, Token.Type.NOT, Token.Type.SIN, Token.Type.COS, Token.Type.TAN)) {
 			Token operator = previous();
 			Expression right = unary();
 			return new Expression.Unary(operator, right);
@@ -152,6 +249,12 @@ public class Parser {
 	private Expression factor() {
 		if (match(Token.Type.NULL)) {
 			return new Expression.Literal(null);
+		}
+		if (match(Token.Type.FALSE)){
+			return new Expression.Literal(false);
+		}
+		if (match(Token.Type.TRUE)) {
+			return new Expression.Literal(true);
 		}
 		if (match(Token.Type.NUMBER, Token.Type.STRING)) {
 			return new Expression.Literal(previous().literal);

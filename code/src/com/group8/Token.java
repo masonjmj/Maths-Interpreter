@@ -8,8 +8,16 @@ public class Token {
 		TIMES,
 		DIVIDE,
 		POWER,
+		NOT,
+		EQUAL,
+		GREATER,
+		GREATER_EQUAL,
+		LESS,
+		LESS_EQUAL,
 		LEFT_BRACKET,
 		RIGHT_BRACKET,
+		LEFT_CURLY_BRACKET,
+		RIGHT_CURLY_BRACKET,
 		ASSIGNMENT,
 
 
@@ -17,6 +25,8 @@ public class Token {
 		NUMBER,
 		IDENTIFIER,
 		STRING,
+		TRUE,
+		FALSE,
 		NULL,
 
 		// Reserved Words
@@ -27,6 +37,11 @@ public class Token {
 		COS,
 		TAN,
 		PI,
+		AND,
+		OR,
+		IF,
+		ELSE,
+		WHILE,
 		SEMICOLON,
 
 		// End Of File
