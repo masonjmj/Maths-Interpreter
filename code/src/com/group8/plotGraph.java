@@ -21,11 +21,10 @@ public class plotGraph extends JFrame {
     }*/
 
     public void initUI() {
-
-        add(new Graph(points,50));
-
+        Graph g = new Graph(points);
+        add(g);
         setTitle("Graph");
-        setSize(1050, 550);
+        setSize(800, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
