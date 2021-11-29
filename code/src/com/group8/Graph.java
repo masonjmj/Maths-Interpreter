@@ -16,8 +16,8 @@ public class Graph extends JPanel {
 
     public Graph(ArrayList p){
         points = p;
-        maxPoint = new Point2D.Double(10, 1.2);
-        minPoint = new Point2D.Double(-2,-1.2);
+        maxPoint = new Point2D.Double(10, 10);
+        minPoint = new Point2D.Double(-10,-10);
     }
 
 //    private double getX(double x){
@@ -69,7 +69,7 @@ public class Graph extends JPanel {
 
 
 
-        double yIncrement = 0.5;
+        double yIncrement = 1;
 
         for(double i = 0; i < maxPoint.getY(); i += yIncrement) {
             if (i == 0) {

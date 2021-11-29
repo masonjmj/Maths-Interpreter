@@ -185,7 +185,7 @@ node to understand how to handle each node. It traverses in a depth-first manner
 
 We are implementing the agile development methodology for this project with a SCRUM inspired approach, using short 1-2 week sprints and adjusting the devleopment trajectory at the end of each.
 
-\subsection{Sprint 1}
+\section{Sprint 1}
 
 For our first sprint, we defined the following set of requirements: 
 
@@ -221,7 +221,7 @@ Each token from the token array is copied onto the operator stack and the intege
 
 When the program encounters a right bracket, we know a left bracket must exist on the stack as the parser has validated the code. This means that when a right bracket is encountered, the program continually runs calculate until the left bracket reaches the top of the stack. This ensures the number at the top of the number stack is the evaluation of the expression within brackets, ensuring the order of operations is preserved. 
 
-\subsection{Sprint 2}
+\section{Sprint 2}
 
 For our second sprint, we defined the following set of requirements: 
 
@@ -231,23 +231,23 @@ For our second sprint, we defined the following set of requirements:
 \item The program should be able to evalute expression that contain pre-defined variables
 \end{enumerate}
 
-\subsubsection{Requirement 1: }
+\subsection{Requirement 1: }
 
 The lexer class cycles through the chracters typed by the user. If the character is not a number or a reserved symbol, the program identifies it as a variable. the concecutive characters are then checked and added to the variable name if they are alphanumeric. This process ends when a non-alphanumeric charcter is reached.
 The symbol table has also been updated so it can hold variable names as well as numbers.
 This requirement has been succefully met.
 
-\subsubsection{Requirement 2: }
+\subsection{Requirement 2: }
 
 To begin developing the assignmnet functionality, we have used the equals sign to represent assignment for simplicity. This sign has be added as a reserved character to identify assignment operations. When an equals gin is preceded by a varible and proceeded by an integer, the interger value is mapped to the varible. If the assignment value is an expression, the expression is evaluated and the soltuion mapped to the variable.
 This requirement has been successfully met.
 
-\subsubsection{Requirement 3: }
+\subsection{Requirement 3: }
 
 When the program evaluates an expression that contains a varible, the execution class identifes the value mapped to the variable and replaces it in the expression. The xpression is then evalutated as normal and the solution displayed.
 This requirement has been succefully met.
 
-\subsection{Sprint 3}
+\section{Sprint 3}
 
 For our second sprint, we defined the following set of requirements:
 
@@ -291,7 +291,7 @@ Statements also become part of the ast. The experessions they contain are the ch
 Exponentials are identified in the same way as other binary opperators. There is a new step in the parsing process required for it as it has a higher priority than most other opperators.
 
 
-\subsection{Sprint 4}
+\section{Sprint 4}
 Our fourth sprint involved the following set of requirements:
 \begin{enumerate}
 \item Adding support for negative numebrs on the graph
@@ -327,7 +327,7 @@ These were the frequirements we outlined for our final sprint:
 
 This section details the testing we performed at the end of each sprint to make sure we meet each of the requirements set out at the beginning of the sprint.
 
-\subsection{Sprint 1}
+\section{Sprint 1}
 
 \begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
 1 & The program is able to identify a number & 5 \newline 83 \newline 324876312487124  &  PASSED \newline PASSED \newline FAILED \\
@@ -341,7 +341,7 @@ This section details the testing we performed at the end of each sprint to make 
 9 & The program can idenify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
 \end{tabular}
 
-\subsection{Sprint 2}
+\section{Sprint 2}
 
 \begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
 1 & The program can assign a value to a variable & x=5 \newline foo=56 \newline y=9  &  PASSED \newline PASSED \newline FAILED \\
