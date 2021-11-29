@@ -298,6 +298,7 @@ Our fourth sprint involved the following set of requirements:
 \item Allowing the graph to change size dynamically with the window size
 \item Add support for boolean types and logic
 \item Add support for control flow statements
+\item Add variable scoping
 \end{enumerate}
 
 \subsubsection{Requirement 1: }
@@ -309,6 +310,8 @@ We also found out abou the Points2D library which is compatible with Java 2D, so
 This is another literal type and the comparissons for them are binary operators that exist within the abstract syntax tree. We also have support for "and" and "or" which works similarly to other binary operators but with the ability to short circuit depending on the first operand.
 \subsubsection{Requirement 4: }
 Similary to other statements, these additions are new nodes in the syntax tree with the same precedence as other statements like print. If statments looks for an expression as the condition and a statement as the thing to do if the condition is true. While statements work similarly except for that they repeat the statement until the expression is no longer true.
+\subsubsection{Requirement 5: }
+A variable defined within a block statement will be local to that block. Any variables created within that block are discarded once that block has been completed. A new enviroment is created when a block statement is enetered and any variables are kept there.
 
 \subsection{Sprint 5}
 These were the frequirements we outlined for our final sprint:
