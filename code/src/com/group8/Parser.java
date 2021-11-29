@@ -155,7 +155,7 @@ public class Parser {
 			Token operator = previous();
 			Expression right = equality();
 			expression = new Expression.Logical(expression, operator, right);
-			expression = orPrime(expression);
+			expression = andPrime(expression);
 		}
 		return expression;
 	}
