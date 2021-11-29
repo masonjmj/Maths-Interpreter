@@ -6,17 +6,23 @@ import java.util.Map;
 
 public class Lexer {
 	private static final Map<String, Token.Type> reservedWords =
-			Map.of(
-					"plot", Token.Type.PLOT,
-					"var", Token.Type.VAR,
-					"null", Token.Type.NULL,
-					"print", Token.Type.PRINT,
-					"true", Token.Type.TRUE,
-					"false", Token.Type.FALSE,
-					"sin", Token.Type.SIN,
-					"cos", Token.Type.COS,
-					"tan", Token.Type.TAN,
-					"PI", Token.Type.PI);
+			Map.ofEntries(
+					Map.entry("plot", Token.Type.PLOT),
+					Map.entry("var", Token.Type.VAR),
+					Map.entry("null", Token.Type.NULL),
+					Map.entry("print", Token.Type.PRINT),
+					Map.entry("true", Token.Type.TRUE),
+					Map.entry("false", Token.Type.FALSE),
+					Map.entry("sin", Token.Type.SIN),
+					Map.entry("cos", Token.Type.COS),
+					Map.entry("tan", Token.Type.TAN),
+					Map.entry("PI", Token.Type.PI),
+					Map.entry("and", Token.Type.AND),
+					Map.entry("or", Token.Type.OR),
+					Map.entry("if", Token.Type.IF),
+					Map.entry("else", Token.Type.ELSE),
+					Map.entry("while", Token.Type.WHILE)
+			);
 
 	private final String code;
 	private final List<Token> tokens = new ArrayList<>();
@@ -77,6 +83,12 @@ public class Lexer {
 				break;
 			case ')':
 				addToken(Token.Type.RIGHT_BRACKET);
+				break;
+			case '{':
+				addToken(Token.Type.LEFT_CURLY_BRACKET);
+				break;
+			case '}':
+				addToken(Token.Type.RIGHT_CURLY_BRACKET);
 				break;
 			case ';':
 				addToken(Token.Type.SEMICOLON);

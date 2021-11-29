@@ -50,6 +50,12 @@ public class Parser {
 			return printStatement();
 		}else if(match(Token.Type.PLOT)){
 			return plotStatement();
+		} else if (match(Token.Type.LEFT_CURLY_BRACKET)) {
+			return new Statement.Block(block());
+		} else if (match(Token.Type.IF)) {
+			return ifStatement();
+		} else if (match(Token.Type.WHILE)) {
+			return whileStatement();
 		}
 
 		return expressionStatement();
@@ -73,12 +79,42 @@ public class Parser {
 		return new Statement.statementExpression(expression);
 	}
 
+	private List<Statement> block() {
+		List<Statement> statements = new ArrayList<>();
+		while (!check(Token.Type.RIGHT_CURLY_BRACKET) && !atEndOfInput()) {
+			statements.add(declaration());
+		}
+		consume(Token.Type.RIGHT_CURLY_BRACKET, "Unmatched {");
+		return statements;
+	}
+
+	private Statement ifStatement() {
+		consume(Token.Type.LEFT_BRACKET, "( expected after if");
+		Expression expression = expression();
+		consume(Token.Type.RIGHT_BRACKET, ") expected after if condition");
+
+		Statement thenStatement = statement();
+		Statement elseStatement = null;
+		if (match(Token.Type.ELSE)) {
+			elseStatement = statement();
+		}
+		return new Statement.If(expression, thenStatement, elseStatement);
+	}
+
+	private Statement whileStatement() {
+		consume(Token.Type.LEFT_BRACKET, "( expected after while");
+		Expression expression = expression();
+		consume(Token.Type.RIGHT_BRACKET, ") expected after while condition");
+		Statement body = statement();
+		return new Statement.While(expression, body);
+	}
+
 	private Expression expression() {
 		return assignment();
 	}
 
 	private Expression assignment() {
-		Expression expression = equality();
+		Expression expression = or();
 
 		if (match(Token.Type.ASSIGNMENT)) {
 			Token equals = previous();
@@ -89,6 +125,37 @@ public class Parser {
 				return new Expression.Assignment(identifier, value);
 			}
 			throw error(equals, "Invalid assignment");
+		}
+		return expression;
+	}
+
+	private Expression or() {
+		Expression expression = and();
+
+		return orPrime(expression);
+	}
+
+	private Expression orPrime(Expression expression) {
+		if (match(Token.Type.OR)) {
+			Token operator = previous();
+			Expression right = and();
+			expression = new Expression.Logical(expression, operator, right);
+			expression = orPrime(expression);
+		}
+		return expression;
+	}
+	private Expression and() {
+		Expression expression = equality();
+
+		return andPrime(expression);
+	}
+
+	private Expression andPrime(Expression expression) {
+		if (match(Token.Type.AND)) {
+			Token operator = previous();
+			Expression right = equality();
+			expression = new Expression.Logical(expression, operator, right);
+			expression = orPrime(expression);
 		}
 		return expression;
 	}
@@ -104,6 +171,7 @@ public class Parser {
 			Token operator = previous();
 			Expression right = comparison();
 			expression = new Expression.Binary(expression, operator, right);
+			expression = equalityPrime(expression);
 		}
 		return expression;
 	}
@@ -118,6 +186,7 @@ public class Parser {
 			Token operator = previous();
 			Expression right = sum();
 			expression = new Expression.Binary(expression, operator, right);
+			expression = comparisonPrime(expression);
 		}
 		return expression;
 	}

@@ -16,6 +16,8 @@ public class Token {
 		LESS_EQUAL,
 		LEFT_BRACKET,
 		RIGHT_BRACKET,
+		LEFT_CURLY_BRACKET,
+		RIGHT_CURLY_BRACKET,
 		ASSIGNMENT,
 
 
@@ -35,6 +37,11 @@ public class Token {
 		COS,
 		TAN,
 		PI,
+		AND,
+		OR,
+		IF,
+		ELSE,
+		WHILE,
 		SEMICOLON,
 
 		// End Of File

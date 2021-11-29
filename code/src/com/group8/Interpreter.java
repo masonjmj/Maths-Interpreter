@@ -52,6 +52,40 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 	}
 
 	@Override
+	public Void visit(Statement.Block statement) {
+		Environment newEnvironment = new Environment(environment);
+		Environment previousEnvironment = environment;
+		try {
+			environment = newEnvironment;
+
+			for (Statement stmt: statement.statements) {
+				execute(stmt);
+			}
+		} finally {
+			environment = previousEnvironment;
+		}
+		return null;
+	}
+
+	@Override
+	public Void visit(Statement.If statement) {
+		if (isTruthy(evaluate(statement.expression))) {
+			execute(statement.thenStatement);
+		} else if (statement.elseStatement != null) {
+			execute(statement.elseStatement);
+		}
+		return null;
+	}
+
+	@Override
+	public Void visit(Statement.While statement) {
+		while (isTruthy(evaluate(statement.expression))) {
+			execute(statement.body);
+		}
+		return null;
+	}
+
+	@Override
 	public Object visit(Expression.Literal expression) {
 		return expression.value;
 	}
@@ -106,6 +140,22 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		Object value = evaluate(expression.value);
 		environment.assign(expression.identifier, value);
 		return value;
+	}
+
+	@Override
+	public Object visit(Expression.Logical expression) {
+		Object left = evaluate(expression.left);
+
+		if (expression.operator.type == Token.Type.OR) {
+			if (isTruthy(left)) {
+				return left;
+			}
+		} else {
+			if (!isTruthy(left)) {
+				return left;
+			}
+		}
+		return evaluate(expression.right);
 	}
 
 	@Override
@@ -179,6 +229,11 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			return;
 		}
 		throw new RuntimeError(operator, "Incompatible type(s) for '" + operator.lexeme + "'");
+	}
+
+	private boolean isTruthy(Object object) {
+		if (object instanceof Boolean) return (boolean) object;
+		return false;
 	}
 
 	private Expression.Variable findVariable(Expression expression){
