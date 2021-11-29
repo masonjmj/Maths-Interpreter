@@ -36,11 +36,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		Expression.Variable var = findVariable(statement.expression);
 		if(var!=null){
 			double value = (double) environment.get(var.identifier);
-			double max = value+10;
-			for(double i = value;i<max; i++){
-				System.out.println("("+i+","+evaluate(statement.expression)+")");
+			double max = value+100;
+			double resolution = 0.1;
+			for(double i = value;i<max; i+= resolution){
+				//System.out.println("("+i+","+evaluate(statement.expression)+")");
 				graph.addPoint(i, (Double) evaluate(statement.expression));
-				environment.assign(var.identifier, (double)environment.get(var.identifier)+1);
+				environment.assign(var.identifier, (double)environment.get(var.identifier) + resolution);
 			}
 			environment.assign(var.identifier, value);
 			graph.initUI();

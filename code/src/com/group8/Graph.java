@@ -1,54 +1,104 @@
 package com.group8;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Graph extends JPanel {
 
-    ArrayList<Double> points;
-    double WIDTH;
-    double HEIGHT;
+    ArrayList<Point2D.Double> points;
+    Point2D.Double maxPoint;
+    Point2D.Double minPoint;
 
-    public Graph(ArrayList p, int w, int h){
+
+    public Graph(ArrayList p){
         points = p;
-        WIDTH = w;
-        HEIGHT = h;
+        maxPoint = new Point2D.Double(10, 1.2);
+        minPoint = new Point2D.Double(-2,-1.2);
     }
 
-    private double getX(double x){
-        double newX;
-        newX = 50+(((WIDTH-50)/ points.get(points.size()-2))*x);
-        return(newX);
-    }
+//    private double getX(double x){
+//        double newX;
+//        newX = OFFSET+(((WIDTH-OFFSET)/MAX_X)*x);
+//        return(newX);
+//    }
+//
+//    private double getY(double y){
+//        double newY;
+//        newY = HEIGHT-(((HEIGHT-OFFSET)/MAX_Y)*y);
+//        return(newY);
+//    }
 
-    private double getY(double y){
-        double newY;
-        newY = 500-(((HEIGHT-50)/ points.get(points.size()-1))*y);
-        return(newY);
+    private Point2D.Double mapPoint(Point2D.Double point){
+        Point2D.Double newPoint = new Point2D.Double(0,0);
+        newPoint.x = ((getWidth()/(maxPoint.getX()-minPoint.getX()))*(point.getX() - minPoint.getX()));
+        newPoint.y = getHeight()-((getHeight()/(maxPoint.getY()-minPoint.getY()))*(point.getY() - minPoint.getY()));
+        return newPoint;
     }
 
     private void doDrawing(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
+        System.out.println(getWidth()+ " " + getHeight());
 
-        g2d.drawLine(50, 50, 50, 500);
-        g2d.drawLine(50, 500, 1000, 500);
+//        g2d.draw(new Line2D.Double(getWidth()/2, 0, getWidth()/2, getHeight()));
+//        g2d.draw(new Line2D.Double(0, getHeight()/2, getWidth(), getHeight()/2));
 
-        Double x1, y1, x2, y2;
-        for(int i=0; i< points.size()-3; i+=2){
-            x1 = getX(points.get(i));
-            y1 = getY(points.get(i+1));
-            x2 = getX(points.get(i+2));
-            y2 = getY(points.get(i+3));
-            g2d.draw(new Line2D.Double(x1, y1, x2, y2));
-            System.out.println("Printing point"+i+" "+x1+" "+y1);
+        double xIncrement = 1;
+
+        for (double i = 0; i < maxPoint.getX(); i += xIncrement) {
+            if (i == 0) {
+                g2d.setStroke(new BasicStroke(5));
+            }
+            g2d.draw(new Line2D.Double(mapPoint(new Point2D.Double(i, minPoint.getY())), mapPoint(new Point2D.Double(i, maxPoint.getY()))));
+            g2d.draw(new Line2D.Double(mapPoint(new Point2D.Double(-i, minPoint.getY())), mapPoint(new Point2D.Double(-i, maxPoint.getY()))));
+
+            Point2D.Double notchPoint = mapPoint(new Point2D.Double(i, 0));
+            Point2D.Double negNotchPoint = mapPoint(new Point2D.Double(-i, 0));
+            if(i!=0) {
+                g2d.drawString(Double.toString(i), (int)notchPoint.getX(), (int)notchPoint.getY() + 14);
+                g2d.drawString(Double.toString(-i), (int) negNotchPoint.getX(), (int) negNotchPoint.getY() + 14);
+            }
+
+
+            g2d.setStroke(new BasicStroke(1));
         }
 
+
+
+        double yIncrement = 0.5;
+
+        for(double i = 0; i < maxPoint.getY(); i += yIncrement) {
+            if (i == 0) {
+                g2d.setStroke(new BasicStroke(5));
+            }
+            g2d.draw(new Line2D.Double(mapPoint(new Point2D.Double(minPoint.getX(), i)), mapPoint(new Point2D.Double(maxPoint.getX(), i))));
+            g2d.draw(new Line2D.Double(mapPoint(new Point2D.Double(minPoint.getX(), -i)), mapPoint(new Point2D.Double(maxPoint.getX(), -i))));
+
+            Point2D.Double notchPoint = mapPoint(new Point2D.Double(0, i));
+            Point2D.Double negNotchPoint = mapPoint(new Point2D.Double(0, -i));
+            g2d.drawString(Double.toString(i), (int)notchPoint.getX() -24, (int)notchPoint.getY());
+            if(i!=0) {
+                g2d.drawString(Double.toString(-i), (int) negNotchPoint.getX()-24, (int) negNotchPoint.getY());
+            }
+
+            g2d.setStroke(new BasicStroke(1));
+        }
+
+
+        g2d.setStroke(new BasicStroke(2.5f));
+        g2d.setPaint(Color.red);
+        Point2D.Double pointA;
+        Point2D.Double pointB;
+        for(int i=0; i < points.size()- 1; i++){
+            pointA = mapPoint(points.get(i));
+            pointB = mapPoint(points.get(i+1));
+            System.out.println(pointA);
+            g2d.draw(new Line2D.Double(pointA,pointB));
+        }
     }
 
     @Override

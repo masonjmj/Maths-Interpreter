@@ -1,4 +1,6 @@
+
 This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  29 NOV 2021 13:00
+
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -119,6 +121,7 @@ LaTeX Info: Redefining \cdots on input line 620.
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \macc@depth=\count198
+ 
 \c@MaxMatrixCols=\count199
 \dotsspace@=\muskip16
 \c@parentequation=\count266
@@ -313,4 +316,5 @@ PDF statistics:
  61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
 
