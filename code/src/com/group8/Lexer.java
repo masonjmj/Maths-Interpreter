@@ -13,15 +13,13 @@ public class Lexer {
 					Map.entry("print", Token.Type.PRINT),
 					Map.entry("true", Token.Type.TRUE),
 					Map.entry("false", Token.Type.FALSE),
-					Map.entry("sin", Token.Type.SIN),
-					Map.entry("cos", Token.Type.COS),
-					Map.entry("tan", Token.Type.TAN),
-					Map.entry("PI", Token.Type.PI),
 					Map.entry("and", Token.Type.AND),
 					Map.entry("or", Token.Type.OR),
 					Map.entry("if", Token.Type.IF),
 					Map.entry("else", Token.Type.ELSE),
-					Map.entry("while", Token.Type.WHILE)
+					Map.entry("while", Token.Type.WHILE),
+					Map.entry("fun", Token.Type.FUN),
+					Map.entry("return", Token.Type.RETURN)
 			);
 
 	private final String code;
@@ -53,6 +51,9 @@ public class Lexer {
 				break; // Ignore whitespace
 			case '\n':
 				lineNumber++;
+				break;
+			case ',':
+				addToken(Token.Type.COMMA);
 				break;
 			case '+':
 				addToken(Token.Type.PLUS);

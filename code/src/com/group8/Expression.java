@@ -1,5 +1,7 @@
 package com.group8;
 
+import java.util.List;
+
 abstract class Expression {
 
 	// Implements visitor pattern so that calls to the tree can find out what type of
@@ -12,6 +14,7 @@ abstract class Expression {
 		T visit(Variable expression);
 		T visit(Assignment expression);
 		T visit(Logical expression);
+		T visit(Call expression);
 	}
 
 	static class Binary extends Expression {
@@ -117,6 +120,22 @@ abstract class Expression {
 		}
 	}
 
+	static class Call extends Expression{
+			final Expression callingExpression;
+			final Token closingBracket;
+			final List<Expression> arguments;
+
+	Call(Expression callingExpression, Token closingBracket, List<Expression> arguments) {
+		this.callingExpression = callingExpression;
+		this.closingBracket = closingBracket;
+		this.arguments = arguments;
+	}
+
+		@Override
+		<R> R accept(Visitor<R> visitor) {
+			return visitor.visit(this);
+		}
+}
 
 	abstract <T> T accept(Visitor<T> visitor);
 }

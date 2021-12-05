@@ -23,6 +23,9 @@ public class Parser {
 
 	private Statement declaration() {
 		try {
+			if (match(Token.Type.FUN)) {
+				return functionDeclaration();
+			}
 			if (match(Token.Type.VAR)) {
 				return variableDeclaration();
 			}
@@ -31,6 +34,22 @@ public class Parser {
 			advance();
 			return null;
 		}
+	}
+
+	private Statement functionDeclaration() {
+		Token identifier = consume(Token.Type.IDENTIFIER, "Function name expected");
+		consume(Token.Type.LEFT_BRACKET, "( expected after function name");
+		List<Token> paramaters = new ArrayList<>();
+		if (!check(Token.Type.RIGHT_BRACKET)) {
+			do {
+				paramaters.add(consume(Token.Type.IDENTIFIER, "Parameter name expected"));
+			} while (match(Token.Type.COMMA));
+		}
+		consume(Token.Type.RIGHT_BRACKET, ") expected after parameter list");
+
+		consume(Token.Type.LEFT_CURLY_BRACKET, "{ expected before function body");
+		List<Statement> body = block();
+		return new Statement.FunctionDecleration(identifier, paramaters, body);
 	}
 
 	private Statement variableDeclaration() {
@@ -56,6 +75,8 @@ public class Parser {
 			return ifStatement();
 		} else if (match(Token.Type.WHILE)) {
 			return whileStatement();
+		} else if (match(Token.Type.RETURN)) {
+			return returnStatement();
 		}
 
 		return expressionStatement();
@@ -109,6 +130,17 @@ public class Parser {
 		return new Statement.While(expression, body);
 	}
 
+	private Statement returnStatement() {
+		Token reservedWord = previous();
+		Expression value = null;
+		if (!check(Token.Type.SEMICOLON)) {
+			value = expression();
+		}
+
+		consume(Token.Type.SEMICOLON, "; expected after return");
+		return new Statement.Return(reservedWord, value);
+	}
+
 	private Expression expression() {
 		return assignment();
 	}
@@ -144,6 +176,7 @@ public class Parser {
 		}
 		return expression;
 	}
+
 	private Expression and() {
 		Expression expression = equality();
 
@@ -191,7 +224,6 @@ public class Parser {
 		return expression;
 	}
 
-
 	private Expression sum() {
 		Expression expression = term();
 		return sumPrime(expression);
@@ -238,12 +270,38 @@ public class Parser {
 	}
 
 	private Expression unary() {
-		if (match(Token.Type.MINUS, Token.Type.NOT, Token.Type.SIN, Token.Type.COS, Token.Type.TAN)) {
+		if (match(Token.Type.MINUS, Token.Type.NOT)) {
 			Token operator = previous();
 			Expression right = unary();
 			return new Expression.Unary(operator, right);
 		}
-		return factor();
+		return call();
+	}
+
+	private Expression call() {
+		Expression expression = factor();
+
+		return callPrime(expression);
+	}
+
+	private Expression callPrime(Expression expression) {
+		if (match(Token.Type.LEFT_BRACKET)) {
+			expression = completeCall(expression);
+			expression = callPrime(expression);
+		}
+		return expression;
+	}
+
+	private Expression completeCall(Expression callingExpression) {
+		List<Expression> arguments = new ArrayList<>();
+		if (!check(Token.Type.RIGHT_BRACKET)) {
+			do {
+				arguments.add(expression());
+			} while (match(Token.Type.COMMA));
+		}
+		Token closingBracket = consume(Token.Type.RIGHT_BRACKET, ") expected after arguments");
+
+		return new Expression.Call(callingExpression, closingBracket, arguments);
 	}
 
 	private Expression factor() {
@@ -258,9 +316,6 @@ public class Parser {
 		}
 		if (match(Token.Type.NUMBER, Token.Type.STRING)) {
 			return new Expression.Literal(previous().literal);
-		}
-		if (match(Token.Type.PI)) {
-			return new Expression.Literal(Math.PI);
 		}
 		if (match(Token.Type.LEFT_BRACKET)) {
 			Expression expression = expression();

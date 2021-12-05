@@ -1,10 +1,147 @@
 package com.group8;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Interpreter implements Expression.Visitor<Object>, Statement.Visitor<Void> {
 
-	private Environment environment = new Environment();
+	final Environment globalEnvironment = new Environment();
+	private Environment environment = globalEnvironment;
+
+	Interpreter() {
+		globalEnvironment.define("sin", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for sin function");
+				} else {
+					return Math.sin((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("cos", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for cos function");
+				} else {
+					return Math.cos((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("tan", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for tan function");
+				} else {
+					return Math.tan((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("arcsin", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for sin function");
+				} else {
+					return Math.asin((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("arccos", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for cos function");
+				} else {
+					return Math.acos((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("arctan", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (arguments.get(0) == null) {
+					return null;
+				}
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for tan function");
+				} else {
+					return Math.atan((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("radians", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for radians function");
+				} else {
+					return Math.toRadians((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("degrees", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 1;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				if (!(arguments.get(0) instanceof Double)) {
+					throw new RuntimeError("Incompatible type for radians function");
+				} else {
+					return Math.toDegrees((double) arguments.get(0));
+				}
+			}
+		});
+
+		globalEnvironment.define("PI", Math.PI);
+	}
 
 	@Override
 	public Void visit(Statement.statementExpression statement) {
@@ -27,6 +164,13 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		}
 
 		environment.define(statement.identifier.lexeme, value);
+		return null;
+	}
+
+	@Override
+	public Void visit(Statement.FunctionDecleration statement) {
+		Function function = new Function(statement, environment);
+		environment.define(statement.identifier.lexeme, function);
 		return null;
 	}
 
@@ -54,17 +198,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 	@Override
 	public Void visit(Statement.Block statement) {
-		Environment newEnvironment = new Environment(environment);
-		Environment previousEnvironment = environment;
-		try {
-			environment = newEnvironment;
-
-			for (Statement stmt: statement.statements) {
-				execute(stmt);
-			}
-		} finally {
-			environment = previousEnvironment;
-		}
+		executeBlock(statement.statements, new Environment(environment));
 		return null;
 	}
 
@@ -84,6 +218,15 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			execute(statement.body);
 		}
 		return null;
+	}
+
+	@Override
+	public Void visit(Statement.Return statement) {
+		Object value = null;
+		if (statement.value != null) {
+			value = evaluate(statement.value);
+		}
+		throw new Return(value);
 	}
 
 	@Override
@@ -111,21 +254,6 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 					throw new RuntimeError(expression.operator, "Incompatible type for unary not operator");
 				}
 				return !(boolean) right;
-			case SIN:
-				if (!(right instanceof Double)) {
-					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
-				}
-				return Math.sin((double) right);
-			case COS:
-				if (!(right instanceof Double)) {
-					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
-				}
-				return Math.cos((double) right);
-			case TAN:
-				if (!(right instanceof Double)) {
-					throw new RuntimeError(expression.operator, "Incompatible type for unary operator");
-				}
-				return Math.tan((double) right);
 		}
 
 		return null;
@@ -157,6 +285,26 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			}
 		}
 		return evaluate(expression.right);
+	}
+
+	@Override
+	public Object visit(Expression.Call expression) {
+		Object callingExpression = evaluate(expression.callingExpression);
+
+		List<Object> arguments = new ArrayList<>();
+		for (Expression argument : expression.arguments) {
+			arguments.add(evaluate(argument));
+		}
+
+		if (!(callingExpression instanceof Function)) {
+			throw new RuntimeError(expression.closingBracket, "Expression is not a callable function");
+		}
+
+		Function function = (Function) callingExpression;
+		if (arguments.size() != function.numberOfArguments()) {
+			throw new RuntimeError(expression.closingBracket, function.numberOfArguments() + " arguments expected");
+		}
+		return function.call(this, arguments);
 	}
 
 	@Override
@@ -212,9 +360,26 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 				execute(statement);
 			}
 		} catch (RuntimeError error) {
-			Main.error(error.token, error.getMessage());
+			if (error.token != null) {
+				Main.error(error.token, error.getMessage());
+			} else{
+				Main.error(error.getMessage());
+			}
+
 		}
 
+	}
+
+	public void executeBlock(List<Statement> statements, Environment environment) {
+		Environment previous = this.environment;
+		try{
+			this.environment = environment;
+			for (Statement statement : statements) {
+				execute(statement);
+			}
+		} finally {
+			this.environment = previous;
+		}
 	}
 
 	private void execute(Statement statement) {
