@@ -19,6 +19,7 @@ public class Token {
 		LEFT_CURLY_BRACKET,
 		RIGHT_CURLY_BRACKET,
 		ASSIGNMENT,
+		COMMA,
 
 
 		// Literals
@@ -32,16 +33,14 @@ public class Token {
 		// Reserved Words
 		PLOT,
 		VAR,
+		FUN,
 		PRINT,
-		SIN,
-		COS,
-		TAN,
-		PI,
 		AND,
 		OR,
 		IF,
 		ELSE,
 		WHILE,
+		RETURN,
 		SEMICOLON,
 
 		// End Of File

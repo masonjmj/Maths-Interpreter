@@ -62,6 +62,11 @@ public class Main {
 //		System.out.println(new AbstractSyntaxTreePrinter().print(expression));
 	}
 
+	static void error(String message) {
+		System.err.println(message);
+		encounteredError = true;
+	}
+
 	static void error(Token token, String message) {
 		error(token.line, message);
 	}

@@ -7,10 +7,12 @@ abstract class Statement {
 		T visit(statementExpression statement);
 		T visit(Print statement);
 		T visit(VariableDeclaration statement);
+		T visit(FunctionDecleration statement);
 		T visit(Plot statement);
 		T visit(Block statement);
 		T visit(If statement);
 		T visit(While statement);
+		T visit(Return statement);
 	}
 
 	static class statementExpression extends Statement {
@@ -65,6 +67,23 @@ abstract class Statement {
 		}
 	}
 
+	static class FunctionDecleration extends Statement {
+		final Token identifier;
+		final List<Token> parameters;
+		final List<Statement> body;
+
+		FunctionDecleration(Token identifier, List<Token> parameters, List<Statement> body) {
+			this.identifier = identifier;
+			this.parameters = parameters;
+			this.body = body;
+		}
+
+		@Override
+		<R> R accept(Visitor<R> visitor) {
+			return visitor.visit(this);
+		}
+	}
+
 	static class Block extends Statement {
 		final List<Statement> statements;
 
@@ -101,6 +120,21 @@ abstract class Statement {
 		While(Expression expression, Statement body) {
 			this.expression = expression;
 			this.body = body;
+		}
+
+		@Override
+		<R> R accept(Visitor<R> visitor) {
+			return visitor.visit(this);
+		}
+	}
+
+	static class Return extends Statement {
+		final Token reservedWord;
+		final Expression value;
+
+		Return(Token reservedWord, Expression value) {
+			this.reservedWord = reservedWord;
+			this. value = value;
 		}
 
 		@Override
