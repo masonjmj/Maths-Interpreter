@@ -170,19 +170,26 @@ public class Lexer {
 
 	// Match a number with digits and then optionally a decimal and more digits.
 	private void number() {
+		boolean isInt = true;
 		while (Character.isDigit(lookAhead())) {
 			advance();
 		}
 
 		if (lookAhead() == '.' && Character.isDigit(lookAhead(1))) {
 			advance();
+			isInt = false;
 
 			while (Character.isDigit(lookAhead())) {
 				advance();
 			}
 		}
 
+		if (isInt) {
+			addToken(Token.Type.NUMBER, Integer.parseInt(code.substring(startOfLexeme, currentPosition)));
+
+		} else {
 		addToken(Token.Type.NUMBER, Double.parseDouble(code.substring(startOfLexeme, currentPosition)));
+		}
 	}
 
 	private void string() {

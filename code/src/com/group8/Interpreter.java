@@ -17,9 +17,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
+				if (!(arguments.get(0) instanceof Number)) {
 					throw new RuntimeError("Incompatible type for sin function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.sin((int) arguments.get(0));
+					}
 					return Math.sin((double) arguments.get(0));
 				}
 			}
@@ -33,9 +36,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
+				if (!(arguments.get(0) instanceof Number)) {
 					throw new RuntimeError("Incompatible type for cos function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.cos((int) arguments.get(0));
+					}
 					return Math.cos((double) arguments.get(0));
 				}
 			}
@@ -49,9 +55,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
+				if (!(arguments.get(0) instanceof Number)) {
 					throw new RuntimeError("Incompatible type for tan function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.tan((int) arguments.get(0));
+					}
 					return Math.tan((double) arguments.get(0));
 				}
 			}
@@ -65,9 +74,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
-					throw new RuntimeError("Incompatible type for sin function");
+				if (!(arguments.get(0) instanceof Number)) {
+					throw new RuntimeError("Incompatible type for arcsin function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.asin((int) arguments.get(0));
+					}
 					return Math.asin((double) arguments.get(0));
 				}
 			}
@@ -81,9 +93,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
-					throw new RuntimeError("Incompatible type for cos function");
+				if (!(arguments.get(0) instanceof Number)) {
+					throw new RuntimeError("Incompatible type for arccos function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.acos((int) arguments.get(0));
+					}
 					return Math.acos((double) arguments.get(0));
 				}
 			}
@@ -97,12 +112,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (arguments.get(0) == null) {
-					return null;
-				}
-				if (!(arguments.get(0) instanceof Double)) {
-					throw new RuntimeError("Incompatible type for tan function");
+				if (!(arguments.get(0) instanceof Number)) {
+					throw new RuntimeError("Incompatible type for arctan function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.atan((int) arguments.get(0));
+					}
 					return Math.atan((double) arguments.get(0));
 				}
 			}
@@ -116,9 +131,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
+				if (!(arguments.get(0) instanceof Number)) {
 					throw new RuntimeError("Incompatible type for radians function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.toRadians((int) arguments.get(0));
+					}
 					return Math.toRadians((double) arguments.get(0));
 				}
 			}
@@ -132,9 +150,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 			@Override
 			public Object call(Interpreter interpreter, List<Object> arguments) {
-				if (!(arguments.get(0) instanceof Double)) {
-					throw new RuntimeError("Incompatible type for radians function");
+				if (!(arguments.get(0) instanceof Number)) {
+					throw new RuntimeError("Incompatible type for degrees function");
 				} else {
+					if (arguments.get(0) instanceof Integer) {
+						return Math.toDegrees((int) arguments.get(0));
+					}
 					return Math.toDegrees((double) arguments.get(0));
 				}
 			}
@@ -245,8 +266,11 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 		switch (expression.operator.type) {
 			case MINUS:
-				if (!(right instanceof Double)) {
+				if (!(right instanceof Number)) {
 					throw new RuntimeError(expression.operator, "Incompatible type for unary minus operator");
+				}
+				if (right instanceof Integer) {
+					return -(int)right;
 				}
 				return -(double)right;
 			case NOT:
@@ -320,18 +344,33 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 				return left.equals(right);
 			case GREATER:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left > (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left > (int)right;
+				}
+				return ((Number) left).doubleValue() > ((Number) right).doubleValue();
 			case LESS:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left < (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left < (int)right;
+				}
+				return ((Number) left).doubleValue() < ((Number) right).doubleValue();
 			case GREATER_EQUAL:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left >= (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left >= (int)right;
+				}
+				return ((Number) left).doubleValue() >= ((Number) right).doubleValue();
 			case LESS_EQUAL:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left <= (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left <= (int)right;
+				}
+				return ((Number) left).doubleValue() <= ((Number) right).doubleValue();
 			case PLUS:
-				if (left instanceof Double && right instanceof Double) {
+				if ((left instanceof Number) && (right instanceof Number)) {
+					if (left instanceof Integer && right instanceof Integer) {
+						return (int)left + (int) right;
+					}
 					return (double)left + (double)right;
 				}
 				if (left instanceof String && right instanceof String) {
@@ -340,15 +379,27 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 				throw new RuntimeError(expression.operator, "Incompatible types for operator '" + expression.operator.lexeme + "'");
 			case MINUS:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left - (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left - (int)right;
+				}
+				return ((Number) left).doubleValue() - ((Number) right).doubleValue();
 			case TIMES:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left * (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left * (int)right;
+				}
+				return ((Number) left).doubleValue() * ((Number) right).doubleValue();
 			case DIVIDE:
 				checkNumericOperands(expression.operator, left, right);
-				return (double)left / (double)right;
+				if (left instanceof Integer && right instanceof Integer) {
+					return (int)left / (int)right;
+				}
+				return ((Number) left).doubleValue() / ((Number) right).doubleValue();
 			case POWER:
 				checkNumericOperands(expression.operator, left, right);
+				if (left instanceof Integer && right instanceof Integer) {
+					return Math.pow((int) left, (int) right);
+				}
 				return Math.pow((double)left, (double)right);
 		}
 		return null;
@@ -391,7 +442,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 	}
 
 	private void checkNumericOperands(Token operator, Object left, Object right) {
-		if (left instanceof Double && right instanceof Double) {
+		if ((left instanceof Number) && (right instanceof Number)) {
 			return;
 		}
 		throw new RuntimeError(operator, "Incompatible type(s) for '" + operator.lexeme + "'");
