@@ -43,8 +43,8 @@
 
 
 \begin{abstract}
-In this project, our aim was to create a maths-based interpreter, capable of a range of useful mathematical operations outlined by the project breif.
-This inludes expression evaluation and funtion graphing via abstract syntax tree based interpretation. The asbtract syntax tree allows the correct precedence when interpreting based on the depth of the node in the tree. Each node within the tree, implements a visitor pattern allowing further abstraction and generalisation within the interpreter. We used a scrum based devleopment methodology to develop our langugae in sprints, allowing us to evelove our programn over time with frequenct re-adjustment of requirements and functionality.
+In this project, our aim was to create a maths-based interpreter, capable of a range of useful mathematical operations outlined by the project brief.
+This includes expression evaluation and function graphing via abstract syntax tree based interpretation. The abstract syntax tree allows the correct precedence when interpreting based on the depth of the node in the tree. Each node within the tree, implements a visitor pattern allowing further abstraction and generalisation within the interpreter. We used a scrum based development methodology to develop our language in sprints, allowing us to evolve our program over time with frequent re-adjustment of requirements and functionality.
 
 
 and what your final results are, your final outcome or deliverable and conclusion.
@@ -59,7 +59,7 @@ The purpose of this project is to create a piece of software that is an interpre
 It will additionally provide the ability to visualise mathematical functions such as on a graph.
 
 \section{MoSCoW}
-The foillowing outlines the requirements we aim to meet with this software.
+The following outlines the requirements we aim to meet with this software.
 
 \subsection{Musts}
 
@@ -76,7 +76,7 @@ The foillowing outlines the requirements we aim to meet with this software.
 	\item Expressions for variable assignment and exponentiation
 	\item Conditional Statements
 	\item Function Declaration
-	\item Mathmatical function visualisation
+	\item Mathematical function visualisation
 	\item Flexible and scalable architecture
 	\item Simple trigonometric functions
 	\item Zero-crossings finder
@@ -109,7 +109,7 @@ This section outlines the design patterns and data structures we used in our sof
 
 \subsection {Implementation}
 
-Our implementation describes the structure we used to develop our system and the requirments we met in each sprint. It also details how we adapted our requirements overtime.
+Our implementation describes the structure we used to develop our system and the requirements we met in each sprint. It also details how we adapted our requirements overtime.
 
 \subsection {Testing}
 
@@ -117,73 +117,78 @@ The testing section is a record of how we ensured each requirement was met and t
 
 \subsection {Conclusion}
 
-This chapter deatils the success and faliure of our system and what we have achieved during this process.
+This chapter details the successes and failures of our system and what we have achieved during this process.
 
 \chapter{Background}
 
-To better understand what we do and don't want from our software, we analysed systems on the market that have a similar function to our own. We analysed the good and bad features of each and identfied any we would take forward into our own product.
+To better understand what we do and don't want from our software, we analysed systems on the market that have a similar function to our own. We analysed the good and bad features of each and identified any we would take forward into our own product.
 
 \section{Similar Systems}
 
 \subsection{MATLAB\cite{MATLAB}}
 
 MATLAB is a standalone piece of mathematical software designed with a focus on manipulation of mathematical data types such as matrices as well as including generic programming. 
-It is a turing complete language, so it is has a very wide range of possible uses, but it is very much geared towards easily running numeric calculations. It has its own syntax,
+It is a Turing complete language, so it is has a very wide range of possible uses, but it is very much geared towards easily running numeric calculations. It has its own syntax,
 which means that users will have to learn it, but the custom syntax it uses is very similar to many popular programming languages, and so users with that background may find transitioning easier.
-From this program, we like the layout of the user interface. It is intuitive and everything you ened is in easy reach. This is the sort of UI we would liek to implement in our own product.
-However, this program takes up alot of storage and does not run well on lower specification machines. We would like our own product to be able to run on most desktop devices so it is more accessible.
+From this program, we like the layout of the user interface. It is intuitive and everything you need is in easy reach. This is the sort of UI we would like to implement in our own product.
+However, this program takes up a lot of storage and does not run well on lower specification machines. We would like our own product to be able to run on most desktop devices so it is more accessible.
 
 \subsection{Math Inspector\cite{Math_Inspector}}
 
-Math Inspector is a package of addons for Python which allow for mathematical functions to be graphically visualised, both by displaying a flow-type diagram of the function as well as graphing the numeric outputs across a range.
- Since it is an addon for Python, people who are familiar with the language already shouldn't have much difficulty using it. It may, however, mean that people have to install more than what they need in order to get it to run.
-Whilst the python basis may make it easier for some people, many who wish to use this program will have no prior python knowledge. For this reason, we feel the benefits of a familiar language are outweighed bythe cost of having to install the extra programs. Therefore, we will not be doing something similar in own own system.
+Math Inspector is a package of add-ons for Python which allow for mathematical functions to be graphically visualised, both by displaying a flow-type diagram of the function as well as graphing the numeric outputs across a range.
+ Since it is an add-on for Python, people who are familiar with the language already shouldn't have much difficulty using it. It may, however, mean that people have to install more than what they need in order to get it to run.
+Whilst the python basis may make it easier for some people, many who wish to use this program will have no prior python knowledge. For this reason, we feel the benefits of a familiar language are outweighed by the cost of having to install the extra programs. Therefore, we will not be doing something similar in own own system.
 
 \subsection{Wolfram Mathematica\cite{Mathematica}}
 
-Wolfram Mathematica is an interactive tool used to define and visualise mathmatical functions. It's main foucs is using technology to visualise mathmatics and to allow the user to directly implement a vast variety of features. It offers over 5000 different in-built maths functions, meaning it contains very few restrictions. It runs on it's own in-built language which may take the user some time to learn and become familiar with. Its' main strength is definately its advanced visulisation features.
-The vast variety of tools it offers in nice but will be a waste for most people. For our system, we will focus on the most common maths functions to maximise use whilst minimising memory cost. In the future, our system could use addons to cover more areas of mathematics without the user having to install hundreds of tools they will never need.
+Wolfram Mathematica is an interactive tool used to define and visualise mathematical functions. Its main focus is using technology to visualise mathematics and to allow the user to directly implement a vast variety of features. It offers over 5000 different in-built maths functions, meaning it contains very few restrictions. It runs on its own in-built language which may take the user some time to learn and become familiar with. Its' main strength is definitely its advanced visualisation features.
+The vast variety of tools it offers in nice but will be a waste for most people. For our system, we will focus on the most common maths functions to maximise use whilst minimising memory cost. In the future, our system could use add-ons to cover more areas of mathematics without the user having to install hundreds of tools they will never need.
 
 
 \subsection{Maple\cite{Maple}}
 
-Maple offers a number of different versions of its' software allowing the user to tailor their experience before they even download. It's main goal is solving equpations but it still offers an intuetive UI with function visulisation features. It allows the user to explore a range of mathmatical fields by offering a large variety of in-built functions. Similarly to the previous system, it operates using it's own programming language which may take users time to learn and understand. The different versions of the software (tailored based on who is using it) is this systems' main strength.
-Our system should also include an intuative user interface. The different systems versions are a definate positive and something we would take forward in furture versions of our product. For now, our product will focus on the most commonly used areas of mathmeatics to maximise usability.
+Maple offers a number of different versions of its software allowing the user to tailor their experience before they even download. Its main goal is solving equations but it still offers an intuitive UI with function visualisation features. It allows the user to explore a range of mathematical fields by offering a large variety of in-built functions. Similarly to the previous system, it operates using its own programming language which may take users time to learn and understand. The different versions of the software (tailored based on who is using it) is this systems' main strength.
+Our system should also include an intuitive user interface. The different systems versions are a definite positive and something we would take forward in future versions of our product. For now, our product will focus on the most commonly used areas of mathematics to maximise usability.
 
 
 \chapter{Methodology}
 
-Throughout this project, we used a number of different method to implement the variuous features of our software. Theses methods and outline below.
+Throughout this project, we used a number of different method to implement the various features of our software. Theses methods and outline below.
 
-
+\section{Language Grammar}
+Write up grammar
+Code examples
 
 \section{Method 1: Abstract Syntax Tree}
 
 Each operator and operand has its own unique that extends from Expression and each
 statement has its own class that extends from the Statement class. Each node withing
 each of those classes contains information about how that feature functions and stores it’s
-own requisit data.
+own requisite data.
 
 \subsection{Visitor Design Pattern}
 
 This design pattern implements an interface which allows code to be run differently based
-on the type of the nodew within the tree.
+on the type of the node within the tree.
+-Add code snippet-
 
 \section{Method 2: Recursive Decent}
 
-This algorithms is a type of tope down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar
+This algorithms is a type of top-down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar
+-Pseudo code for parser-
 
 \section{Method 3: Post-Order Traversal}
 
 This algorithm is used to traverse the abstract syntax tree. Used to evaluate expressions
 within the interpreter. It makes use of the visitor patterns as it calls this pattern at each
 node to understand how to handle each node. It traverses in a depth-first manner.
+-Explanatory tree diagram-
 
 
 
 \chapter{Implementation}\label{Impl}
 
-We are implementing the agile development methodology for this project with a SCRUM inspired approach, using short 1-2 week sprints and adjusting the devleopment trajectory at the end of each.
+We are implementing the agile development methodology for this project with a SCRUM inspired approach, using short 1-2 week sprints and adjusting the development trajectory at the end of each.
 
 \section{Sprint 1}
 
@@ -228,24 +233,24 @@ For our second sprint, we defined the following set of requirements:
 \begin{enumerate}
 \item Allow the program to recognise variable identifiers
 \item Be able to assign value to a variable
-\item The program should be able to evalute expression that contain pre-defined variables
+\item The program should be able to evaluate expression that contain pre-defined variables
 \end{enumerate}
 
 \subsection{Requirement 1: }
 
-The lexer class cycles through the chracters typed by the user. If the character is not a number or a reserved symbol, the program identifies it as a variable. the concecutive characters are then checked and added to the variable name if they are alphanumeric. This process ends when a non-alphanumeric charcter is reached.
+The lexer class cycles through the characters typed by the user. If the character is not a number or a reserved symbol, the program identifies it as a variable. the consecutive characters are then checked and added to the variable name if they are alphanumeric. This process ends when a non-alphanumeric character is reached.
 The symbol table has also been updated so it can hold variable names as well as numbers.
-This requirement has been succefully met.
+This requirement has been successfully met.
 
 \subsection{Requirement 2: }
 
-To begin developing the assignmnet functionality, we have used the equals sign to represent assignment for simplicity. This sign has be added as a reserved character to identify assignment operations. When an equals gin is preceded by a varible and proceeded by an integer, the interger value is mapped to the varible. If the assignment value is an expression, the expression is evaluated and the soltuion mapped to the variable.
+To begin developing the assignment functionality, we have used the equals sign to represent assignment for simplicity. This sign has be added as a reserved character to identify assignment operations. When an equals gin is preceded by a variable and proceeded by an integer, the integer value is mapped to the variable. If the assignment value is an expression, the expression is evaluated and the solution mapped to the variable.
 This requirement has been successfully met.
 
 \subsection{Requirement 3: }
 
-When the program evaluates an expression that contains a varible, the execution class identifes the value mapped to the variable and replaces it in the expression. The xpression is then evalutated as normal and the solution displayed.
-This requirement has been succefully met.
+When the program evaluates an expression that contains a variable, the execution class identifies the value mapped to the variable and replaces it in the expression. The expression is then evaluated as normal and the solution displayed.
+This requirement has been successfully met.
 
 \section{Sprint 3}
 
@@ -257,13 +262,13 @@ For our second sprint, we defined the following set of requirements:
 \item Allowing the support of floats
 \end{enumerate}
 
-We were able to fully implement and test these requirements quickly so we intergrated
+We were able to fully implement and test these requirements quickly so we integrated
 a number of extra features into our program on top of our base requirements. These
 included:
 \begin{enumerate}
 \item Support for negative numbers and unary operators
 \item Support for simple statements including print, variable declaration and graph plotting
-\item  Ability to calculate exponentials
+\item  Ability to calculate exponential expressions
 \end{enumerate}
 
 \subsubsection{Requirement 1: }
@@ -272,49 +277,49 @@ Each type of operator has it's own class. The depth of the tree determines the o
 
 \subsubsection {Requirement 2: }
 
-To add the graph, we used the Java2D library. Our programn take each point, as calculated by the interpreter, and maps them onto a simple axis in a window. Currently, this graph only supports positive axis and does not scale with the window size, this means only simple functions can be plotted.
+To add the graph, we used the Java2D library. Our program take each point, as calculated by the interpreter, and maps them onto a simple axis in a window. Currently, this graph only supports positive axis and does not scale with the window size, this means only simple functions can be plotted.
 
 \subsubsection {Requirement 3: }
 
-To support floats, our program detecs any dots within a number. If a dot is preset, it continues to sacn through until the end of the number is reached. This value is then saved as a float rather than a double.
+To support floats, our program detects any dots within a number. If a dot is preset, it continues to scan through until the end of the number is reached. This value is then saved as a float rather than a double.
 
 \subsubsection {Extra Requirement 1: }
 
-We have another class within the abstyract syntax tree that supports unary operators, including negative numebrs.
+We have another class within the Abstract Syntax Tree (AST) that supports unary operators, including negative numbers.
 
 \subsubsection {Extra Requirement 2: }
 
-Statements also become part of the ast. The experessions they contain are the children of the statement within the tree.
+Statements also become part of the AST. The expressions they contain are the children of the statement within the tree.
 
 \subsubsection { Extra Requirement 3: }
 
-Exponentials are identified in the same way as other binary opperators. There is a new step in the parsing process required for it as it has a higher priority than most other opperators.
+Exponential operations are identified in the same way as other binary operators. There is a new step in the parsing process required for it as it has a higher priority than most other operators.
 
 
 \section{Sprint 4}
 Our fourth sprint involved the following set of requirements:
 \begin{enumerate}
-\item Adding support for negative numebrs on the graph
+\item Adding support for negative numbers on the graph
 \item Allowing the graph to change size dynamically with the window size
-\item Add support for boolean types and logic
+\item Add support for Boolean types and logic
 \item Add support for control flow statements
 \item Add variable scoping
 \end{enumerate}
 
 \subsubsection{Requirement 1: }
-This additon was relatively simple. We change to code4 to draw to lines that crossed in the center to act as the axis, we also modified our mapping function to account for  the change in position of (0,0).
+This addition was relatively simple. We change to code4 to draw to lines that crossed in the center to act as the axis, we also modified our mapping function to account for  the change in position of (0,0).
 \subsubsection{Requirement 2: }
 During our research for this requirement, we found that JPanel has built in getWidth() and getHeight() functions. This meant we could replace our hard-coded constants for these values in our calculations which meant anything drawn in the window would automatically scale as the window size was changed.
-We also found out abou the Points2D library which is compatible with Java 2D, so we changed our code to handle points with this library rather than manually.
+We also found out about the Points2D library which is compatible with Java 2D, so we changed our code to handle points with this library rather than manually.
 \subsubsection{Requirement 3: }
-This is another literal type and the comparissons for them are binary operators that exist within the abstract syntax tree. We also have support for "and" and "or" which works similarly to other binary operators but with the ability to short circuit depending on the first operand.
+This is another literal type and the comparisons for them are binary operators that exist within the abstract syntax tree. We also have support for "and" and "or" which works similarly to other binary operators but with the ability to short circuit depending on the first operand.
 \subsubsection{Requirement 4: }
-Similary to other statements, these additions are new nodes in the syntax tree with the same precedence as other statements like print. If statments looks for an expression as the condition and a statement as the thing to do if the condition is true. While statements work similarly except for that they repeat the statement until the expression is no longer true.
+Similarly to other statements, these additions are new nodes in the syntax tree with the same precedence as other statements like print. If statements looks for an expression as the condition and a statement as the thing to do if the condition is true. While statements work similarly except for that they repeat the statement until the expression is no longer true.
 \subsubsection{Requirement 5: }
-A variable defined within a block statement will be local to that block. Any variables created within that block are discarded once that block has been completed. A new enviroment is created when a block statement is enetered and any variables are kept there.
+A variable defined within a block statement will be local to that block. Any variables created within that block are discarded once that block has been completed. A new environment is created when a block statement is entered and any variables are kept there.
 
 \subsection{Sprint 5}
-These were the frequirements we outlined for our final sprint:
+These were the requirements we outlined for our final sprint:
 \begin{enumerate}
 \item Adding function syntax
 \item Creating a degrees to radians function
@@ -322,6 +327,17 @@ These were the frequirements we outlined for our final sprint:
 \item Create a root finding algorithm to solve equations
 \end{enumerate}
 
+\subsubsection{Requirement 1: }
+This works similarly to defining a variable. The identifier of the name of the function is saved as a variable with a special type known as Function. only variables with this type can be used with the call operator (open and close bracket) with parameters inside (if required). The fact it is treated as a variable means it can be passed as such. This allows a function to return a function or pass it as an argument.
+
+\subsubsection{Requirement 2: }
+We have implemented the ability to convert between degrees and radians, such that it can be called with the above function syntax, making it a native function.
+
+\subsubsection{Requirement 3: }
+We created more native functions to allow the user to define the parameters of the graph which are then used when the plot statement is used.
+
+\subsubsection{Requirement 4: }
+Time restrictions on this project meant we were unable to meet this requirement.
 
 \chapter{Testing}
 
@@ -331,14 +347,14 @@ This section details the testing we performed at the end of each sprint to make 
 
 \begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
 1 & The program is able to identify a number & 5 \newline 83 \newline 324876312487124  &  PASSED \newline PASSED \newline FAILED \\
-2 & The program can idenify and evaluate an addition expression & 5+5 \newline 54+6 \newline 2+7  &  PASSED \newline PASSED \newline PASSED \\
-3 & The program can idenify and evaluate a subtraction expression & 5-5 \newline 18-9 \newline 4-0  &  PASSED \newline PASSED \newline PASSED \\
-4 & The program can idenify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  &  PASSED \newline PASSED \newline PASSED \\
-5 & The program can idenify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  &  PASSED \newline PASSED \newline PASSED \\
-6 & The program can evalute expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  &  PASSED \newline PASSED \newline PASSED \\
-7 & The program can idenify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 &  PASSED \newline PASSED \newline PASSED \\
-8 & The program can idenify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  &  PASSED \newline PASSED \newline PASSED \\
-9 & The program can idenify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
+2 & The program can identify and evaluate an addition expression & 5+5 \newline 54+6 \newline 2+7  &  PASSED \newline PASSED \newline PASSED \\
+3 & The program can identify and evaluate a subtraction expression & 5-5 \newline 18-9 \newline 4-0  &  PASSED \newline PASSED \newline PASSED \\
+4 & The program can identify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  &  PASSED \newline PASSED \newline PASSED \\
+5 & The program can identify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  &  PASSED \newline PASSED \newline PASSED \\
+6 & The program can evaluate expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  &  PASSED \newline PASSED \newline PASSED \\
+7 & The program can identify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 &  PASSED \newline PASSED \newline PASSED \\
+8 & The program can identify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  &  PASSED \newline PASSED \newline PASSED \\
+9 & The program can identify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
 \end{tabular}
 
 \section{Sprint 2}
@@ -346,8 +362,8 @@ This section details the testing we performed at the end of each sprint to make 
 \begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
 1 & The program can assign a value to a variable & x=5 \newline foo=56 \newline y=9  &  PASSED \newline PASSED \newline FAILED \\
 2 & The program can assign an expression to a variable & a = 19+7 \newline y = 7-5 \newline bar = 3*6  &  PASSED \newline PASSED \newline PASSED \\
-3 & The program can evaluate an expression that inclues a variable & x-10 \newline y = 7+x \newline foo*x  &  PASSED \newline PASSED \newline PASSED \\
-4 & The program can idenifyincorrect assignment expression & 5x \newline x465 \newline foo x+6  &  FAILED \newline FAILED \newline FAILED \\
+3 & The program can evaluate an expression that includes a variable & x-10 \newline y = 7+x \newline foo*x  &  PASSED \newline PASSED \newline PASSED \\
+4 & The program can identify incorrect assignment expression & 5x \newline x465 \newline foo x+6  &  FAILED \newline FAILED \newline FAILED \\
 \end{tabular}
 
 \chapter{Discussion, conclusion and future work}
@@ -365,6 +381,7 @@ State here the \% contribution to the project of each individual member of the g
 \chapter*{Appendix A}
 
 Put in tables of data or protocols (e.g. for testing) or code listings or UML diagrams which may take up several pages and do not sit well in the main body text.
+
 
 \end{document}
 
