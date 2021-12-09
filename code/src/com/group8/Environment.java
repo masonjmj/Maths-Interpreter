@@ -32,6 +32,18 @@ public class Environment {
 		throw new RuntimeError(identifier, "Undefined variable '" + identifier.lexeme + "'");
 	}
 
+	public Object get(String identifier){
+		if (values.containsKey(identifier)) {
+			return values.get(identifier);
+		}
+
+		if (enclosing != null) {
+			return enclosing.get(identifier);
+		}
+
+		throw new RuntimeError("Undefined variable '" + identifier + "'");
+	}
+
 	public void assign(Token identifier, Object value) {
 		if (values.containsKey(identifier.lexeme)) {
 			values.put(identifier.lexeme, value);
@@ -43,5 +55,18 @@ public class Environment {
 		}
 
 		throw new RuntimeError(identifier, "Undefined variable '" + identifier.lexeme + "'");
+	}
+
+	public void assign(String identifier, Object value) {
+		if (values.containsKey(identifier)) {
+			values.put(identifier, value);
+			return;
+		}
+		if (enclosing != null) {
+			enclosing.assign(identifier, value);
+			return;
+		}
+
+		throw new RuntimeError("Undefined variable '" + identifier + "'");
 	}
 }

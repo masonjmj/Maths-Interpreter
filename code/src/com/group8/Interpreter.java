@@ -7,6 +7,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 	final Environment globalEnvironment = new Environment();
 	private Environment environment = globalEnvironment;
+	private plotGraph graph = new plotGraph();
 
 	Interpreter() {
 		globalEnvironment.define("sin", new Function() {
@@ -161,6 +162,43 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			}
 		});
 
+		globalEnvironment.define("minPoint", new Function() {
+			@Override
+			public int numberOfArguments() {
+				return 2;
+			}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				graph.setMinPoint(((Number) arguments.get(0)).doubleValue(), ((Number) arguments.get(1)).doubleValue());
+				return(arguments.get(0));
+			}
+		});
+
+		globalEnvironment.define("maxPoint", new Function() {
+			@Override
+			public int numberOfArguments() {return 2;}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				graph.setMaxPoint(((Number) arguments.get(0)).doubleValue(), ((Number) arguments.get(1)).doubleValue());
+				return(arguments.get(0));
+
+			}
+		});
+
+		globalEnvironment.define("setIncrement", new Function() {
+			@Override
+			public int numberOfArguments() {return 2;}
+
+			@Override
+			public Object call(Interpreter interpreter, List<Object> arguments) {
+				graph.setIncrement(((Number) arguments.get(0)).doubleValue(), ((Number) arguments.get(1)).doubleValue());
+				return(arguments.get(0));
+
+			}
+		});
+
 		globalEnvironment.define("PI", Math.PI);
 	}
 
@@ -197,23 +235,23 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 	@Override
 	public Void visit(Statement.Plot statement) {
-		plotGraph graph = new plotGraph();
-		Expression.Variable var = findVariable(statement.expression);
-		if(var!=null){
-			double value = (double) environment.get(var.identifier);
-			double max = value+100;
-			double resolution = 0.1;
-			for(double i = value;i<max; i+= resolution){
-				//System.out.println("("+i+","+evaluate(statement.expression)+")");
-				graph.addPoint(i, (Double) evaluate(statement.expression));
-				environment.assign(var.identifier, (double)environment.get(var.identifier) + resolution);
-			}
-			environment.assign(var.identifier, value);
-			graph.initUI();
-			graph.setVisible(true);
-		}else{
-			System.out.println("ERR");
+		graph.points.clear();
+		//Expression.Variable var = findVariable(statement.expression);
+		Environment prevEnv = environment;
+		environment = new Environment(environment);
+		environment.define("x", graph.minPoint.getX());
+		double value = ((Number) environment.get("x")).doubleValue();
+		double max = graph.getMaxX();
+		double resolution = 0.1;
+		for(double i = value;i<max; i+= resolution){
+			//System.out.println("("+i+","+evaluate(statement.expression)+")");
+		graph.addPoint(i, ((Number) evaluate(statement.expression)).doubleValue());
+		environment.assign("x", ((Number) environment.get("x")).doubleValue() + resolution);
 		}
+		environment.assign("x", value);
+		graph.initUI();
+		graph.setVisible(true);
+		environment = prevEnv;
 		return null;
 	}
 
@@ -340,6 +378,12 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			case EQUAL:
 				if (left == null) {
 					return right == null;
+				}else if(left instanceof Number && right instanceof Number) {
+					if(left instanceof Integer && right instanceof Integer){
+						return (int) left == (int) right;
+					}else {
+						return ((Number) left).doubleValue() == ((Number) right).doubleValue();
+					}
 				}
 				return left.equals(right);
 			case GREATER:
@@ -371,7 +415,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 					if (left instanceof Integer && right instanceof Integer) {
 						return (int)left + (int) right;
 					}
-					return (double)left + (double)right;
+					return ((Number)left).doubleValue() + ((Number) right).doubleValue();
 				}
 				if (left instanceof String && right instanceof String) {
 					return (String)left + (String)right;
@@ -400,7 +444,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 				if (left instanceof Integer && right instanceof Integer) {
 					return Math.pow((int) left, (int) right);
 				}
-				return Math.pow((double)left, (double)right);
+				return Math.pow(((Number) left).doubleValue(),((Number) right).doubleValue());
 		}
 		return null;
 	}

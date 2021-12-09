@@ -12,12 +12,16 @@ public class Graph extends JPanel {
     ArrayList<Point2D.Double> points;
     Point2D.Double maxPoint;
     Point2D.Double minPoint;
+    Double xIncrement;
+    Double yIncrement;
 
 
-    public Graph(ArrayList p){
+    public Graph(ArrayList p, Point2D.Double max, Point2D.Double min, Double xinc, Double yinc){
         points = p;
-        maxPoint = new Point2D.Double(10, 10);
-        minPoint = new Point2D.Double(-10,-10);
+        maxPoint = max;
+        minPoint = min;
+        xIncrement = xinc;
+        yIncrement = yinc;
     }
 
 //    private double getX(double x){
@@ -42,13 +46,11 @@ public class Graph extends JPanel {
     private void doDrawing(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
-        System.out.println(getWidth()+ " " + getHeight());
 
 //        g2d.draw(new Line2D.Double(getWidth()/2, 0, getWidth()/2, getHeight()));
 //        g2d.draw(new Line2D.Double(0, getHeight()/2, getWidth(), getHeight()/2));
 
-        double xIncrement = 1;
-
+        System.out.println(xIncrement);
         for (double i = 0; i < maxPoint.getX(); i += xIncrement) {
             if (i == 0) {
                 g2d.setStroke(new BasicStroke(5));
@@ -68,8 +70,6 @@ public class Graph extends JPanel {
         }
 
 
-
-        double yIncrement = 1;
 
         for(double i = 0; i < maxPoint.getY(); i += yIncrement) {
             if (i == 0) {
@@ -96,7 +96,6 @@ public class Graph extends JPanel {
         for(int i=0; i < points.size()- 1; i++){
             pointA = mapPoint(points.get(i));
             pointB = mapPoint(points.get(i+1));
-            System.out.println(pointA);
             g2d.draw(new Line2D.Double(pointA,pointB));
         }
     }
