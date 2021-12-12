@@ -442,7 +442,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 			case POWER:
 				checkNumericOperands(expression.operator, left, right);
 				if (left instanceof Integer && right instanceof Integer) {
-					return Math.pow((int) left, (int) right);
+					return (int)Math.pow((int) left, (int) right);
 				}
 				return Math.pow(((Number) left).doubleValue(),((Number) right).doubleValue());
 		}
