@@ -1,6 +1,6 @@
 
 \documentclass[a4paper, oneside, 11pt]{report}
-\usepackage{epsfig,pifont,float,multirow,amsmath,amssymb}
+\usepackage{epsfig,pifont,float,multirow,amsmath,amssymb, listings}
 \newcommand{\mc}{\multicolumn{1}{c|}}
 \newcommand{\mb}{\mathbf}
 \newcommand{\mi}{\mathit}
@@ -188,7 +188,14 @@ This design pattern implements an interface which allows code to be run differen
 on the type of the node within the tree.
 -Add code snippet-
 
+\begin{lstlisting}[language = Java, breaklines=true, showstringspaces=false, tabsize=2]  % Start your code-block
 
+	private Statement expressionStatement() {
+		Expression expression = expression();
+		consume(Token.Type.SEMICOLON, "';' expected");
+		return new Statement.statementExpression(expression);
+	}
+	\end{lstlisting}
 
 
 

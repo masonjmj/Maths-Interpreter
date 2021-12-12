@@ -496,30 +496,4 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		if (object instanceof Boolean) return (boolean) object;
 		return false;
 	}
-
-	private Expression.Variable findVariable(Expression expression){
-		if(expression instanceof Expression.Variable) {
-			return (Expression.Variable) expression;
-		}
-		if(expression instanceof Expression.Literal) {
-			return null;
-		}
-		if(expression instanceof Expression.Group){
-			return findVariable(((Expression.Group) expression).expression);
-		}
-		if(expression instanceof Expression.Unary){
-			return findVariable(((Expression.Unary) expression).right);
-		}
-		if(expression instanceof Expression.Binary){
-			Expression l = findVariable(((Expression.Binary) expression).left);
-			if(l != null){
-				return (Expression.Variable) l;
-			}else{
-				return findVariable(((Expression.Binary) expression).right);
-			}
-		}
-
-		return null;
-
-	}
 }
