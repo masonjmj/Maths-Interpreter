@@ -159,13 +159,28 @@ Throughout this project, we used a number of different method to implement the v
 Write up grammar
 Code examples
 
+\section{Method 1: Recursive Decent}
 
-\section{Method 1: Abstract Syntax Tree}
+This algorithm is a type of top-down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar
+-Pseudo code for parser-
 
-Each operator and operand has its own unique that extends from Expression and each
-statement has its own class that extends from the Statement class. Each node within
-each of those classes contains information about how that feature functions and stores its
-own requisite data.
+\section{Method 2: Abstract Syntax Tree}
+
+Each type of operator (e.g. binary, unary, etcetera) is defined by a class that extends the Expression class.
+Each of these acts as a node in the tree and stores leaf nodes containing other expressions.
+Statements work similarly but extend from the Statement class instead.
+
+\subsection{Post-Order Traversal}
+
+The way that the abstract syntax tree is constructed ensures that performing a post order traversal on it performs 
+the operations in accordance with the precedence rules of the language. See figure \ref{fig:AST} for an example.
+
+\begin{figure}[htb]
+	\includegraphics[width=1.0 \columnwidth]{AST.png}
+	\caption{An abstract syntax tree for  the expression $2 \string^ 2 + 4 * 6 / 4 * (3+2) -4$}
+	\label{fig:AST}
+	\end{figure}
+
 
 \subsection{Visitor Design Pattern}
 
@@ -173,17 +188,9 @@ This design pattern implements an interface which allows code to be run differen
 on the type of the node within the tree.
 -Add code snippet-
 
-\section{Method 2: Recursive Decent}
 
-This algorithm is a type of top-down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar
--Pseudo code for parser-
 
-\section{Method 3: Post-Order Traversal}
 
-This algorithm is used to traverse the abstract syntax tree. Used to evaluate expressions
-within the interpreter. It makes use of the visitor patterns as it calls this pattern at each
-node to understand how to handle each node. It traverses in a depth-first manner.
--Explanatory tree diagram-
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  12 DEC 2021 14:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  12 DEC 2021 16:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -197,57 +197,62 @@ Chapter 2.
 
 ] [4]
 Chapter 3.
-[5
-
-]
-Chapter 4.
-[6
-
-] [7] [8] [9] [10]
-Chapter 5.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 349.
+<AST.png, id=27, 746.79pt x 627.34375pt>
+File: AST.png Graphic file (type png)
+<use AST.png>
+Package pdftex.def Info: AST.png  used on input line 179.
+(pdftex.def)             Requested size: 425.0pt x 357.02487pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 180.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 349.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 180.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 349--349
+) [5
+
+] [6 <./AST.png>]
+Chapter 4.
+[7
+
+] [8] [9] [10] [11]
+Chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--356
 []\OT1/cmr/m/n/10.95 Test
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--363
+Underfull \hbox (badness 10000) in paragraph at lines 370--370
 []\OT1/cmr/m/n/10.95 Test
  []
 
-[11
+[12
 
-] [12]
+] [13]
 Chapter 6.
-(./CMP-6048A_REPORT.bbl [13
+(./CMP-6048A_REPORT.bbl [14
 
-]) [14
-
-] [15
+]) [15
 
 ] [16
 
+] [17
+
 ] (./CMP-6048A_REPORT.aux) ) 
 Here is how much of TeX's memory you used:
- 2826 strings out of 478599
- 37908 string characters out of 5858101
- 347561 words of memory out of 5000000
- 20672 multiletter control sequences out of 15000+600000
+ 2836 strings out of 478599
+ 38016 string characters out of 5858101
+ 347571 words of memory out of 5000000
+ 20680 multiletter control sequences out of 15000+600000
  412484 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,8n,80p,771b,184s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on CMP-6048A_REPORT.pdf (18 pages, 129739 bytes).
+ 72i,8n,80p,771b,254s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on CMP-6048A_REPORT.pdf (19 pages, 160795 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
