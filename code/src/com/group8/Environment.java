@@ -4,8 +4,12 @@ import javax.xml.namespace.QName;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A class to represent variable scope
+ */
 public class Environment {
 	final Environment enclosing;
+	// Variables stored in a map so their value can be accessed by a key
 	private final Map<String, Object> values = new HashMap<>();
 
 	Environment() {
@@ -13,7 +17,7 @@ public class Environment {
 	}
 
 	Environment(Environment enclosing) {
-		this.enclosing = enclosing;
+		this.enclosing = enclosing; // Stores parent environment so that it can be accessed if a variable isn't found in this scope
 	}
 
 	public void define(String identifier, Object value) {
@@ -26,7 +30,7 @@ public class Environment {
 		}
 
 		if (enclosing != null) {
-			return enclosing.get(identifier);
+			return enclosing.get(identifier); // Checks parent environment (outer scope) if variable isn't found
 		}
 
 		throw new RuntimeError(identifier, "Undefined variable '" + identifier.lexeme + "'");

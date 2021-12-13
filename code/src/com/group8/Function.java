@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Function {
 
-	private final Statement.FunctionDecleration declaration;
+	private final Statement.FunctionDeclaration declaration;
 	private final Environment closure;
 
 	Function() {
 		this(null, null);
 	}
 
-	Function(Statement.FunctionDecleration declaration, Environment closure) {
+	Function(Statement.FunctionDeclaration declaration, Environment closure) {
 		this.declaration = declaration;
 		this.closure = closure;
 	}

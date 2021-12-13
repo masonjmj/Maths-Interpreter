@@ -3,6 +3,10 @@ package com.group8;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * A class to check correct syntax and construct the abstract syntax tree
+ */
 public class Parser {
 	private static class ParseError extends RuntimeException {}
 	private final List<Token> tokens;
@@ -40,7 +44,7 @@ public class Parser {
 		Token identifier = consume(Token.Type.IDENTIFIER, "Function name expected");
 		consume(Token.Type.LEFT_BRACKET, "( expected after function name");
 		List<Token> paramaters = new ArrayList<>();
-		if (!check(Token.Type.RIGHT_BRACKET)) {
+		if (!check(Token.Type.RIGHT_BRACKET)) { // Add parameters until right bracket
 			do {
 				paramaters.add(consume(Token.Type.IDENTIFIER, "Parameter name expected"));
 			} while (match(Token.Type.COMMA));
@@ -49,7 +53,7 @@ public class Parser {
 
 		consume(Token.Type.LEFT_CURLY_BRACKET, "{ expected before function body");
 		List<Statement> body = block();
-		return new Statement.FunctionDecleration(identifier, paramaters, body);
+		return new Statement.FunctionDeclaration(identifier, paramaters, body);
 	}
 
 	private Statement variableDeclaration() {
@@ -103,7 +107,7 @@ public class Parser {
 
 	private List<Statement> block() {
 		List<Statement> statements = new ArrayList<>();
-		while (!check(Token.Type.RIGHT_CURLY_BRACKET) && !atEndOfInput()) {
+		while (!check(Token.Type.RIGHT_CURLY_BRACKET) && !atEndOfInput()) { // Matches statements until the closing bracket
 			statements.add(declaration());
 		}
 		consume(Token.Type.RIGHT_CURLY_BRACKET, "Unmatched {");
@@ -165,7 +169,7 @@ public class Parser {
 	private Expression or() {
 		Expression expression = and();
 
-		return orPrime(expression);
+		return orPrime(expression); // Prime function handles a variable number being matched without getting stuck in a loop
 	}
 
 	private Expression orPrime(Expression expression) {
@@ -295,7 +299,7 @@ public class Parser {
 
 	private Expression completeCall(Expression callingExpression) {
 		List<Expression> arguments = new ArrayList<>();
-		if (!check(Token.Type.RIGHT_BRACKET)) {
+		if (!check(Token.Type.RIGHT_BRACKET)) { // Matches arguments
 			do {
 				arguments.add(expression());
 			} while (match(Token.Type.COMMA));
