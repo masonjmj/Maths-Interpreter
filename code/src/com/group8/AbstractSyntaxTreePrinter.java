@@ -30,17 +30,17 @@ public class AbstractSyntaxTreePrinter implements Expression.Visitor<String> {
 
 	@Override
 	public String visit(Expression.Variable expression) {
-		return null;
+		return expression.identifier.lexeme;
 	}
 
 	@Override
 	public String visit(Expression.Assignment expression) {
-		return null;
+		return group(expression.identifier.lexeme, expression.value);
 	}
 
 	@Override
 	public String visit(Expression.Logical expression) {
-		return null;
+		return group(expression.operator.lexeme, expression.left, expression.right);
 	}
 
 	@Override

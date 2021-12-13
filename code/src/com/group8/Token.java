@@ -1,6 +1,13 @@
 package com.group8;
 
+/**
+ * A class to store all the relevant information for a token
+ */
 public class Token {
+
+	/**
+	 * An enum for all the possible token types
+	 */
 	public enum Type{
 		//Operators
 		PLUS,
@@ -48,8 +55,19 @@ public class Token {
 	}
 
 	final Type type;
+	/**
+	 * The entered string that was analysed as this token
+	 */
 	final String lexeme;
+
+	/**
+	 * The literal value of the corresponding Java type if this token is a literal
+	 */
 	final Object literal;
+
+	/**
+	 * The line this token occurred on
+	 */
 	final int line;
 
 

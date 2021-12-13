@@ -3,11 +3,12 @@ package com.group8;
 import java.util.List;
 
 abstract class Statement {
+	// Visitor interface used to implement the visitor design pattern
 	interface Visitor<T>{
 		T visit(statementExpression statement);
 		T visit(Print statement);
 		T visit(VariableDeclaration statement);
-		T visit(FunctionDecleration statement);
+		T visit(FunctionDeclaration statement);
 		T visit(Plot statement);
 		T visit(Block statement);
 		T visit(If statement);
@@ -22,6 +23,8 @@ abstract class Statement {
 			this.expression = expression;
 		}
 
+		// Overrides accept to fulfil extending Statement and so that the visit function can be
+		// called in anything that implements the visitor interface
 		@Override
 		<T> T accept(Visitor<T> visitor) {
 			return visitor.visit(this);
@@ -67,12 +70,12 @@ abstract class Statement {
 		}
 	}
 
-	static class FunctionDecleration extends Statement {
+	static class FunctionDeclaration extends Statement {
 		final Token identifier;
 		final List<Token> parameters;
 		final List<Statement> body;
 
-		FunctionDecleration(Token identifier, List<Token> parameters, List<Statement> body) {
+		FunctionDeclaration(Token identifier, List<Token> parameters, List<Statement> body) {
 			this.identifier = identifier;
 			this.parameters = parameters;
 			this.body = body;

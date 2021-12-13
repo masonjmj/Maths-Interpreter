@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A class to handle lexical analysis of the source code
+ */
 public class Lexer {
 	private static final Map<String, Token.Type> reservedWords =
 			Map.ofEntries(
@@ -32,6 +35,9 @@ public class Lexer {
 		this.code = code;
 	}
 
+	/**
+	 * @return A list of tokens analysed from the source code
+	 */
 	List<Token> analyse() {
 		while (!atEndOfInput()) {
 			startOfLexeme = currentPosition;
@@ -211,6 +217,7 @@ public class Lexer {
 		addToken(Token.Type.STRING, code.substring(startOfLexeme+1, currentPosition -1));
 	}
 
+	// Match a valid identifier string
 	private void identifier() {
 		while (Character.isLetterOrDigit(lookAhead())) {
 			advance();
