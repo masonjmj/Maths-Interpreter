@@ -16,4 +16,9 @@ Wolfram, The Wolfram Centre, Lower Road, Long Hanborough, Oxfordshire OX29 8FD,
 Maplesoft, 615 Kumpf Drive, Waterloo, ON, Canada, N2V 1K8.
 \newblock {\em Maple}, 2021.
 
+\bibitem{nystrom:2021}
+Robert Nystrom.
+\newblock {\em Crafting interpreters}.
+\newblock Genever Benning, 2021.
+
 \end{thebibliography}
