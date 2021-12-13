@@ -66,7 +66,7 @@ The following outlines the requirements we aim to meet with this software.
 \begin{itemize}
 	\item Expressions for basic arithmetic
 	\item Print Statements
-	\item Commands
+	\item Other Commands
 	\item Custom syntax using a custom lexer and parser
 \end{itemize}
 
@@ -341,30 +341,39 @@ Time restrictions on this project meant we were unable to meet this requirement.
 
 \chapter{Testing}
 
-This section details the testing we performed at the end of each sprint to make sure we meet each of the requirements set out at the beginning of the sprint.
+This section details the testing we performed to make sure we meet each of the requirements our software aims to achieve. When we were just beginning the program, we used a cyclical testing. This meant we continually tested each feature as it was developed. Once we had finished the first two sprints, we switched to unit testing and began testing the individual components of the code. The result of our initial testing for sprint one and two are recorded (see appendix) as are the results of our component tests (see appendix A.1).
 
-\section{Sprint 1}
+Once the program was complete, we conducted a full black box test of our program. This means testing our program as if we did not have access to the code. We tested each requirement by splitting it into sub requirements and performing multiple tests for each. An example of the testing for our first requirement is given here.
 
-\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
-1 & The program is able to identify a number & 5 \newline 83 \newline 324876312487124  &  PASSED \newline PASSED \newline FAILED \\
-2 & The program can identify and evaluate an addition expression & 5+5 \newline 54+6 \newline 2+7  &  PASSED \newline PASSED \newline PASSED \\
-3 & The program can identify and evaluate a subtraction expression & 5-5 \newline 18-9 \newline 4-0  &  PASSED \newline PASSED \newline PASSED \\
-4 & The program can identify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  &  PASSED \newline PASSED \newline PASSED \\
-5 & The program can identify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  &  PASSED \newline PASSED \newline PASSED \\
-6 & The program can evaluate expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  &  PASSED \newline PASSED \newline PASSED \\
-7 & The program can identify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 &  PASSED \newline PASSED \newline PASSED \\
-8 & The program can identify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  &  PASSED \newline PASSED \newline PASSED \\
-9 & The program can identify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
+\begin{table}
+\label{tab:req1}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 1:}             & \multicolumn{3}{l}{Expressions For Basic Arithmetics} \\ \hline
+\multicolumn{2}{l}{Sub-Requirement 1:}         & \multicolumn{3}{l}{Addition Expressions}              \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+1                            & print(1+2)      & 3                                     &    3     & P    \\
+2                            & print(3.2+5.6)  & 8.8                                  &     8.8    & P    \\
+3                            & print(-10+185)  & 175                                   &    175     & P    \\
+\multicolumn{2}{l}{Sub-Requirement 2:}         & \multicolumn{3}{l}{Subtraction Expressions}           \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+1                            & print(10-8)     & 2                                     &    2     &  P   \\
+2                            & print(50-263)   & -213                                  &    -213     &P     \\
+3                            & print(10.6-0.5) & 10.1                                  &    10.1     & P    \\
+\multicolumn{2}{l}{Sub-Requirement 3:}         & \multicolumn{3}{l}{Multiplication Expressions}        \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+1                            & print(4*7)      & 28                                    &    28     &    P \\
+2                            & print(20*5.8)   & 116.0                                   &    116.0     &P     \\
+3                            & print(-3*10)    & -30                                   &    -30     & P    \\
+\multicolumn{2}{l}{Sub-Requirement 4:}         & \multicolumn{3}{l}{Division Expressions}        \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+1                            & print(10/4)      & 2                                    &  2       & P    \\
+2                            & print(500/2.3)   & 217.39..                                   &  217.39..       &    P \\
+3                            & print(-25/5)    & -5                                   &     -5    &   P  \\ \hline
 \end{tabular}
+\end{table}
 
-\section{Sprint 2}
-
-\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
-1 & The program can assign a value to a variable & x=5 \newline foo=56 \newline y=9  &  PASSED \newline PASSED \newline FAILED \\
-2 & The program can assign an expression to a variable & a = 19+7 \newline y = 7-5 \newline bar = 3*6  &  PASSED \newline PASSED \newline PASSED \\
-3 & The program can evaluate an expression that includes a variable & x-10 \newline y = 7+x \newline foo*x  &  PASSED \newline PASSED \newline PASSED \\
-4 & The program can identify incorrect assignment expression & 5x \newline x465 \newline foo x+6  &  FAILED \newline FAILED \newline FAILED \\
-\end{tabular}
+The rest of our testing can be found in Appendix A.2 with the evidence for each of these tests in appendix A.3.
 
 \chapter{Discussion, conclusion and future work}
 
@@ -380,8 +389,218 @@ State here the \% contribution to the project of each individual member of the g
 
 \chapter*{Appendix A}
 
-Put in tables of data or protocols (e.g. for testing) or code listings or UML diagrams which may take up several pages and do not sit well in the main body text.
+\section{A.1: Testing for Sprint 1 and 2}
 
+\subsection{Sprint 1}
+
+\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{20mm}|p{15mm}}Test No. & Test Case & Test Data & Expected Outcome & Result \\ \hline
+1 & The program is able to identify a number & 5 \newline 83 \newline 324876312487124  & NUMBER \newline NUMBER \newline NUMBER & PASSED \newline PASSED \newline FAILED \\
+2 & The program can identify and evaluate an addition expression & 5+5 \newline 54+6 \newline 2+7  & 10 \newline 60 \newline 9 &  PASSED \newline PASSED \newline PASSED \\
+3 & The program can identify and evaluate a subtraction expression & 5-5 \newline 18-9 \newline 4-0  & 0 \newline 9 \newline 4 & PASSED \newline PASSED \newline PASSED \\
+4 & The program can identify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  & 25 \newline 28 \newline  PASSED \newline PASSED \newline PASSED \\
+5 & The program can identify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  &  PASSED \newline PASSED \newline PASSED \\
+6 & The program can evaluate expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  &  PASSED \newline PASSED \newline PASSED \\
+7 & The program can identify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 &  PASSED \newline PASSED \newline PASSED \\
+8 & The program can identify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  &  PASSED \newline PASSED \newline PASSED \\
+9 & The program can identify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
+\end{tabular}
+
+\subsection{Sprint 2}
+
+\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
+1 & The program can assign a value to a variable & x=5 \newline foo=56 \newline y=9  &  PASSED \newline PASSED \newline FAILED \\
+2 & The program can assign an expression to a variable & a = 19+7 \newline y = 7-5 \newline bar = 3*6  &  PASSED \newline PASSED \newline PASSED \\
+3 & The program can evaluate an expression that includes a variable & x-10 \newline y = 7+x \newline foo*x  &  PASSED \newline PASSED \newline PASSED \\
+4 & The program can identify incorrect assignment expression & 5x \newline x465 \newline foo x+6  &  FAILED \newline FAILED \newline FAILED \\
+\end{tabular}
+
+\section{A.2: Results for final testing}
+\newpage
+\begin{table}
+\label{tab:req2}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 2:}             & \multicolumn{3}{l}{Print Statements} \\ \hline
+\multicolumn{2}{l}{Sub-Requirement 1:}         & \multicolumn{3}{l}{Printing Strings}              \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+1                            & print("hello");      & hello                            &  hello       & P    \\
+2                            & print("I like cheese");  & I like cheese                 &  I like cheese       & P     \\
+3                            & print("a1b2c3");  & a1b2c3                           &   a1b2c3      & P    \\
+\multicolumn{2}{l}{Sub-Requirement 2:}         & \multicolumn{3}{l}{Print Numbers}           \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+1                            & print(84326);     & 84326                            &  84326       & P     \\
+2                            & print(-48);   & -48                                  &    -48     & P    \\
+3                            & print(3.4); & 3.4                                  &     3.4    & P     \\
+\multicolumn{2}{l}{Sub-Requirement 3:}         & \multicolumn{3}{l}{Print Expressions}        \\
+\multicolumn{5}{c}{Tested in Requirement 1 Page \pageref{tab:req1}} 
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req3}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 3:}             & \multicolumn{3}{l}{Other Commands} \\ \hline
+\multicolumn{2}{l}{Sub-Requirement 1:}         & \multicolumn{3}{l}{Print}              \\
+\multicolumn{5}{c}{Tested in Requirement 2 Page \pageref{tab:req2}} \\
+\multicolumn{2}{l}{Sub-Requirement 2:}         & \multicolumn{3}{l}{Plot}           \\
+\multicolumn{5}{c}{Tested in Requirement 8 Page \pageref{tab:req8}} \\
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req4}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 4:}             & \multicolumn{3}{l}{Custom syntax using a custom lexer and parser} \\ \hline
+\multicolumn{5}{c}{Shown by all other parts of the language working} 
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req5}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 5:}             & \multicolumn{3}{l}{Variable Assignment} \\ \hline
+\multicolumn{2}{l}{Sub-Requirement 1:}         & \multicolumn{3}{l}{Assign Numbers}              \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+\multicolumn{1}{c}{1} & \begin{tabular}[c]{@{}l@{}}var x\textless{}-5;\\ print(x);\end{tabular}         & \multicolumn{1}{c}{5}         &       5      &      P   \\
+\multicolumn{1}{c}{2} & \begin{tabular}[c]{@{}l@{}}var dec\textless{}-10.56;\\ print(dec);\end{tabular} & \multicolumn{1}{c}{10.56}     &        10.56     &    P     \\
+\multicolumn{1}{c}{3} & \begin{tabular}[c]{@{}l@{}}var neg\textless{}-10.56;\\ print(neg);\end{tabular} & \multicolumn{1}{c}{-3}        &       -3      &      P   \\
+\multicolumn{2}{l}{Sub-Requirement 2:}         & \multicolumn{3}{l}{Assign Strings}           \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+\multicolumn{1}{c}{1} & \begin{tabular}[c]{@{}l@{}}var hey\textless{}-"hello";\\ print(hey);\end{tabular}         & \multicolumn{1}{c}{hello}         &       hello      &     P    \\
+\multicolumn{1}{c}{2} & \begin{tabular}[c]{@{}l@{}}var ch\textless{}-"cheese";\\ print(ch);\end{tabular} & \multicolumn{1}{c}{cheese}     &        cheese     &      P   \\
+\multicolumn{1}{c}{3} & \begin{tabular}[c]{@{}l@{}}var odd\textless{}-"1a2b3c";\\ print(odd);\end{tabular} & \multicolumn{1}{c}{1a2b3c}        &        1a2b3c     &    P     \\
+\multicolumn{2}{l}{Sub-Requirement 3:}         & \multicolumn{3}{l}{Assign Expressions}        \\
+\multicolumn{1}{l}{Test No.} & Data            & \multicolumn{1}{l}{Expected Outcome}  & Outcome & P/F \\
+\multicolumn{1}{c}{1} & \begin{tabular}[c]{@{}l@{}}var ten\textless{}-6+4;\\ print(ten);\end{tabular}         & \multicolumn{1}{c}{10}         &      10       &     P    \\
+\multicolumn{1}{c}{2} & \begin{tabular}[c]{@{}l@{}}var zero\textless{}-ten-10;\\ print(zero);\end{tabular} & \multicolumn{1}{c}{0}     &       0      &     P    \\
+\multicolumn{1}{c}{3} & \begin{tabular}[c]{@{}l@{}}var div\textless{}-1000/25;\\ print(div);\end{tabular} & \multicolumn{1}{c}{40}        &     40        &    P     \\             
+\multicolumn{1}{c}{4} & \begin{tabular}[c]{@{}l@{}}var mult\textless{}-8*6;\\ print(mult);\end{tabular} & \multicolumn{1}{c}{48}        &        48     &      P   \\                  
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req6}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 6:}                                                                                                                         & \multicolumn{3}{l}{Conditional Statements}                                     \\ \hline
+\multicolumn{2}{l}{Sub-Requirement 1:}                                                                                                                     & \multicolumn{3}{l}{If/Else Statements}                                         \\
+\multicolumn{1}{l}{Test No.} & Data                                                                                                                        & \multicolumn{1}{l}{Expected Outcome}                           & Outcome & P/F \\
+1                            & \begin{tabular}[c]{@{}l@{}}var x\textless{}-6;\\ if(x=6)\{print(6);\}\\ else\{print("not 6");\}\end{tabular}                & 6                                                              &  6       &    P \\
+2                            & \begin{tabular}[c]{@{}l@{}}x\textless{}-10;\\ if(x=6)\{print(6);\}\\ else\{print("not 6");\end{tabular}                     & not 6                                                          &  6       &    P \\
+3                            & if(x\textless{}15)\{print("under 15");\}                                                                                    & under 15                                                       &   6      &    P \\
+\multicolumn{2}{l}{Sub-Requirement 2:}                                                                                                                     & \multicolumn{3}{l}{While Statements}                                           \\
+\multicolumn{1}{l}{Test No.} & Data                                                                                                                        & \multicolumn{1}{l}{Expected Outcome}                           & Outcome & P/F \\
+1                            & \begin{tabular}[c]{@{}l@{}}var x\textless{}-17;\\ while(x\textless{}20)\{\\ print("hi");\\ x\textless{}-x+1;\}\end{tabular} & \begin{tabular}[c]{@{}c@{}}hi\\ hi\\ hi\end{tabular}           &    \begin{tabular}[c]{@{}c@{}}hi\\ hi\\ hi\end{tabular}      &  P   \\
+2                            & \begin{tabular}[c]{@{}l@{}}x\textless{}-0;\\ while(x\textless{}5)\{\\ print(x);\\ x\textless{}-x+1;\}\end{tabular}          & \begin{tabular}[c]{@{}c@{}}0\\ 1\\ 2\\ 3\\ 4\end{tabular}  &    \begin{tabular}[c]{@{}c@{}}0\\ 1\\ 2\\ 3\\ 4\end{tabular}     & P    \\
+3                            & \begin{tabular}[c]{@{}l@{}}x\textless{}-10;\\ while(x\textgreater{}5)\{\\ print(x);\\ x\textless{}-x-1;\}\end{tabular}      & \begin{tabular}[c]{@{}c@{}}10\\ 9\\ 8\\ 7\\ 6\end{tabular} &    \begin{tabular}[c]{@{}c@{}}10\\ 9\\ 8\\ 7\\ 6\end{tabular}     &    P
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req7}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 7:}                                                                                                                                                                                                           & \multicolumn{3}{l}{Function Declaration}                                       \\ \hline
+\multicolumn{1}{l}{Test No.} & Data                                                                                                                                                                                                          & \multicolumn{1}{l}{Expected Outcome}                           & Outcome & P/F \\
+1                            & \begin{tabular}[c]{@{}l@{}}fun count(x,max)\{\\ print(x);\\ x\textless{}-x+1;\\ if(x\textless{}max)\{count(x,max);\}\\ else\{return(x);\}\}\\ count(0,4);\end{tabular}                                            & \begin{tabular}[c]{@{}c@{}}0\\ 1\\ 2\\ 3\end{tabular}      &    \begin{tabular}[c]{@{}c@{}}0\\ 1\\ 2\\ 3\end{tabular}      &   P  \\
+2                            & \begin{tabular}[c]{@{}l@{}}fun fib(a,b,c,max)\{\\ print(a);\\ c\textless{}-a+b;\\ a\textless{}-b;\\ b\textless{}-c;\\ if(c\textless{}max)\{fib(a,b,c,max);\}\\ else\{return(c);\}\}\\ fib(1,1,0,10);\end{tabular} & \begin{tabular}[c]{@{}c@{}}1\\ 1\\ 2\\ 3\\ 5\end{tabular}  &   \begin{tabular}[c]{@{}c@{}}1\\ 1\\ 2\\ 3\\ 5\end{tabular}       &   P  \\
+3                            & \begin{tabular}[c]{@{}l@{}}fun age(born, current)\{\\ return(current-age);\}\\ print(age(1988,2021));\end{tabular}  & 33 & 33 & P 
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req8}
+\begin{tabular}{clcll}
+\hline
+\multicolumn{2}{l}{Requirement 8:}                                                                                                                   & \multicolumn{3}{l}{Function Visualisation}                                                                                                   \\ \hline
+\multicolumn{1}{l}{Test No.} & Data                                                                                                                  & \multicolumn{1}{l}{Expected Outcome}                                                                                         & Outcome & P/F \\
+1                            & \begin{tabular}[c]{@{}l@{}}maxPoint(100,100);\\ minPoint(-100,-100);\\ setIncrement(10,10);\\ plot(3*x+2);\end{tabular}   & \begin{tabular}[c]{@{}c@{}}A graph displaying \\ the function 3x+2\\ should appear\end{tabular}                              & \includegraphics[width=3cm, height=3cm]{graph3x+2.PNG}        &  P   \\
+2                            & plot(x\textasciicircum{}2);                                                                                           & \begin{tabular}[c]{@{}c@{}}A graph displaying\\ the function x\textasciicircum{}2 \\ should appear\end{tabular}              &    \includegraphics[width=3cm, height=3cm]{graphx2.PNG}      &    P \\
+3                            & plot(x\textasciicircum{}3+x\textasciicircum{}2+x);                                                                    & \begin{tabular}[c]{@{}c@{}}A graph displaying\\ the correct \\ polynomial should\\ appear\end{tabular}                       & \includegraphics[width=3cm, height=3cm]{graphpolynomial.PNG}         &  P   \\
+4                            & \begin{tabular}[c]{@{}l@{}}minPoint(-10,-1.5);\\ maxPoint(10,1.5);\\ setIncrement(1,0.5);\\ plot(sin(x));\end{tabular} & \begin{tabular}[c]{@{}c@{}}A graph displaying\\ the function sin(x)\\ should appear\end{tabular}                             &    \includegraphics[width=3cm, height=3cm]{graphsinx.PNG}      &   P  \\
+3                            & \begin{tabular}[c]{@{}l@{}}maxPoint(5,2);\\ minPoint(-3,-1);\\ setIncrement(1,0.2);\\plot(sin(x));\end{tabular}                       & \begin{tabular}[c]{@{}c@{}}A graph with the new\\ parameters should \\ appear displaying\\ the sin(x)\\ function\end{tabular} &    \includegraphics[width=3cm, height=3cm]{graphsinx2.PNG}      &    P
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{tab:req9}
+\begin{tabular}{cllll}
+\hline
+\multicolumn{2}{l}{Requirement 9:}                 & \multicolumn{3}{l}{Simple Trig Functions}          \\ \hline
+\multicolumn{2}{l}{Sub Requirement 1:}             & \multicolumn{3}{l}{Sin}                            \\
+\multicolumn{1}{l}{Test No.} & Data                & Expected Outcome                   & Outcome & P/F \\
+1                            & print(sin(30));     & \multicolumn{1}{c}{-0.98803162409} & -0.98803162409..        &  P   \\
+2                            & print(sin(50.6));   & \multicolumn{1}{c}{0.32831349385}  &  0.32831349385..        &  P   \\
+3                            & print(sin(-15));    & \multicolumn{1}{c}{-0.65028784015} & -0.65028784015..        &   P  \\
+\multicolumn{2}{l}{Sub Requirement 2:}             & \multicolumn{3}{l}{Cos}                            \\
+\multicolumn{1}{l}{Test No.} & Data                & Expected Outcome                   & Outcome & P/F \\
+1                            & print(cos(60));     & \multicolumn{1}{c}{-0.95241298041} & -0.95241298041..        &  P   \\
+2                            & print(cos(13.2));   & \multicolumn{1}{c}{0.80588395764}  &  0.80588395764..        &  P   \\
+3                            & print(cos(-20));    & \multicolumn{1}{c}{0.40808206181}  &  0.40808206181..       &  P   \\
+\multicolumn{2}{l}{Sub Requirement 3:}             & \multicolumn{3}{l}{Tan}                            \\
+\multicolumn{1}{l}{Test No.} & Data                & Expected Outcome                   & Outcome & P/F \\
+1                            & print(tan(90));     & \multicolumn{1}{c}{-1.99520041221} & -1.99520041221..        &  P   \\
+2                            & print(tan(4.2));    & \multicolumn{1}{c}{1.77777977451}  &  1.77777977451..       &   P  \\
+3                            & print(tan(-10));    & \multicolumn{1}{c}{-0.64836082745} & -0.64836082745..        &   P  \\
+\multicolumn{2}{l}{Sub Requirement 4:}             & \multicolumn{3}{l}{Arcsin}                         \\
+\multicolumn{1}{l}{Test No.} & Data                & Expected Outcome                   & Outcome & P/F \\
+1                            & print(arcsin(1));   & \multicolumn{1}{c}{1.57079632679}  &  1.57079632679..        &   P  \\
+2                            & print(arcsin(0.5)); & \multicolumn{1}{c}{0.52359877559}  &  0.52359877559..       &  P   \\
+3                            & print(acrsin(-1));  & \multicolumn{1}{c}{-1.57079632679} & -1.57079632679..        &  P   \\
+\multicolumn{2}{l}{Sub Requirement 5:}             & \multicolumn{3}{l}{Arccos}                         \\
+\multicolumn{1}{l}{Test No.} & Data                & Expected Outcome                   & Outcome & P/F \\
+1                            & print(arccos(1));   & \multicolumn{1}{c}{0}              &    0     & P    \\
+2                            & print(arccos(0.5)); & 1.0471975512                       &  1.0471975512..        &   P  \\
+3                            & print(arccos(-1));  & 3.1415926535                       &  3.1415926535..       &  P   \\
+\multicolumn{2}{l}{Sub Requirement 6:}             & \multicolumn{3}{l}{Arctan}                         \\
+\multicolumn{1}{l}{Test No.} & Data                & Expected Outcome                   & Outcome & P/F \\
+1                            & print(arctan(1));   & 0.73539816339                      &  0.73539816339..       &  P   \\
+2                            & print(arctan(0.5)); & 0.463647609                        &  0.463647609       &   P  \\
+3                            & print(arctan(-1));  & -0.73539816339                     & -0.73539816339..        &    P
+\end{tabular}
+\end{table}
+
+\clearpage
+\section{A.3: Evidence for Tests}
+\newpage
+\begin{figure}
+\includegraphics{Requirement 1.PNG}
+\caption{Evidence for Requirement 1 testing}
+\end{figure}
+
+\begin{figure}
+\includegraphics{Requirement 2.PNG}
+\caption{Evidence for Requirement 2 testing}
+\end{figure}
+
+\begin{figure}
+\includegraphics{Requirement 5.PNG}
+\caption{Evidence for Requirement 5 testing}
+\end{figure}
+
+\begin{figure}
+\includegraphics{Requirement 6.PNG}
+\caption{Evidence for Requirement 6 testing}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=13cm]{Requirement 7.PNG}
+\caption{Evidence for Requirement 7 testing}
+\end{figure}
+
+\begin{figure}
+\includegraphics{Requirement 8.PNG}
+\caption{Evidence for Requirement 8 testing}
+\end{figure}
+
+\begin{figure}
+\includegraphics{Requirement 9A.PNG}
+\includegraphics{Requirement 9B.PNG}
+\caption{Evidence for Requirement 9 testing}
+\end{figure}
 
 \end{document}
 
