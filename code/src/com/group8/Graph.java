@@ -50,7 +50,7 @@ public class Graph extends JPanel {
 //        g2d.draw(new Line2D.Double(getWidth()/2, 0, getWidth()/2, getHeight()));
 //        g2d.draw(new Line2D.Double(0, getHeight()/2, getWidth(), getHeight()/2));
 
-        System.out.println(xIncrement);
+
         for (double i = 0; i < maxPoint.getX(); i += xIncrement) {
             if (i == 0) {
                 g2d.setStroke(new BasicStroke(5));

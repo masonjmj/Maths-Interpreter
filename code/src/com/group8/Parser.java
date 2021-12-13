@@ -96,6 +96,7 @@ public class Parser {
 
 	private Statement expressionStatement() {
 		Expression expression = expression();
+		//System.out.println(new AbstractSyntaxTreePrinter().print(expression));
 		consume(Token.Type.SEMICOLON, "';' expected");
 		return new Statement.statementExpression(expression);
 	}
