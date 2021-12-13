@@ -11,6 +11,7 @@ public class Main {
 	private static final Interpreter interpreter = new Interpreter();
 	public static boolean encounteredError = false;
 
+
 	public static void main(String[] args) throws IOException {
 		if (args.length > 1) {
 			System.out.println("Too many arguments.");
@@ -22,6 +23,13 @@ public class Main {
 		}
 	}
 
+
+	/**
+	 * Runs the interpreter on a file
+	 *
+	 * @param path The path to the file to be interpreted
+	 * @throws IOException
+	 */
 	private static void runFromFile(String path) throws IOException {
 		run(Files.readString(Paths.get(path)));
 		if (encounteredError) {
@@ -29,6 +37,9 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Runs the interpreter as an interactive command line prompt
+	 */
 	private static void runInteractively() {
 		Scanner input = new Scanner(System.in);
 
@@ -45,6 +56,12 @@ public class Main {
 		}
 	}
 
+
+	/**
+	 * Calls the lexer, parser and interpreter on the source code
+	 *
+	 * @param code A string of the soruce code
+	 */
 	private static void run(String code) {
 		Lexer lexer = new Lexer(code);
 		List<Token> tokens = lexer.analyse();
@@ -55,11 +72,6 @@ public class Main {
 				interpreter.interpret(statements);
 			}
 		}
-
-
-
-
-//		System.out.println(new AbstractSyntaxTreePrinter().print(expression));
 	}
 
 	static void error(String message) {
@@ -71,6 +83,13 @@ public class Main {
 		error(token.line, message);
 	}
 
+	/**
+	 * Prints out any error and sets {@link #encounteredError} to true, preventing the next step
+	 * from running on code containing errors.
+	 *
+	 * @param line The line the error occured on
+	 * @param message The error message provided
+	 */
 	static void error(int line, String message) {
 		System.err.println(message + " on line " + line);
 		encounteredError = true;

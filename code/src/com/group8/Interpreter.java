@@ -10,6 +10,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 	private plotGraph graph = new plotGraph();
 
 	Interpreter() {
+		// Defines a set of native functions and variables in the global scope
 		globalEnvironment.define("sin", new Function() {
 			@Override
 			public int numberOfArguments() {
@@ -202,6 +203,9 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		globalEnvironment.define("PI", Math.PI);
 	}
 
+
+	// Implements visit functions from the visitor interface for each of the expressions and statements
+
 	@Override
 	public Void visit(Statement.statementExpression statement) {
 		evaluate(statement.expression);
@@ -227,7 +231,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 	}
 
 	@Override
-	public Void visit(Statement.FunctionDecleration statement) {
+	public Void visit(Statement.FunctionDeclaration statement) {
 		Function function = new Function(statement, environment);
 		environment.define(statement.identifier.lexeme, function);
 		return null;
@@ -245,7 +249,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		double resolution = 0.1;
 		for(double i = value;i<max; i+= resolution){
 			//System.out.println("("+i+","+evaluate(statement.expression)+")");
-		graph.addPoint(i, ((Number) evaluate(statement.expression)).doubleValue());
+		graph.addPoint(i, ((Number) evaluate(statement.expression)).doubleValue()); // Converts values to doubles for graphing purposes
 		environment.assign("x", ((Number) environment.get("x")).doubleValue() + resolution);
 		}
 		environment.assign("x", value);
@@ -338,7 +342,7 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		Object left = evaluate(expression.left);
 
 		if (expression.operator.type == Token.Type.OR) {
-			if (isTruthy(left)) {
+			if (isTruthy(left)) { // Short circuits based on left value
 				return left;
 			}
 		} else {
@@ -380,9 +384,9 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 					return right == null;
 				}else if(left instanceof Number && right instanceof Number) {
 					if(left instanceof Integer && right instanceof Integer){
-						return (int) left == (int) right;
+						return (int) left == (int) right; // Performs integer operation if both are integers
 					}else {
-						return ((Number) left).doubleValue() == ((Number) right).doubleValue();
+						return ((Number) left).doubleValue() == ((Number) right).doubleValue(); // If either value isn't an int, convert both to double
 					}
 				}
 				return left.equals(right);
@@ -467,22 +471,22 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 
 	public void executeBlock(List<Statement> statements, Environment environment) {
 		Environment previous = this.environment;
-		try{
+		try{ // Swaps environments so that blocks have a new scope
 			this.environment = environment;
 			for (Statement statement : statements) {
 				execute(statement);
 			}
-		} finally {
+		} finally { // Swaps environment back when exiting scope
 			this.environment = previous;
 		}
 	}
 
 	private void execute(Statement statement) {
-		statement.accept(this);
+		statement.accept(this); // Uses visitor design pattern to call the correct visit function for each statement
 	}
 
 	private Object evaluate(Expression expression) {
-		return expression.accept(this);
+		return expression.accept(this); // Uses visitor design pattern to call the correct visit function for each expression
 	}
 
 	private void checkNumericOperands(Token operator, Object left, Object right) {
@@ -492,8 +496,8 @@ public class Interpreter implements Expression.Visitor<Object>, Statement.Visito
 		throw new RuntimeError(operator, "Incompatible type(s) for '" + operator.lexeme + "'");
 	}
 
-	private boolean isTruthy(Object object) {
-		if (object instanceof Boolean) return (boolean) object;
+	private boolean isTruthy(Object object) { // Defines what counts as true or false
+		if (object instanceof Boolean) return (boolean) object; // Everything is false by default except boolean types
 		return false;
 	}
 }

@@ -18,6 +18,7 @@ abstract class Expression {
 	}
 
 	static class Binary extends Expression {
+		// Stores relevant information to this node
 		final Expression left;
 		final Token operator;
 		final Expression right;
@@ -28,6 +29,7 @@ abstract class Expression {
 			this.right = right;
 		}
 
+		// Overrides accept function to fulfil the extending of Expression
 		@Override
 		<T> T accept(Visitor<T> visitor) {
 			return visitor.visit(this);
@@ -137,6 +139,8 @@ abstract class Expression {
 		}
 }
 
+	// Accept method is used so that the visit method can be called in any class implementing
+	// visitor interface
 	abstract <T> T accept(Visitor<T> visitor);
 }
 
