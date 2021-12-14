@@ -48,7 +48,8 @@ In this project, our aim was to create a maths-based interpreter, capable of a r
 This includes expression evaluation and function graphing via abstract syntax tree based interpretation. The abstract syntax tree allows the correct precedence when interpreting based on the depth of the node in the tree. Each node within the tree, implements a visitor pattern allowing further abstraction and generalization within the interpreter. We used a scrum based development methodology to develop our language in sprints, allowing us to evolve our program over time with frequent re-adjustment of requirements and functionality.
 
 
-and what your final results are, your final outcome or deliverable and conclusion.
+At the conclusion of our project, we found that we were able to implement all "Must" criteria alongside most of our "Should" criteria.
+Our program is built in a way that it can be easily extended, but is a stable and practical program in its current state.
 \end{abstract}
 
 \chapter{Introduction}
@@ -74,7 +75,8 @@ The following outlines the requirements we aim to meet with this software.
 \subsection{Shoulds}
 
 \begin{itemize}
-	\item Expressions for variable assignment and exponentiation
+	\item Expressions for variable assignment
+	\item Exponential operator expression
 	\item Conditional Statements
 	\item Function Declaration
 	\item Mathematical function visualization
@@ -160,52 +162,10 @@ Throughout this project, we used a number of different method to implement the v
 The language uses a C or Java-like syntax. It contains basic arithmetic operators (+ - * / \textasciicircum) and comparison operators (\textless, \textless=, \textgreater, \textgreater= and =). Assignment uses the \textless- operator.
 Variables can be declared with the keyword "var" and functions with the keyword "fun". Statements can be in a code block between curly brackets. True, false, null, strings, integers and floats can be input as literals. If and while statements are 
 available for control flow.
-For the full grammar, see \ref{bnf:grammar} on page \pageref{bnf:grammar}.
+For the full grammar, see appendix A.4 on page \pageref{bnf:grammar}.
 
-\begin{bnf*}
-	\label{bnf:grammar}
-	\bnfprod{declaration}{\bnfpn{functionDeclaration} \bnfor \bnfpn{variableDeclaration} \bnfor \bnfpn{statement}}\\
-	\bnfprod{functionDeclaration}{\bnfts{fun} \bnfsp \bnfpn{identifier} \bnfsp \bnfts{(} \bnfsp \bnfpn{parameters} \bnfsp \bnfts{)} \bnfsp \bnfpn{block}}\\
-	\bnfprod{parameters}{\bnfes \bnfor \bnfpn{identifier} \bnfor \bnfpn{parameters} \bnfsp \bnfts{,} \bnfsp \bnfpn {identifier}}\\
-	\bnfprod{variableDeclaration}{\bnfts{var} \bnfsp \bnfpn{identifier} \bnfsp \bnfts{;} \bnfor \bnfts{var} \bnfsp \bnfpn{identifier} \bnfsp \bnfts{<-} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
-	\bnfprod{statement}{\bnfpn{expressionStatement} \bnfor \bnfpn{ifStatement} \bnfor \bnfpn{printStatement}}\\
-	\bnfmore{\bnfor \bnfpn{plotStatement} \bnfor \bnfpn{returnStatement} \bnfor \bnfpn{whileStatement}}\\
-	\bnfmore{\bnfor \bnfpn{block}}\\
-	\bnfprod{expressionStatement}{\bnfpn{expression} \bnfsp \bnfts{;}}\\
-	\bnfprod{ifStatement}{\bnfts{if} \bnfsp \bnfts{(} \bnfsp \bnfpn{expression} \bnfsp \bnfts{)} \bnfsp \bnfpn{statement}}\\
-	\bnfmore{\bnfor \bnfts{if} \bnfsp \bnfts{(} \bnfsp \bnfpn{expression} \bnfsp \bnfts{)} \bnfsp \bnfpn{statement} \bnfsp \bnfts{else} \bnfsp \bnfpn{expression}}\\
-	\bnfprod{printStatement}{\bnfts{print} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
-	\bnfprod{plotStatement}{\bnfts{plot} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
-	\bnfprod{returnStatement}{\bnfts{return} \bnfsp \bnfts{;} \bnfor \bnfts{return} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
-	\bnfprod{whileStatement}{\bnfts{while} \bnfsp \bnfts{(} \bnfsp \bnfpn{expression} \bnfsp \bnfts{)} \bnfsp \bnfpn{statement}}\\
-	\bnfprod{block}{\bnfts{\{} \bnfsp \bnfpn{declarationList} \bnfsp \bnfts{\}}}\\
-	\bnfprod{declarationList}{\bnfes \bnfor \bnfpn{declaration} \bnfor \bnfpn{declarationList} \bnfsp \bnfpn{declaration}}\\
-	\bnfprod{expression}{\bnfpn{assignment}}\\
-	\bnfprod{assignment}{\bnfpn{identifier} \bnfsp \bnfts{<-} \bnfsp \bnfpn{assignment} \bnfor \bnfpn{or}}\\
-	\bnfprod{or}{\bnfpn{and} \bnfor \bnfpn{or} \bnfsp \bnfts{or} \bnfsp \bnfpn{and}}\\
-	\bnfprod{and}{\bnfpn{equality} \bnfor \bnfpn{and} \bnfsp \bnfts{and} \bnfsp \bnfpn{equality}}\\
-	\bnfprod{equality}{\bnfpn{comparison} \bnfor \bnfpn{equality} \bnfsp \bnfts{=} \bnfsp \bnfpn{comparison}}\\
-	\bnfprod{comparison}{\bnfpn{sum} \bnfor \bnfpn{comparison} \bnfsp \bnfts{<} \bnfsp \bnfpn{sum}}\\
-	\bnfmore{\bnfor \bnfpn{comparison} \bnfsp \bnfts{<=} \bnfsp \bnfpn{sum}}\\
-	\bnfmore{\bnfor \bnfpn{comparison} \bnfsp \bnfts{>} \bnfsp \bnfpn{sum}}\\
-	\bnfmore{\bnfor \bnfpn{comparison} \bnfsp \bnfts{>=} \bnfsp \bnfpn{sum}}\\
-	\bnfprod{sum}{\bnfpn{term} \bnfor \bnfpn{sum} \bnfsp \bnfts{+} \bnfsp \bnfpn{term} \bnfor \bnfpn{sum} \bnfsp \bnfts{-} \bnfsp \bnfpn{term}}\\
-	\bnfprod{term}{\bnfpn{exponential} \bnfor \bnfpn{term} \bnfsp \bnfts{*} \bnfsp \bnfpn{exponential} \bnfor \bnfpn{term} \bnfsp \bnfts{/} \bnfsp \bnfpn{Exponential}}\\
-	\bnfprod{exponential}{\bnfpn{unary} \bnfor \bnfpn{exponential} \bnfsp \bnfts{\textasciicircum} \bnfsp \bnfpn{unary}}\\
-	\bnfprod{unary}{\bnfpn{call} \bnfor \bnfts{!} \bnfsp \bnfpn{unary} \bnfor \bnfts{-} \bnfsp \bnfpn{unary}}\\
-	\bnfprod{call}{\bnfpn{factor} \bnfor \bnfpn{call} \bnfsp \bnfts{(} \bnfsp \bnfpn{arguments} \bnfsp \bnfts{)}}\\
-	\bnfprod{arguments}{\bnfes \bnfor \bnfpn{expression} \bnfor \bnfpn{arguments} \bnfsp \bnfts{,} \bnfsp \bnfpn {expression}}\\
-	\bnfprod{factor}{\bnfts{true} \bnfor \bnfts{false} \bnfor \bnfts{null} \bnfor \bnfpn{number} \bnfor \bnfpn{string} \bnfor \bnfpn{identifier}}\\
-	\bnfprod{identifer}{\bnfpn{alphaChar} \bnfor \bnfpn{identifier} \bnfsp \bnfpn{alphaChar} \bnfor \bnfpn{identifier} \bnfsp \bnfpn{digit}}\\
-	\bnfprod{string}{\bnfts{"} \bnfsp \bnftd{any number of any character except "} \bnfsp \bnfts{"}}\\
-	\bnfprod{alphaChar}{\bnfts{a} \bnfsk \bnfts{z} \bnfor \bnfts{A} \bnfsk \bnfts{Z} \bnfor \bnfts{\_}}\\
-	\bnfprod{number}{\bnfpn{integer} \bnfor \bnfpn{float}}\\
-	\bnfprod{float}{\bnfpn{integer} \bnfsp \bnfts{.} \bnfsp \bnfpn{integer}}\\
-	\bnfprod{integer}{\bnfpn{digit} \bnfor \bnfpn{integer} \bnfsp \bnfpn{digit}}\\
-	\bnfprod{digit}{\bnfts{0} \bnfsk \bnfts{9}}
-\end{bnf*}
 
-\section{Method 1: Recursive Decent}
+\section{Method 1: Recursive Descent}
 
 This algorithm is a type of top-down parsing that functions by recursively calling functions that represent the non-terminal symbols in the grammar.
 At each stage an Expression node is created and passed up the recursive chain. This constructs the abstract syntax tree with the highest precedence
@@ -229,6 +189,8 @@ the operations in accordance with the precedence rules of the language. See figu
 		\caption{An abstract syntax tree for  the expression $2 \string^ 2 + 4 * 6 / 4 * (3+2) -4$}
 		\label{fig:AST}
 	\end{figure}
+
+\newpage
 \subsection{Visitor Design Pattern}
 
 We used the visitor design pattern to enable distinct functionality between types of nodes
@@ -236,39 +198,7 @@ without the interpreter needing to manually check the type of any node.
 The interpreter implements an interface and overrides the visit function for each type of node with 
 the appropriate behaviour. We used the book "Crafting Interpreters" \cite{nystrom:2021} as a reference for 
 implementing this pattern.
-See listing \ref{lst:visitor} for example code.
-
-\begin{lstlisting}[caption = {An example of the implementation of a node---the unary expression in this case}, label = {lst:visitor}, language = Java, breaklines=true, showstringspaces=false, tabsize=2] 
-
-	abstract class Expression {
-
-		interface Visitor<T> {
-
-			T visit(Unary expression);
-		}
-
-		static class Unary extends Expression {
-			final Token operator;
-			final Expression right;
-
-			Unary(Token operator, Expression right) {
-				this.operator = operator;
-				this.right = right;
-			}
-
-			@Override
-			<T> T accept(Visitor<T> visitor) {
-				return visitor.visit(this);
-			}
-	}
-
-		abstract <T> T accept(Visitor<T> visitor);
-	}
-\end{lstlisting}
-
-
-
-
+See appendix A.5 on page \pageref{lst:visitor} for example code.
 
 \chapter{Implementation}\label{Impl}
 
@@ -425,7 +355,7 @@ Time restrictions on this project meant we were unable to meet this requirement.
 
 \chapter{Testing}
 
-This section details the testing we performed to make sure we meet each of the requirements our software aims to achieve. When we were just beginning the program, we used a cyclical testing. This meant we continually tested each feature as it was developed. Once we had finished the first two sprints, we switched to unit testing and began testing the individual components of the code. The result of our initial testing for sprint one and two are recorded (see appendix) as are the results of our component tests (see appendix A.1).
+This section details the testing we performed to make sure we meet each of the requirements our software aims to achieve. When we were just beginning the program, we used a cyclical testing. This meant we continually tested each feature as it was developed. Once we had finished the first two sprints, we switched to unit testing and began testing the individual components of the code. The result of our initial testing for sprint one and two are recorded (see appendix) as are the results of our component tests (see appendix A.1 on page \pageref{testing}).
 
 Once the program was complete, we conducted a full black box test of our program. This means testing our program as if we did not have access to the code. We tested each requirement by splitting it into sub requirements and performing multiple tests for each. An example of the testing for our first requirement is given here.
 
@@ -457,12 +387,24 @@ Once the program was complete, we conducted a full black box test of our program
 \end{tabular}
 \end{table}
 
-The rest of our testing can be found in Appendix A.2 with the evidence for each of these tests in appendix A.3.
+The rest of our testing can be found in Appendix A.2 on page \pageref{results} with the evidence for each of these tests in appendix A.3 on \pageref{evidence}.
 
 \chapter{Discussion, conclusion and future work}
 
-Briefly discuss and conclude your achievements and put them in perspective with the MoSCoW analysis you did early on. Be honest by declaring for example `S' categorized objectives which did not make it to the final deliverable rather than reversely modifying your MoSCoW in Chapter \ref{chap:intro}! Also discuss future developments and how you see the deliverable improving if more time could be spent. Note that this section should not be used as a medium to vent frustrations on whatever did not work out (pandemic, group partners, etc.) as there are other means for this (labs, e-mail MO, ...) that should be used well before any such problems become an issue.
-
+Over the course of the project we've achieved many of the requirements that we set out to achieve in our MoSCoW.
+We've built up an architecture for the interpreter which is easily extendable and scalable, lending itself well to the features we have implemented during development.
+Our grammar includes commands such as print and plot which work in parallel with the basic arithmetic features of our language. 
+These features, alongside our custom lexical analyser and parser, fulfil all of our "Must" criteria. 
+Furthermore, our language contains syntax for both global and local variable assignment as well as control flow statements which allows conditional execution of code.
+This required the addition of logical operators in conjunction with boolean expressions. 
+Developing our language further, we added  the syntax for functions which are implemented as identifiers like any other variable.
+Our program is also able to visualize mathematical expressions on a custom graph whose parameters can be defined by the user.
+Finally, we added a range of trigonometric functions alongside a pre-defined variable for Pi as a utility to the language.
+Altogether, these features encompass most of our "Should" criteria, with the exception of the "Zero-crossings finder" criterion.
+Overall, we have a multifaceted maths interpreter language that could easily be extended in the future by building upon the established architecture.
+Such extensions could include, functions for integration and differentiation as well as an equation solver. From the user's perspective, the software would be improved by the addition of 
+a more interactive and intuitive graphical user interface. All of these would be able to easily integrated into the program after they have been designed conceptually.
+Whilst we were not able to add all the features we had initially planned, we were able to produce a stable and practical piece of software.
 
 \bibliographystyle{unsrt}
 \bibliography{References}
@@ -471,25 +413,26 @@ Briefly discuss and conclude your achievements and put them in perspective with 
 
 State here the \% contribution to the project of each individual member of the group and describe in brief what each member has done (if this corresponds to particular sections in the report then please specify these).
 
-\chapter*{Appendix A}
+\chapter*{Appendix}
 
-\section{A.1: Testing for Sprint 1 and 2}
+\section*{A.1: Testing for Sprint 1 and 2}
+\label{testing}
 
-\subsection{Sprint 1}
+\subsection*{Sprint 1}
 
-\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{20mm}|p{15mm}}Test No. & Test Case & Test Data & Expected Outcome & Result \\ \hline
+\begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{35mm}|p{15mm}}Test No. & Test Case & Test Data & Expected Outcome & Result \\ \hline
 1 & The program is able to identify a number & 5 \newline 83 \newline 324876312487124  & NUMBER \newline NUMBER \newline NUMBER & PASSED \newline PASSED \newline FAILED \\
 2 & The program can identify and evaluate an addition expression & 5+5 \newline 54+6 \newline 2+7  & 10 \newline 60 \newline 9 &  PASSED \newline PASSED \newline PASSED \\
 3 & The program can identify and evaluate a subtraction expression & 5-5 \newline 18-9 \newline 4-0  & 0 \newline 9 \newline 4 & PASSED \newline PASSED \newline PASSED \\
-4 & The program can identify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  & 25 \newline 28 \newline  PASSED \newline PASSED \newline PASSED \\
-5 & The program can identify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  &  PASSED \newline PASSED \newline PASSED \\
-6 & The program can evaluate expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  &  PASSED \newline PASSED \newline PASSED \\
-7 & The program can identify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 &  PASSED \newline PASSED \newline PASSED \\
-8 & The program can identify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  &  PASSED \newline PASSED \newline PASSED \\
-9 & The program can identify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  &  PASSED \newline PASSED \newline PASSED \\
+4 & The program can identify and evaluate a multiplication expression & 5*5 \newline 4*7 \newline 32*8  & 25 \newline 28 \newline 256 & PASSED \newline PASSED \newline PASSED \\
+5 & The program can identify and evaluate a division expression & 5/5 \newline 42*7 \newline 100/10  & 1 \newline 294 \newline 10 &  PASSED \newline PASSED \newline PASSED \\
+6 & The program can evaluate expressions that include blank space & 5 + 5 \newline 10 - 8 \newline 32 - 23  & 10 \newline 2 \newline 9 &  PASSED \newline PASSED \newline PASSED \\
+7 & The program can identify and evaluate expression with multiple operators & 4+7-2\newline 23+6+4 \newline 1*8/4 & 9 \newline 33 \newline 2 & PASSED \newline PASSED \newline PASSED \\
+8 & The program can identify and handle incorrect syntax & 5+ \newline 5+(5 \newline *8  & Expression expected \newline Expression expected \newline Expression expected & PASSED \newline PASSED \newline PASSED \\
+9 & The program can identify and evaluate expression involving brackets & 5+(4-2+3) \newline (4*2)+7 \newline 10/5+(6*8)  & 10 \newline 15 \newline 50 &  PASSED \newline PASSED \newline PASSED \\
 \end{tabular}
 
-\subsection{Sprint 2}
+\subsection*{Sprint 2}
 
 \begin{tabular}{|p{8mm}|p{60mm}|p{30mm}|p{15mm}|}Test No. & Test Case & Test Data & Result \\ \hline
 1 & The program can assign a value to a variable & x=5 \newline foo=56 \newline y=9  &  PASSED \newline PASSED \newline FAILED \\
@@ -498,7 +441,9 @@ State here the \% contribution to the project of each individual member of the g
 4 & The program can identify incorrect assignment expression & 5x \newline x465 \newline foo x+6  &  FAILED \newline FAILED \newline FAILED \\
 \end{tabular}
 
-\section{A.2: Results for final testing}
+
+\section*{A.2: Results for final testing}
+\label{results}
 \newpage
 \begin{table}
 \label{tab:req2}
@@ -648,7 +593,8 @@ State here the \% contribution to the project of each individual member of the g
 \end{table}
 
 \clearpage
-\section{A.3: Evidence for Tests}
+\section*{A.3: Evidence for Tests}
+\label{evidence}
 \newpage
 \begin{figure}
 \includegraphics{Requirement 1.PNG}
@@ -685,6 +631,81 @@ State here the \% contribution to the project of each individual member of the g
 \includegraphics{Requirement 9B.PNG}
 \caption{Evidence for Requirement 9 testing}
 \end{figure}
+
+\clearpage
+\section*{A.4: Full Grammar}
+\begin{bnf*}
+	\label{bnf:grammar}
+	\bnfprod{declaration}{\bnfpn{functionDeclaration} \bnfor \bnfpn{variableDeclaration} \bnfor \bnfpn{statement}}\\
+	\bnfprod{functionDeclaration}{\bnfts{fun} \bnfsp \bnfpn{identifier} \bnfsp \bnfts{(} \bnfsp \bnfpn{parameters} \bnfsp \bnfts{)} \bnfsp \bnfpn{block}}\\
+	\bnfprod{parameters}{\bnfes \bnfor \bnfpn{identifier} \bnfor \bnfpn{parameters} \bnfsp \bnfts{,} \bnfsp \bnfpn {identifier}}\\
+	\bnfprod{variableDeclaration}{\bnfts{var} \bnfsp \bnfpn{identifier} \bnfsp \bnfts{;} \bnfor \bnfts{var} \bnfsp \bnfpn{identifier} \bnfsp \bnfts{<-} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
+	\bnfprod{statement}{\bnfpn{expressionStatement} \bnfor \bnfpn{ifStatement} \bnfor \bnfpn{printStatement}}\\
+	\bnfmore{\bnfor \bnfpn{plotStatement} \bnfor \bnfpn{returnStatement} \bnfor \bnfpn{whileStatement}}\\
+	\bnfmore{\bnfor \bnfpn{block}}\\
+	\bnfprod{expressionStatement}{\bnfpn{expression} \bnfsp \bnfts{;}}\\
+	\bnfprod{ifStatement}{\bnfts{if} \bnfsp \bnfts{(} \bnfsp \bnfpn{expression} \bnfsp \bnfts{)} \bnfsp \bnfpn{statement}}\\
+	\bnfmore{\bnfor \bnfts{if} \bnfsp \bnfts{(} \bnfsp \bnfpn{expression} \bnfsp \bnfts{)} \bnfsp \bnfpn{statement} \bnfsp \bnfts{else} \bnfsp \bnfpn{expression}}\\
+	\bnfprod{printStatement}{\bnfts{print} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
+	\bnfprod{plotStatement}{\bnfts{plot} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
+	\bnfprod{returnStatement}{\bnfts{return} \bnfsp \bnfts{;} \bnfor \bnfts{return} \bnfsp \bnfpn{expression} \bnfsp \bnfts{;}}\\
+	\bnfprod{whileStatement}{\bnfts{while} \bnfsp \bnfts{(} \bnfsp \bnfpn{expression} \bnfsp \bnfts{)} \bnfsp \bnfpn{statement}}\\
+	\bnfprod{block}{\bnfts{\{} \bnfsp \bnfpn{declarationList} \bnfsp \bnfts{\}}}\\
+	\bnfprod{declarationList}{\bnfes \bnfor \bnfpn{declaration} \bnfor \bnfpn{declarationList} \bnfsp \bnfpn{declaration}}\\
+	\bnfprod{expression}{\bnfpn{assignment}}\\
+	\bnfprod{assignment}{\bnfpn{identifier} \bnfsp \bnfts{<-} \bnfsp \bnfpn{assignment} \bnfor \bnfpn{or}}\\
+	\bnfprod{or}{\bnfpn{and} \bnfor \bnfpn{or} \bnfsp \bnfts{or} \bnfsp \bnfpn{and}}\\
+	\bnfprod{and}{\bnfpn{equality} \bnfor \bnfpn{and} \bnfsp \bnfts{and} \bnfsp \bnfpn{equality}}\\
+	\bnfprod{equality}{\bnfpn{comparison} \bnfor \bnfpn{equality} \bnfsp \bnfts{=} \bnfsp \bnfpn{comparison}}\\
+	\bnfprod{comparison}{\bnfpn{sum} \bnfor \bnfpn{comparison} \bnfsp \bnfts{<} \bnfsp \bnfpn{sum}}\\
+	\bnfmore{\bnfor \bnfpn{comparison} \bnfsp \bnfts{<=} \bnfsp \bnfpn{sum}}\\
+	\bnfmore{\bnfor \bnfpn{comparison} \bnfsp \bnfts{>} \bnfsp \bnfpn{sum}}\\
+	\bnfmore{\bnfor \bnfpn{comparison} \bnfsp \bnfts{>=} \bnfsp \bnfpn{sum}}\\
+	\bnfprod{sum}{\bnfpn{term} \bnfor \bnfpn{sum} \bnfsp \bnfts{+} \bnfsp \bnfpn{term} \bnfor \bnfpn{sum} \bnfsp \bnfts{-} \bnfsp \bnfpn{term}}\\
+	\bnfprod{term}{\bnfpn{exponential} \bnfor \bnfpn{term} \bnfsp \bnfts{*} \bnfsp \bnfpn{exponential} \bnfor \bnfpn{term} \bnfsp \bnfts{/} \bnfsp \bnfpn{Exponential}}\\
+	\bnfprod{exponential}{\bnfpn{unary} \bnfor \bnfpn{exponential} \bnfsp \bnfts{\textasciicircum} \bnfsp \bnfpn{unary}}\\
+	\bnfprod{unary}{\bnfpn{call} \bnfor \bnfts{!} \bnfsp \bnfpn{unary} \bnfor \bnfts{-} \bnfsp \bnfpn{unary}}\\
+	\bnfprod{call}{\bnfpn{factor} \bnfor \bnfpn{call} \bnfsp \bnfts{(} \bnfsp \bnfpn{arguments} \bnfsp \bnfts{)}}\\
+	\bnfprod{arguments}{\bnfes \bnfor \bnfpn{expression} \bnfor \bnfpn{arguments} \bnfsp \bnfts{,} \bnfsp \bnfpn {expression}}\\
+	\bnfprod{factor}{\bnfts{true} \bnfor \bnfts{false} \bnfor \bnfts{null} \bnfor \bnfpn{number} \bnfor \bnfpn{string} \bnfor \bnfpn{identifier}}\\
+	\bnfprod{identifer}{\bnfpn{alphaChar} \bnfor \bnfpn{identifier} \bnfsp \bnfpn{alphaChar} \bnfor \bnfpn{identifier} \bnfsp \bnfpn{digit}}\\
+	\bnfprod{string}{\bnfts{"} \bnfsp \bnftd{any number of any character except "} \bnfsp \bnfts{"}}\\
+	\bnfprod{alphaChar}{\bnfts{a} \bnfsk \bnfts{z} \bnfor \bnfts{A} \bnfsk \bnfts{Z} \bnfor \bnfts{\_}}\\
+	\bnfprod{number}{\bnfpn{integer} \bnfor \bnfpn{float}}\\
+	\bnfprod{float}{\bnfpn{integer} \bnfsp \bnfts{.} \bnfsp \bnfpn{integer}}\\
+	\bnfprod{integer}{\bnfpn{digit} \bnfor \bnfpn{integer} \bnfsp \bnfpn{digit}}\\
+	\bnfprod{digit}{\bnfts{0} \bnfsk \bnfts{9}}
+\end{bnf*}
+
+\clearpage
+\section*{A.5: Visitor Pattern Code Example}
+\begin{lstlisting}[caption = {An example of the implementation of a node---the unary expression in this case}, label = {lst:visitor}, language = Java, breaklines=true, showstringspaces=false, tabsize=2] 
+
+	abstract class Expression {
+
+		interface Visitor<T> {
+
+			T visit(Unary expression);
+		}
+
+		static class Unary extends Expression {
+			final Token operator;
+			final Expression right;
+
+			Unary(Token operator, Expression right) {
+				this.operator = operator;
+				this.right = right;
+			}
+
+			@Override
+			<T> T accept(Visitor<T> visitor) {
+				return visitor.visit(this);
+			}
+	}
+
+		abstract <T> T accept(Visitor<T> visitor);
+	}
+\end{lstlisting}
 
 \end{document}
 

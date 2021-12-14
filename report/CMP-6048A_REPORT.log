@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  13 DEC 2021 00:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.3)  14 DEC 2021 13:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -223,77 +223,153 @@ Chapter 2.
 
 ] [4]
 Chapter 3.
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 160.
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 162.
 (c:/texlive/2021/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 160.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 165.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 162.
+<AST.png, id=27, 746.79pt x 627.34375pt>
+File: AST.png Graphic file (type png)
+<use AST.png>
+Package pdftex.def Info: AST.png  used on input line 188.
+(pdftex.def)             Requested size: 425.0pt x 357.02487pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 189.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 165.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 189.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 181.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 181.
+) [5
 
+] [6 <./AST.png>]
+Chapter 4.
+[7
 
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 181.
+] [8] [9] [10] [11]
+Chapter 5.
+[12
 
+] [13]
+Chapter 6.
+(./CMP-6048A_REPORT.bbl [14
 
-Overfull \hbox (25.69986pt too wide) in alignment at lines 165--206
- [][][] []
+]) [15
+
+] [16
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
+[]\OT1/cmr/m/n/10.95 Test
  []
 
-[5
 
-] [6]
-<AST.png, id=38, 746.79pt x 627.34375pt>
-File: AST.png Graphic file (type png)
-<use AST.png>
-Package pdftex.def Info: AST.png  used on input line 228.
-(pdftex.def)             Requested size: 425.0pt x 357.02487pt.
- (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [7 <./AST.png>]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 243.
+Overfull \hbox (56.10074pt too wide) in paragraph at lines 423--434
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 437--437
+[]\OT1/cmr/m/n/10.95 Test
+ []
+
+[17
+
+] [18]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 520.
  (c:/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 243.
- [8]
-Chapter 4.
-[9
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 520.
+<graph3x+2.PNG, id=78, 595.47469pt x 597.73312pt>
+File: graph3x+2.PNG Graphic file (type png)
+<use graph3x+2.PNG>
+Package pdftex.def Info: graph3x+2.PNG  used on input line 549.
+(pdftex.def)             Requested size: 85.35576pt x 85.35114pt.
+<graphx2.PNG, id=79, 591.71063pt x 596.98032pt>
+File: graphx2.PNG Graphic file (type png)
+<use graphx2.PNG>
+Package pdftex.def Info: graphx2.PNG  used on input line 550.
+(pdftex.def)             Requested size: 85.35794pt x 85.35295pt.
+<graphpolynomial.PNG, id=80, 592.46344pt x 597.73312pt>
+File: graphpolynomial.PNG Graphic file (type png)
+<use graphpolynomial.PNG>
+Package pdftex.def Info: graphpolynomial.PNG  used on input line 551.
+(pdftex.def)             Requested size: 85.35806pt x 85.35114pt.
+<graphsinx.PNG, id=81, 591.71063pt x 598.48593pt>
+File: graphsinx.PNG Graphic file (type png)
+<use graphsinx.PNG>
+Package pdftex.def Info: graphsinx.PNG  used on input line 552.
+(pdftex.def)             Requested size: 85.35794pt x 85.35818pt.
+<graphsinx2.PNG, id=82, 582.67688pt x 596.98032pt>
+File: graphsinx2.PNG Graphic file (type png)
+<use graphsinx2.PNG>
+Package pdftex.def Info: graphsinx2.PNG  used on input line 553.
+(pdftex.def)             Requested size: 85.35284pt x 85.35295pt.
+ [19] [20] [21 <./graph3x+2.PNG> <./graphx2.PNG> <./graphpolynomial.PNG> <./graphsinx.PNG> <./graphsinx2.PNG>] [22] [23
 
-] [10] [11] [12] [13]
-Chapter 5.
+]
+<Requirement 1.PNG, id=104, 117.43875pt x 400.49625pt>
+File: Requirement 1.PNG Graphic file (type png)
+<use Requirement 1.PNG>
+Package pdftex.def Info: Requirement 1.PNG  used on input line 600.
+(pdftex.def)             Requested size: 117.43845pt x 400.49527pt.
+<Requirement 2.PNG, id=105, 164.11313pt x 198.7425pt>
+File: Requirement 2.PNG Graphic file (type png)
+<use Requirement 2.PNG>
+Package pdftex.def Info: Requirement 2.PNG  used on input line 605.
+(pdftex.def)             Requested size: 164.11272pt x 198.742pt.
+<Requirement 5.PNG, id=106, 132.495pt x 497.60907pt>
+File: Requirement 5.PNG Graphic file (type png)
+<use Requirement 5.PNG>
+Package pdftex.def Info: Requirement 5.PNG  used on input line 610.
+(pdftex.def)             Requested size: 132.49466pt x 497.60785pt.
+<Requirement 6.PNG, id=107, 276.28218pt x 447.17062pt>
+File: Requirement 6.PNG Graphic file (type png)
+<use Requirement 6.PNG>
+Package pdftex.def Info: Requirement 6.PNG  used on input line 615.
+(pdftex.def)             Requested size: 276.2815pt x 447.16953pt.
+<Requirement 7.PNG, id=108, 561.59813pt x 274.02374pt>
+File: Requirement 7.PNG Graphic file (type png)
+<use Requirement 7.PNG>
+Package pdftex.def Info: Requirement 7.PNG  used on input line 620.
+(pdftex.def)             Requested size: 369.88582pt x 180.4799pt.
+<Requirement 8.PNG, id=109, 150.5625pt x 234.8775pt>
+File: Requirement 8.PNG Graphic file (type png)
+<use Requirement 8.PNG>
+Package pdftex.def Info: Requirement 8.PNG  used on input line 625.
+(pdftex.def)             Requested size: 150.56212pt x 234.87692pt.
+<Requirement 9A.PNG, id=110, 139.27031pt x 363.60844pt>
+File: Requirement 9A.PNG Graphic file (type png)
+<use Requirement 9A.PNG>
+Package pdftex.def Info: Requirement 9A.PNG  used on input line 630.
+(pdftex.def)             Requested size: 139.26996pt x 363.60754pt.
+<Requirement 9B.PNG, id=111, 135.50626pt x 231.86626pt>
+File: Requirement 9B.PNG Graphic file (type png)
+<use Requirement 9B.PNG>
+Package pdftex.def Info: Requirement 9B.PNG  used on input line 631.
+(pdftex.def)             Requested size: 135.5059pt x 231.86568pt.
+ [24 <./Requirement 1.PNG> <./Requirement 2.PNG>] [25 <./Requirement 5.PNG>] [26 <./Requirement 6.PNG> <./Requirement 7.PNG>] [27 <./Requirement 8.PNG> <./Requirement 9A.PNG> <./Requirement 9B.PNG>]
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 653.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 653.
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--432
-[]\OT1/cmr/m/n/10.95 Test
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 653.
+
+
+Overfull \hbox (25.69986pt too wide) in alignment at lines 637--678
+ [][][] []
  []
 
+[28
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--446
-[]\OT1/cmr/m/n/10.95 Test
- []
-
-[14
-
-] [15]
-Chapter 6.
-(./CMP-6048A_REPORT.bbl [16
-
-]) [17
-
-] [18
-
-] [19
+] (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) [29
 
 ] (./CMP-6048A_REPORT.aux)
 
@@ -301,18 +377,18 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4641 strings out of 478599
- 61901 string characters out of 5858101
- 610650 words of memory out of 5000000
- 22453 multiletter control sequences out of 15000+600000
+ 4745 strings out of 478599
+ 63898 string characters out of 5858101
+ 609942 words of memory out of 5000000
+ 22543 multiletter control sequences out of 15000+600000
  413689 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,9n,80p,771b,1375s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,15n,80p,699b,1141s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on CMP-6048A_REPORT.pdf (21 pages, 183534 bytes).
+Output written on CMP-6048A_REPORT.pdf (31 pages, 384676 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 185 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

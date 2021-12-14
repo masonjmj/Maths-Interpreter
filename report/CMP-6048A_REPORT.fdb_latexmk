@@ -1,16 +1,24 @@
 # Fdb version 3
-["bibtex CMP-6048A_REPORT"] 1639354840 "CMP-6048A_REPORT.aux" "CMP-6048A_REPORT.bbl" "CMP-6048A_REPORT" 1639355133
-  "CMP-6048A_REPORT.aux" 1639355056 7209 d32cc6ee457674510f105a4c1923186d "pdflatex"
-  "References.bib" 1639333993 6427 f7987cbc0b9b23edf4dcb2aeb5b5efe7 ""
+["bibtex CMP-6048A_REPORT"] 1639488408 "CMP-6048A_REPORT.aux" "CMP-6048A_REPORT.bbl" "CMP-6048A_REPORT" 1639488444
+  "CMP-6048A_REPORT.aux" 1639488410 8328 4b2326988f1347c85fc95810fab1366c "pdflatex"
+  "References.bib" 1639432343 6594 f7987cbc0b9b23edf4dcb2aeb5b5efe7 ""
   "c:/texlive/2021/texmf-dist/bibtex/bst/base/unsrt.bst" 1633270519 18030 1376b4b231b50c66211e47e42eda2875 ""
   (generated)
   "CMP-6048A_REPORT.blg"
   "CMP-6048A_REPORT.bbl"
-["pdflatex"] 1639355055 "d:/Documents/University/Advanced Programming/Coursework/report/CMP-6048A_REPORT.tex" "CMP-6048A_REPORT.pdf" "CMP-6048A_REPORT" 1639355133
-  "AST.png" 1639325353 34697 65ede80e3af67ba53bc0217511544fc9 ""
-  "CMP-6048A_REPORT.aux" 1639355056 7209 d32cc6ee457674510f105a4c1923186d "pdflatex"
-  "CMP-6048A_REPORT.bbl" 1639354841 582 39eb48d6e3c14c02aa6aca2908b2c9fe "bibtex CMP-6048A_REPORT"
-  "CMP-6048A_REPORT.tex" 1639355132 30223 665da5e364ada0cc9d6007f8a6e2f333 ""
+["pdflatex"] 1639488408 "d:/Documents/University/Advanced Programming/Coursework/report/CMP-6048A_REPORT.tex" "CMP-6048A_REPORT.pdf" "CMP-6048A_REPORT" 1639488444
+  "AST.png" 1639432343 34697 65ede80e3af67ba53bc0217511544fc9 ""
+  "CMP-6048A_REPORT.aux" 1639488410 8328 4b2326988f1347c85fc95810fab1366c "pdflatex"
+  "CMP-6048A_REPORT.bbl" 1639488408 582 39eb48d6e3c14c02aa6aca2908b2c9fe "bibtex CMP-6048A_REPORT"
+  "CMP-6048A_REPORT.tex" 1639488442 51946 2a883acd7a28011330a459dc65eec5be ""
+  "Requirement 1.PNG" 1639485139 14498 66465cd9a95f6dc8a715f979d02874cf ""
+  "Requirement 2.PNG" 1639485139 15499 6e73c667a748711a4baa116c3d6d2a88 ""
+  "Requirement 5.PNG" 1639485139 26343 50d3ad657beccdfd50ff9c1d062692b8 ""
+  "Requirement 6.PNG" 1639485139 26534 d301ffb913815f0b3b1031a80f42d316 ""
+  "Requirement 7.PNG" 1639485139 21429 13eeca917afe044f7376ce3eb68561ae ""
+  "Requirement 8.PNG" 1639485139 13413 e879a6fbb6361a8bddb431c53cc1eb74 ""
+  "Requirement 9A.PNG" 1639485139 17479 b4d307a5a2f3ab8f604d4e735fb744aa ""
+  "Requirement 9B.PNG" 1639485139 11096 67c97105daf315ed4fcda0db3e4a4b5f ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1633270785 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1633271572 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1633274018 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -92,7 +100,12 @@
   "c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1633274935 4399729 ba2bdf7099c8a2ba97051a2b802eaeb0 ""
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1633275075 2797771 146cca4a41e592251c40a2e285e22f0f ""
   "c:/texlive/2021/texmf.cnf" 1633274902 713 e69b156964470283e0530f5060668171 ""
-  "d:/Documents/University/Advanced Programming/Coursework/report/CMP-6048A_REPORT.tex" 1639355132 30223 665da5e364ada0cc9d6007f8a6e2f333 ""
+  "d:/Documents/University/Advanced Programming/Coursework/report/CMP-6048A_REPORT.tex" 1639488442 51946 2a883acd7a28011330a459dc65eec5be ""
+  "graph3x+2.PNG" 1639485139 34935 fc08c32f85d4b74a8e5abcd082e0f78c ""
+  "graphpolynomial.PNG" 1639485139 30314 041b0fee7a3796a2bd43e1248cb9dc64 ""
+  "graphsinx.PNG" 1639485139 41626 ef715d7f28e61942dde0a9f8b90fabd7 ""
+  "graphsinx2.PNG" 1639485139 27008 569d825668fe299d24ff3f2b0b9888fb ""
+  "graphx2.PNG" 1639485139 31110 093de5fa51b46a65c31c8237560fb443 ""
   (generated)
   "CMP-6048A_REPORT.aux"
   "CMP-6048A_REPORT.pdf"
