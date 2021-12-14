@@ -1,4 +1,4 @@
-# Maths-Interpreter
+# Maths Interpreter
 Group 8
 
 James Mason - 100281686
